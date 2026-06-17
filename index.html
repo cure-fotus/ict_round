@@ -1127,12 +1127,12 @@
     </div>
   </div>
   <div class="header-actions">
-    <span class="admin-badge visible" id="adminBadge">🛡 管理者モード</span>
+    <span class="admin-badge" id="adminBadge">🛡 管理者モード</span>
     <button class="btn btn-green" onclick="saveData()">💾 保存</button>
     <button class="btn btn-purple" onclick="loadFromFile()">📂 読込</button>
     <button class="btn" onclick="openPrintReport()">🖨 ラウンドレポート印刷</button>
-    <button class="btn" id="adminLoginBtn" onclick="openAdminModal()" title="管理者ログイン" style="display: none;">🔐</button>
-    <button class="btn btn-red" id="adminLogoutBtn" onclick="adminLogout()" style="" title="ログアウト">🔓 ログアウト</button>
+    <button class="btn" id="adminLoginBtn" onclick="openAdminModal()" title="管理者ログイン" style="">🔐</button>
+    <button class="btn btn-red" id="adminLogoutBtn" onclick="adminLogout()" style="display: none;" title="ログアウト">🔓 ログアウト</button>
     <input type="file" id="fileInput" accept=".json" style="display:none" onchange="importJSON(event)">
   </div>
 </div>
@@ -1157,7 +1157,7 @@
   <button class="tab-btn" onclick="switchTab(&#39;theme&#39;, this)">
     📝 テーマ別ラウンド
   </button>
-  <button class="tab-btn" id="adminTab" onclick="switchTab(&#39;admin&#39;, this)" style="">
+  <button class="tab-btn" id="adminTab" onclick="switchTab(&#39;admin&#39;, this)" style="display: none;">
     🛡 管理者
   </button>
 </div>
@@ -1192,48 +1192,48 @@
         </div>
         <div class="meta-field">
           <span class="meta-label">病棟 / 部署</span>
-          <select class="meta-input" id="wardSelect" onchange="onWardChange()"><option value="サンプル病棟">サンプル病棟</option><option value="病棟">病棟</option><option value="療法部">療法部</option><option value="外来">外来</option></select>
+          <select class="meta-input" id="wardSelect" onchange="onWardChange()"><option value="サンプル病棟">サンプル病棟</option><option value="病棟">病棟</option><option value="療法部">療法部</option><option value="外来/救急外来/検査室">外来/救急外来/検査室</option></select>
         </div>
         <div class="meta-field">
           <span class="meta-label">チェックリスト</span>
-          <span id="wardChecklistLabel" style="font-size: 13px; color: rgb(25, 118, 210); font-weight: 600; padding: 6px 0px; display: block;">病棟専用（カスタム）</span>
+          <span id="wardChecklistLabel" style="font-size: 13px; color: rgb(25, 118, 210); font-weight: 600; padding: 6px 0px; display: block;">外来/救急外来/検査室専用（カスタム）</span>
         </div>
       </div>
       <div style="display:flex;gap:8px;flex-wrap:wrap">
-        <button class="btn btn-primary admin-only-btn" style="" onclick="saveMonthSnapshot()">📌 今月を確定保存</button>
-        <button class="btn btn-red admin-only-btn" style="" onclick="resetCurrentMonth()">🗑 リセット</button>
+        <button class="btn btn-primary admin-only-btn" style="display: none;" onclick="saveMonthSnapshot()">📌 今月を確定保存</button>
+        <button class="btn btn-red admin-only-btn" style="display: none;" onclick="resetCurrentMonth()">🗑 リセット</button>
         <button class="btn" onclick="printChecklist()" style="font-size:13px">🖨 チェックリスト印刷</button>
-        <span id="nonAdminNote" style="font-size: 12px; color: var(--text3); align-self: center; display: none;">※ 確定保存・リセットは管理者のみ操作できます（🔐 よりログイン）</span>
+        <span id="nonAdminNote" style="font-size: 12px; color: var(--text3); align-self: center;">※ 確定保存・リセットは管理者のみ操作できます（🔐 よりログイン）</span>
       </div>
     </div>
 
     <!-- SUMMARY BAR -->
     <div class="summary-bar">
       <div class="summary-stat">
-        <span class="summary-val" id="totalScore">51</span>
+        <span class="summary-val" id="totalScore">0</span>
         <span class="summary-lbl">合計点</span>
       </div>
       <div class="summary-divider"></div>
       <div class="summary-stat">
-        <span class="summary-val" id="maxScore">83</span>
+        <span class="summary-val" id="maxScore">75</span>
         <span class="summary-lbl">満点</span>
       </div>
       <div class="summary-divider"></div>
       <div class="summary-stat">
-        <span class="summary-val" id="pctScore">61%</span>
+        <span class="summary-val" id="pctScore">0%</span>
         <span class="summary-lbl">達成率</span>
       </div>
       <div class="summary-divider"></div>
       <div class="summary-stat">
-        <span class="summary-val" id="checkedCount">82</span>
+        <span class="summary-val" id="checkedCount">0</span>
         <span class="summary-lbl">回答済</span>
       </div>
       <div class="summary-divider"></div>
       <div class="progress-wrap">
         <div style="display:flex;justify-content:space-between;font-size:11px;color:var(--text3)">
-          <span>進捗</span><span id="progressText">82 / 83</span>
+          <span>進捗</span><span id="progressText">0 / 75</span>
         </div>
-        <div class="progress-bar"><div class="progress-fill" id="progressFill" style="width: 99%;"></div></div>
+        <div class="progress-bar"><div class="progress-fill" id="progressFill" style="width: 0%;"></div></div>
       </div>
       <div id="stampArea" style="display:none;align-items:center;justify-content:center;padding:10px 16px;border-radius:12px;background-image:radial-gradient(circle,#f48fb1 1.2px,transparent 1.2px);background-size:8px 8px;background-color:#fff0f6;border:1px solid #f8bbd0;min-width:110px;flex-direction:column;gap:4px;">
         <div style="font-size:52px;line-height:1;filter:drop-shadow(0 2px 4px rgba(233,30,99,0.25))">🌸</div>
@@ -1246,16 +1246,16 @@
       <div class="section-header" onclick="toggleSection(1)">
         <div class="section-title">
           <div class="section-num">1</div>
-          基本ラウンド
+          外来
         </div>
         <div style="display:flex;align-items:center;gap:12px">
           <div style="display:flex;gap:4px" onclick="event.stopPropagation()">
-            <button class="toggle-btn circle" title="全項目○に一括設定" onclick="setBulkAnswer(&#39;病棟:2026-06&#39;,1,true)" style="font-size:14px;width:auto;padding:0 8px;height:28px;border-radius:6px;font-weight:700">○</button>
-            <button class="toggle-btn cross" title="全項目×に一括設定" onclick="setBulkAnswer(&#39;病棟:2026-06&#39;,1,false)" style="font-size:14px;width:auto;padding:0 8px;height:28px;border-radius:6px;font-weight:700">×</button>
+            <button class="toggle-btn circle" title="全項目○に一括設定" onclick="setBulkAnswer(&#39;外来/救急外来/検査室:2026-06&#39;,1,true)" style="font-size:14px;width:auto;padding:0 8px;height:28px;border-radius:6px;font-weight:700">○</button>
+            <button class="toggle-btn cross" title="全項目×に一括設定" onclick="setBulkAnswer(&#39;外来/救急外来/検査室:2026-06&#39;,1,false)" style="font-size:14px;width:auto;padding:0 8px;height:28px;border-radius:6px;font-weight:700">×</button>
           </div>
           <div class="section-score">
             <span style="color:var(--text3);font-size:12px">点数</span>
-            <span class="score-display" id="sec-score-1">13 / 15 点 (満点 15)</span>
+            <span class="score-display" id="sec-score-1">0 / 0 点 (満点 15)</span>
           </div>
           <span class="chevron">▼</span>
         </div>
@@ -1265,108 +1265,108 @@
           <div class="section-point">💡 感染拡大防止のルール遵守を確認するとともに、エアロゾル・接触感染リスク（3密）の観点から、飛沫・エアロゾルの飛散や接触機会の増加がないか確認する。</div>
           
     <div class="check-item">
-      <span class="check-label">私語をしていない（業務上の会話はOK）</span>
+      <span class="check-label">私語をしていない</span>
       <div class="toggle-group">
-        <button class="toggle-btn circle active" title="○（1点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,1,0,true)">○</button>
-        <button class="toggle-btn cross " title="×（0点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,1,0,false)">×</button>
+        <button class="toggle-btn circle " title="○（1点）" onclick="setAnswer(&#39;外来/救急外来/検査室:2026-06&#39;,1,0,true)">○</button>
+        <button class="toggle-btn cross " title="×（0点）" onclick="setAnswer(&#39;外来/救急外来/検査室:2026-06&#39;,1,0,false)">×</button>
       </div>
     </div>
     <div class="check-item">
-      <span class="check-label">1～2ｍ程度の距離をとっている（密着して会話をしていない）</span>
+      <span class="check-label">1～2ｍ程度の距離をとっている</span>
       <div class="toggle-group">
-        <button class="toggle-btn circle active" title="○（1点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,1,1,true)">○</button>
-        <button class="toggle-btn cross " title="×（0点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,1,1,false)">×</button>
+        <button class="toggle-btn circle " title="○（1点）" onclick="setAnswer(&#39;外来/救急外来/検査室:2026-06&#39;,1,1,true)">○</button>
+        <button class="toggle-btn cross " title="×（0点）" onclick="setAnswer(&#39;外来/救急外来/検査室:2026-06&#39;,1,1,false)">×</button>
       </div>
     </div>
     <div class="check-item">
-      <span class="check-label">適切に換気をしている（空調管理中に不用意に窓を開けたりしていないか。サーキュレータや扇風機使用中の場合、設置場所や方向などは適切か）</span>
+      <span class="check-label">適切に換気をしている</span>
       <div class="toggle-group">
-        <button class="toggle-btn circle active" title="○（1点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,1,2,true)">○</button>
-        <button class="toggle-btn cross " title="×（0点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,1,2,false)">×</button>
+        <button class="toggle-btn circle " title="○（1点）" onclick="setAnswer(&#39;外来/救急外来/検査室:2026-06&#39;,1,2,true)">○</button>
+        <button class="toggle-btn cross " title="×（0点）" onclick="setAnswer(&#39;外来/救急外来/検査室:2026-06&#39;,1,2,false)">×</button>
       </div>
     </div>
     <div class="check-item">
-      <span class="check-label">不織布マスクを適切に着用できている（顎マスクや鼻マスクになったり、肘マスクをしたりしていないか）</span>
+      <span class="check-label">不織布マスクを適切に着用できている</span>
       <div class="toggle-group">
-        <button class="toggle-btn circle active" title="○（1点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,1,3,true)">○</button>
-        <button class="toggle-btn cross " title="×（0点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,1,3,false)">×</button>
+        <button class="toggle-btn circle " title="○（1点）" onclick="setAnswer(&#39;外来/救急外来/検査室:2026-06&#39;,1,3,true)">○</button>
+        <button class="toggle-btn cross " title="×（0点）" onclick="setAnswer(&#39;外来/救急外来/検査室:2026-06&#39;,1,3,false)">×</button>
       </div>
     </div>
     <div class="check-item">
-      <span class="check-label">冷蔵庫や休憩室に不要なものを置かない（不要なものを不特定多数が触るような状況になっていないか）</span>
+      <span class="check-label">冷蔵庫や休憩室に不要なものを置かない</span>
       <div class="toggle-group">
-        <button class="toggle-btn circle active" title="○（1点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,1,4,true)">○</button>
-        <button class="toggle-btn cross " title="×（0点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,1,4,false)">×</button>
+        <button class="toggle-btn circle " title="○（1点）" onclick="setAnswer(&#39;外来/救急外来/検査室:2026-06&#39;,1,4,true)">○</button>
+        <button class="toggle-btn cross " title="×（0点）" onclick="setAnswer(&#39;外来/救急外来/検査室:2026-06&#39;,1,4,false)">×</button>
       </div>
     </div>
     <div class="check-item">
-      <span class="check-label">冷蔵庫の取っ手やドアノブなど、高頻度接触面の清拭ができている（環境整備時ドアノブや取手が整備対象になっているか。ベッド柵など、高頻度接触面をスタッフが把握しているか）</span>
+      <span class="check-label">冷蔵庫の取っ手やドアノブなど、高頻度接触面の清拭ができている</span>
       <div class="toggle-group">
-        <button class="toggle-btn circle active" title="○（1点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,1,5,true)">○</button>
-        <button class="toggle-btn cross " title="×（0点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,1,5,false)">×</button>
+        <button class="toggle-btn circle " title="○（1点）" onclick="setAnswer(&#39;外来/救急外来/検査室:2026-06&#39;,1,5,true)">○</button>
+        <button class="toggle-btn cross " title="×（0点）" onclick="setAnswer(&#39;外来/救急外来/検査室:2026-06&#39;,1,5,false)">×</button>
       </div>
     </div>
     <div class="check-item">
-      <span class="check-label">マニュアルが所定の位置にある（紙マニュアル・PC内マニュアルの位置。災害時・停電時には紙マニュアルも参照できるように。疾患別マニュアルはスマホからも参照できるようになっているか）</span>
+      <span class="check-label">マニュアルが所定の位置にある</span>
       <div class="toggle-group">
-        <button class="toggle-btn circle active" title="○（1点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,1,6,true)">○</button>
-        <button class="toggle-btn cross " title="×（0点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,1,6,false)">×</button>
+        <button class="toggle-btn circle " title="○（1点）" onclick="setAnswer(&#39;外来/救急外来/検査室:2026-06&#39;,1,6,true)">○</button>
+        <button class="toggle-btn cross " title="×（0点）" onclick="setAnswer(&#39;外来/救急外来/検査室:2026-06&#39;,1,6,false)">×</button>
       </div>
     </div>
     <div class="check-item">
-      <span class="check-label">スタッフがマニュアルの位置を把握している（紙マニュアル・PC内マニュアルの位置）</span>
+      <span class="check-label">スタッフがマニュアルの位置を把握している</span>
       <div class="toggle-group">
-        <button class="toggle-btn circle active" title="○（1点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,1,7,true)">○</button>
-        <button class="toggle-btn cross " title="×（0点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,1,7,false)">×</button>
+        <button class="toggle-btn circle " title="○（1点）" onclick="setAnswer(&#39;外来/救急外来/検査室:2026-06&#39;,1,7,true)">○</button>
+        <button class="toggle-btn cross " title="×（0点）" onclick="setAnswer(&#39;外来/救急外来/検査室:2026-06&#39;,1,7,false)">×</button>
       </div>
     </div>
     <div class="check-item">
-      <span class="check-label">各スタッフが患者の感染症を把握している（カルテのどこを見れば感染症発生状況・保菌状況を把握できるか知っている）</span>
+      <span class="check-label">感染症シールがカルテの所定の位置に貼付してある</span>
       <div class="toggle-group">
-        <button class="toggle-btn circle active" title="○（1点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,1,8,true)">○</button>
-        <button class="toggle-btn cross " title="×（0点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,1,8,false)">×</button>
+        <button class="toggle-btn circle " title="○（1点）" onclick="setAnswer(&#39;外来/救急外来/検査室:2026-06&#39;,1,8,true)">○</button>
+        <button class="toggle-btn cross " title="×（0点）" onclick="setAnswer(&#39;外来/救急外来/検査室:2026-06&#39;,1,8,false)">×</button>
       </div>
     </div>
     <div class="check-item">
-      <span class="check-label">各スタッフがその部署の耐性菌等の発生動向を把握している（経路別感染対策が必要な患者を把握している）</span>
+      <span class="check-label">各スタッフがその部署の耐性菌等の発生動向を把握している</span>
       <div class="toggle-group">
-        <button class="toggle-btn circle active" title="○（1点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,1,9,true)">○</button>
-        <button class="toggle-btn cross " title="×（0点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,1,9,false)">×</button>
+        <button class="toggle-btn circle " title="○（1点）" onclick="setAnswer(&#39;外来/救急外来/検査室:2026-06&#39;,1,9,true)">○</button>
+        <button class="toggle-btn cross " title="×（0点）" onclick="setAnswer(&#39;外来/救急外来/検査室:2026-06&#39;,1,9,false)">×</button>
       </div>
     </div>
     <div class="check-item">
-      <span class="check-label">感染症情報レポート・感染症発生届がファイルされている（紙ファイルおよびPCデータ閲覧先・閲覧方法を知っている）</span>
+      <span class="check-label">NI情報レポート・感染症発生届がファイルされている</span>
       <div class="toggle-group">
-        <button class="toggle-btn circle " title="○（1点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,1,10,true)">○</button>
-        <button class="toggle-btn cross active" title="×（0点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,1,10,false)">×</button>
+        <button class="toggle-btn circle " title="○（1点）" onclick="setAnswer(&#39;外来/救急外来/検査室:2026-06&#39;,1,10,true)">○</button>
+        <button class="toggle-btn cross " title="×（0点）" onclick="setAnswer(&#39;外来/救急外来/検査室:2026-06&#39;,1,10,false)">×</button>
       </div>
     </div>
     <div class="check-item">
       <span class="check-label">各スタッフがどの部署でアウトブレイクが発生しているかを把握している</span>
       <div class="toggle-group">
-        <button class="toggle-btn circle active" title="○（1点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,1,11,true)">○</button>
-        <button class="toggle-btn cross " title="×（0点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,1,11,false)">×</button>
+        <button class="toggle-btn circle " title="○（1点）" onclick="setAnswer(&#39;外来/救急外来/検査室:2026-06&#39;,1,11,true)">○</button>
+        <button class="toggle-btn cross " title="×（0点）" onclick="setAnswer(&#39;外来/救急外来/検査室:2026-06&#39;,1,11,false)">×</button>
       </div>
     </div>
     <div class="check-item">
       <span class="check-label">各職員がアウトブレイク時や感染症発生時に誰に報告相談するか把握している</span>
       <div class="toggle-group">
-        <button class="toggle-btn circle active" title="○（1点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,1,12,true)">○</button>
-        <button class="toggle-btn cross " title="×（0点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,1,12,false)">×</button>
+        <button class="toggle-btn circle " title="○（1点）" onclick="setAnswer(&#39;外来/救急外来/検査室:2026-06&#39;,1,12,true)">○</button>
+        <button class="toggle-btn cross " title="×（0点）" onclick="setAnswer(&#39;外来/救急外来/検査室:2026-06&#39;,1,12,false)">×</button>
       </div>
     </div>
     <div class="check-item">
-      <span class="check-label">感染防止対策委員会の議事録をスタッフが閲覧している</span>
+      <span class="check-label">議事録を閲覧し、サインしている</span>
       <div class="toggle-group">
-        <button class="toggle-btn circle " title="○（1点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,1,13,true)">○</button>
-        <button class="toggle-btn cross active" title="×（0点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,1,13,false)">×</button>
+        <button class="toggle-btn circle " title="○（1点）" onclick="setAnswer(&#39;外来/救急外来/検査室:2026-06&#39;,1,13,true)">○</button>
+        <button class="toggle-btn cross " title="×（0点）" onclick="setAnswer(&#39;外来/救急外来/検査室:2026-06&#39;,1,13,false)">×</button>
       </div>
     </div>
     <div class="check-item">
       <span class="check-label">頭髪はまとめ、爪を切って清潔である</span>
       <div class="toggle-group">
-        <button class="toggle-btn circle active" title="○（1点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,1,14,true)">○</button>
-        <button class="toggle-btn cross " title="×（0点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,1,14,false)">×</button>
+        <button class="toggle-btn circle " title="○（1点）" onclick="setAnswer(&#39;外来/救急外来/検査室:2026-06&#39;,1,14,true)">○</button>
+        <button class="toggle-btn cross " title="×（0点）" onclick="setAnswer(&#39;外来/救急外来/検査室:2026-06&#39;,1,14,false)">×</button>
       </div>
     </div>
         </div>
@@ -1374,79 +1374,71 @@
       <div class="section-header" onclick="toggleSection(2)">
         <div class="section-title">
           <div class="section-num">2</div>
-          手指衛生
+          救急外来
         </div>
         <div style="display:flex;align-items:center;gap:12px">
           <div style="display:flex;gap:4px" onclick="event.stopPropagation()">
-            <button class="toggle-btn circle" title="全項目○に一括設定" onclick="setBulkAnswer(&#39;病棟:2026-06&#39;,2,true)" style="font-size:14px;width:auto;padding:0 8px;height:28px;border-radius:6px;font-weight:700">○</button>
-            <button class="toggle-btn cross" title="全項目×に一括設定" onclick="setBulkAnswer(&#39;病棟:2026-06&#39;,2,false)" style="font-size:14px;width:auto;padding:0 8px;height:28px;border-radius:6px;font-weight:700">×</button>
+            <button class="toggle-btn circle" title="全項目○に一括設定" onclick="setBulkAnswer(&#39;外来/救急外来/検査室:2026-06&#39;,2,true)" style="font-size:14px;width:auto;padding:0 8px;height:28px;border-radius:6px;font-weight:700">○</button>
+            <button class="toggle-btn cross" title="全項目×に一括設定" onclick="setBulkAnswer(&#39;外来/救急外来/検査室:2026-06&#39;,2,false)" style="font-size:14px;width:auto;padding:0 8px;height:28px;border-radius:6px;font-weight:700">×</button>
           </div>
           <div class="section-score">
             <span style="color:var(--text3);font-size:12px">点数</span>
-            <span class="score-display" id="sec-score-2">5 / 8 点 (満点 8)</span>
+            <span class="score-display" id="sec-score-2">0 / 0 点 (満点 7)</span>
           </div>
           <span class="chevron">▼</span>
         </div>
       </div>
       <div class="section-body">
         <div class="section-body-inner">
-          <div class="section-point">💡 ５つのタイミングで手指衛生できているか。特にケア前に実施できているか。患者ゾーン・医療ゾーンを意識できているか。遵守されにくい場面を、言葉にして明確にする。
-</div>
+          <div class="section-point">💡 ５つのタイミングで手指衛生できているか。特にケア前に実施できているか。遵守されにくい場面を、言葉にして明確にする。</div>
           
     <div class="check-item">
       <span class="check-label">【強化】ケア前に手指衛生できている</span>
       <div class="toggle-group">
-        <button class="toggle-btn circle active" title="○（1点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,2,0,true)">○</button>
-        <button class="toggle-btn cross " title="×（0点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,2,0,false)">×</button>
+        <button class="toggle-btn circle " title="○（1点）" onclick="setAnswer(&#39;外来/救急外来/検査室:2026-06&#39;,2,0,true)">○</button>
+        <button class="toggle-btn cross " title="×（0点）" onclick="setAnswer(&#39;外来/救急外来/検査室:2026-06&#39;,2,0,false)">×</button>
       </div>
     </div>
     <div class="check-item">
       <span class="check-label">【強化】PC使用前後に手指衛生できている</span>
       <div class="toggle-group">
-        <button class="toggle-btn circle " title="○（1点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,2,1,true)">○</button>
-        <button class="toggle-btn cross active" title="×（0点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,2,1,false)">×</button>
+        <button class="toggle-btn circle " title="○（1点）" onclick="setAnswer(&#39;外来/救急外来/検査室:2026-06&#39;,2,1,true)">○</button>
+        <button class="toggle-btn cross " title="×（0点）" onclick="setAnswer(&#39;外来/救急外来/検査室:2026-06&#39;,2,1,false)">×</button>
       </div>
     </div>
     <div class="check-item">
       <span class="check-label">【強化】冷蔵庫・ロッカーの開閉前後で手指衛生できている</span>
       <div class="toggle-group">
-        <button class="toggle-btn circle " title="○（1点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,2,2,true)">○</button>
-        <button class="toggle-btn cross active" title="×（0点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,2,2,false)">×</button>
+        <button class="toggle-btn circle " title="○（1点）" onclick="setAnswer(&#39;外来/救急外来/検査室:2026-06&#39;,2,2,true)">○</button>
+        <button class="toggle-btn cross " title="×（0点）" onclick="setAnswer(&#39;外来/救急外来/検査室:2026-06&#39;,2,2,false)">×</button>
       </div>
     </div>
     <div class="check-item">
       <span class="check-label">【強化】PHSの使用後に手指衛生できている</span>
       <div class="toggle-group">
-        <button class="toggle-btn circle " title="○（1点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,2,3,true)">○</button>
-        <button class="toggle-btn cross active" title="×（0点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,2,3,false)">×</button>
+        <button class="toggle-btn circle " title="○（1点）" onclick="setAnswer(&#39;外来/救急外来/検査室:2026-06&#39;,2,3,true)">○</button>
+        <button class="toggle-btn cross " title="×（0点）" onclick="setAnswer(&#39;外来/救急外来/検査室:2026-06&#39;,2,3,false)">×</button>
       </div>
     </div>
     <div class="check-item">
       <span class="check-label">手洗い場に液体石けん・ペーパータオルが置かれている</span>
       <div class="toggle-group">
-        <button class="toggle-btn circle active" title="○（1点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,2,4,true)">○</button>
-        <button class="toggle-btn cross " title="×（0点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,2,4,false)">×</button>
+        <button class="toggle-btn circle " title="○（1点）" onclick="setAnswer(&#39;外来/救急外来/検査室:2026-06&#39;,2,4,true)">○</button>
+        <button class="toggle-btn cross " title="×（0点）" onclick="setAnswer(&#39;外来/救急外来/検査室:2026-06&#39;,2,4,false)">×</button>
       </div>
     </div>
     <div class="check-item">
       <span class="check-label">速乾性手指消毒剤は適切に配置されている</span>
       <div class="toggle-group">
-        <button class="toggle-btn circle active" title="○（1点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,2,5,true)">○</button>
-        <button class="toggle-btn cross " title="×（0点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,2,5,false)">×</button>
+        <button class="toggle-btn circle " title="○（1点）" onclick="setAnswer(&#39;外来/救急外来/検査室:2026-06&#39;,2,5,true)">○</button>
+        <button class="toggle-btn cross " title="×（0点）" onclick="setAnswer(&#39;外来/救急外来/検査室:2026-06&#39;,2,5,false)">×</button>
       </div>
     </div>
     <div class="check-item">
       <span class="check-label">速乾性手指消毒剤の使用期限が記入されている。期限切れのものはない</span>
       <div class="toggle-group">
-        <button class="toggle-btn circle active" title="○（1点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,2,6,true)">○</button>
-        <button class="toggle-btn cross " title="×（0点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,2,6,false)">×</button>
-      </div>
-    </div>
-    <div class="check-item">
-      <span class="check-label">手荒れのあるスタッフは、ノンアルコール製剤や保護ハンドクリームなどを適切に使用できている</span>
-      <div class="toggle-group">
-        <button class="toggle-btn circle active" title="○（1点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,2,7,true)">○</button>
-        <button class="toggle-btn cross " title="×（0点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,2,7,false)">×</button>
+        <button class="toggle-btn circle " title="○（1点）" onclick="setAnswer(&#39;外来/救急外来/検査室:2026-06&#39;,2,6,true)">○</button>
+        <button class="toggle-btn cross " title="×（0点）" onclick="setAnswer(&#39;外来/救急外来/検査室:2026-06&#39;,2,6,false)">×</button>
       </div>
     </div>
         </div>
@@ -1454,16 +1446,16 @@
       <div class="section-header" onclick="toggleSection(3)">
         <div class="section-title">
           <div class="section-num">3</div>
-          水回り
+          検査室
         </div>
         <div style="display:flex;align-items:center;gap:12px">
           <div style="display:flex;gap:4px" onclick="event.stopPropagation()">
-            <button class="toggle-btn circle" title="全項目○に一括設定" onclick="setBulkAnswer(&#39;病棟:2026-06&#39;,3,true)" style="font-size:14px;width:auto;padding:0 8px;height:28px;border-radius:6px;font-weight:700">○</button>
-            <button class="toggle-btn cross" title="全項目×に一括設定" onclick="setBulkAnswer(&#39;病棟:2026-06&#39;,3,false)" style="font-size:14px;width:auto;padding:0 8px;height:28px;border-radius:6px;font-weight:700">×</button>
+            <button class="toggle-btn circle" title="全項目○に一括設定" onclick="setBulkAnswer(&#39;外来/救急外来/検査室:2026-06&#39;,3,true)" style="font-size:14px;width:auto;padding:0 8px;height:28px;border-radius:6px;font-weight:700">○</button>
+            <button class="toggle-btn cross" title="全項目×に一括設定" onclick="setBulkAnswer(&#39;外来/救急外来/検査室:2026-06&#39;,3,false)" style="font-size:14px;width:auto;padding:0 8px;height:28px;border-radius:6px;font-weight:700">×</button>
           </div>
           <div class="section-score">
             <span style="color:var(--text3);font-size:12px">点数</span>
-            <span class="score-display" id="sec-score-3">4 / 6 点 (満点 6)</span>
+            <span class="score-display" id="sec-score-3">0 / 0 点 (満点 6)</span>
           </div>
           <span class="chevron">▼</span>
         </div>
@@ -1473,45 +1465,45 @@
           <div class="section-point">💡 水回り環境には、アシネトバクターや緑膿菌などが、バイオフィルムを作って定着しやすい。定着リスクをできるだけ減らせているか、また拡散させない対策ができているか確認する。</div>
           
     <div class="check-item">
-      <span class="check-label">定期的に（目安；2回/月）スポンジが交換できているか</span>
+      <span class="check-label">定期的に（2回/月）スポンジが交換できているか</span>
       <div class="toggle-group">
-        <button class="toggle-btn circle active" title="○（1点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,3,0,true)">○</button>
-        <button class="toggle-btn cross " title="×（0点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,3,0,false)">×</button>
+        <button class="toggle-btn circle " title="○（1点）" onclick="setAnswer(&#39;外来/救急外来/検査室:2026-06&#39;,3,0,true)">○</button>
+        <button class="toggle-btn cross " title="×（0点）" onclick="setAnswer(&#39;外来/救急外来/検査室:2026-06&#39;,3,0,false)">×</button>
       </div>
     </div>
     <div class="check-item">
-      <span class="check-label">スポンジはシンク周りに直置きされていないか（水切り用の容器の上に置かれているか）</span>
+      <span class="check-label">ENキャップを適切に装着しているか</span>
       <div class="toggle-group">
-        <button class="toggle-btn circle " title="○（1点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,3,1,true)">○</button>
-        <button class="toggle-btn cross active" title="×（0点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,3,1,false)">×</button>
-      </div>
-    </div>
-    <div class="check-item">
-      <span class="check-label">シンクの水はねが注入ボトルやチューブなどにかかる状態にはなっていないか。</span>
-      <div class="toggle-group">
-        <button class="toggle-btn circle active" title="○（1点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,3,2,true)">○</button>
-        <button class="toggle-btn cross " title="×（0点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,3,2,false)">×</button>
+        <button class="toggle-btn circle " title="○（1点）" onclick="setAnswer(&#39;外来/救急外来/検査室:2026-06&#39;,3,1,true)">○</button>
+        <button class="toggle-btn cross " title="×（0点）" onclick="setAnswer(&#39;外来/救急外来/検査室:2026-06&#39;,3,1,false)">×</button>
       </div>
     </div>
     <div class="check-item">
       <span class="check-label">注入ボトルのチューブ先端が、排水口に入らないよう、バット等で受けているか</span>
       <div class="toggle-group">
-        <button class="toggle-btn circle " title="○（1点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,3,3,true)">○</button>
-        <button class="toggle-btn cross active" title="×（0点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,3,3,false)">×</button>
+        <button class="toggle-btn circle " title="○（1点）" onclick="setAnswer(&#39;外来/救急外来/検査室:2026-06&#39;,3,2,true)">○</button>
+        <button class="toggle-btn cross " title="×（0点）" onclick="setAnswer(&#39;外来/救急外来/検査室:2026-06&#39;,3,2,false)">×</button>
       </div>
     </div>
     <div class="check-item">
-      <span class="check-label">流水時手洗い時や物品洗浄時は、飛び散らないよう、静かに丁寧に行えているか</span>
+      <span class="check-label">ペーパータオルは適切に下向きに袋から出してセットされているか</span>
       <div class="toggle-group">
-        <button class="toggle-btn circle active" title="○（1点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,3,4,true)">○</button>
-        <button class="toggle-btn cross " title="×（0点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,3,4,false)">×</button>
+        <button class="toggle-btn circle " title="○（1点）" onclick="setAnswer(&#39;外来/救急外来/検査室:2026-06&#39;,3,3,true)">○</button>
+        <button class="toggle-btn cross " title="×（0点）" onclick="setAnswer(&#39;外来/救急外来/検査室:2026-06&#39;,3,3,false)">×</button>
+      </div>
+    </div>
+    <div class="check-item">
+      <span class="check-label">流水時は、飛び散らないよう、静かに行えているか</span>
+      <div class="toggle-group">
+        <button class="toggle-btn circle " title="○（1点）" onclick="setAnswer(&#39;外来/救急外来/検査室:2026-06&#39;,3,4,true)">○</button>
+        <button class="toggle-btn cross " title="×（0点）" onclick="setAnswer(&#39;外来/救急外来/検査室:2026-06&#39;,3,4,false)">×</button>
       </div>
     </div>
     <div class="check-item">
       <span class="check-label">飛び散った水滴などは、きれいにペーパーなどで清拭できているか</span>
       <div class="toggle-group">
-        <button class="toggle-btn circle active" title="○（1点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,3,5,true)">○</button>
-        <button class="toggle-btn cross " title="×（0点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,3,5,false)">×</button>
+        <button class="toggle-btn circle " title="○（1点）" onclick="setAnswer(&#39;外来/救急外来/検査室:2026-06&#39;,3,5,true)">○</button>
+        <button class="toggle-btn cross " title="×（0点）" onclick="setAnswer(&#39;外来/救急外来/検査室:2026-06&#39;,3,5,false)">×</button>
       </div>
     </div>
         </div>
@@ -1523,12 +1515,12 @@
         </div>
         <div style="display:flex;align-items:center;gap:12px">
           <div style="display:flex;gap:4px" onclick="event.stopPropagation()">
-            <button class="toggle-btn circle" title="全項目○に一括設定" onclick="setBulkAnswer(&#39;病棟:2026-06&#39;,4,true)" style="font-size:14px;width:auto;padding:0 8px;height:28px;border-radius:6px;font-weight:700">○</button>
-            <button class="toggle-btn cross" title="全項目×に一括設定" onclick="setBulkAnswer(&#39;病棟:2026-06&#39;,4,false)" style="font-size:14px;width:auto;padding:0 8px;height:28px;border-radius:6px;font-weight:700">×</button>
+            <button class="toggle-btn circle" title="全項目○に一括設定" onclick="setBulkAnswer(&#39;外来/救急外来/検査室:2026-06&#39;,4,true)" style="font-size:14px;width:auto;padding:0 8px;height:28px;border-radius:6px;font-weight:700">○</button>
+            <button class="toggle-btn cross" title="全項目×に一括設定" onclick="setBulkAnswer(&#39;外来/救急外来/検査室:2026-06&#39;,4,false)" style="font-size:14px;width:auto;padding:0 8px;height:28px;border-radius:6px;font-weight:700">×</button>
           </div>
           <div class="section-score">
             <span style="color:var(--text3);font-size:12px">点数</span>
-            <span class="score-display" id="sec-score-4">3 / 8 点 (満点 8)</span>
+            <span class="score-display" id="sec-score-4">0 / 0 点 (満点 7)</span>
           </div>
           <span class="chevron">▼</span>
         </div>
@@ -1540,57 +1532,50 @@
     <div class="check-item">
       <span class="check-label">ミキシング台の上にアルコールジェル以外の物がない</span>
       <div class="toggle-group">
-        <button class="toggle-btn circle " title="○（1点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,4,0,true)">○</button>
-        <button class="toggle-btn cross active" title="×（0点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,4,0,false)">×</button>
+        <button class="toggle-btn circle " title="○（1点）" onclick="setAnswer(&#39;外来/救急外来/検査室:2026-06&#39;,4,0,true)">○</button>
+        <button class="toggle-btn cross " title="×（0点）" onclick="setAnswer(&#39;外来/救急外来/検査室:2026-06&#39;,4,0,false)">×</button>
       </div>
     </div>
     <div class="check-item">
-      <span class="check-label">ミキシング台が清潔に清拭されている（眼に見える汚染がなく、環境ワイプで清拭もされている）</span>
+      <span class="check-label">ミキシング台が清潔に清拭されている</span>
       <div class="toggle-group">
-        <button class="toggle-btn circle " title="○（1点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,4,1,true)">○</button>
-        <button class="toggle-btn cross active" title="×（0点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,4,1,false)">×</button>
+        <button class="toggle-btn circle " title="○（1点）" onclick="setAnswer(&#39;外来/救急外来/検査室:2026-06&#39;,4,1,true)">○</button>
+        <button class="toggle-btn cross " title="×（0点）" onclick="setAnswer(&#39;外来/救急外来/検査室:2026-06&#39;,4,1,false)">×</button>
       </div>
     </div>
     <div class="check-item">
       <span class="check-label">フックに不要な物品がかかっていない</span>
       <div class="toggle-group">
-        <button class="toggle-btn circle active" title="○（1点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,4,2,true)">○</button>
-        <button class="toggle-btn cross " title="×（0点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,4,2,false)">×</button>
+        <button class="toggle-btn circle " title="○（1点）" onclick="setAnswer(&#39;外来/救急外来/検査室:2026-06&#39;,4,2,true)">○</button>
+        <button class="toggle-btn cross " title="×（0点）" onclick="setAnswer(&#39;外来/救急外来/検査室:2026-06&#39;,4,2,false)">×</button>
       </div>
     </div>
     <div class="check-item">
       <span class="check-label">ミキシング前後で手指衛生をしている</span>
       <div class="toggle-group">
-        <button class="toggle-btn circle " title="○（1点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,4,3,true)">○</button>
-        <button class="toggle-btn cross active" title="×（0点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,4,3,false)">×</button>
+        <button class="toggle-btn circle " title="○（1点）" onclick="setAnswer(&#39;外来/救急外来/検査室:2026-06&#39;,4,3,true)">○</button>
+        <button class="toggle-btn cross " title="×（0点）" onclick="setAnswer(&#39;外来/救急外来/検査室:2026-06&#39;,4,3,false)">×</button>
       </div>
     </div>
     <div class="check-item">
-      <span class="check-label">バイアルのキャップを外し、ぎゅうぎゅうと強く押すようにアルコール消毒してから穿刺している</span>
+      <span class="check-label">バイアルのキャップを外し、アルコール消毒してから穿刺している</span>
       <div class="toggle-group">
-        <button class="toggle-btn circle " title="○（1点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,4,4,true)">○</button>
-        <button class="toggle-btn cross active" title="×（0点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,4,4,false)">×</button>
+        <button class="toggle-btn circle " title="○（1点）" onclick="setAnswer(&#39;外来/救急外来/検査室:2026-06&#39;,4,4,true)">○</button>
+        <button class="toggle-btn cross " title="×（0点）" onclick="setAnswer(&#39;外来/救急外来/検査室:2026-06&#39;,4,4,false)">×</button>
       </div>
     </div>
     <div class="check-item">
       <span class="check-label">点滴バッグの刺入部のテープをはがした後、アルコール綿花で消毒している</span>
       <div class="toggle-group">
-        <button class="toggle-btn circle " title="○（1点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,4,5,true)">○</button>
-        <button class="toggle-btn cross active" title="×（0点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,4,5,false)">×</button>
+        <button class="toggle-btn circle " title="○（1点）" onclick="setAnswer(&#39;外来/救急外来/検査室:2026-06&#39;,4,5,true)">○</button>
+        <button class="toggle-btn cross " title="×（0点）" onclick="setAnswer(&#39;外来/救急外来/検査室:2026-06&#39;,4,5,false)">×</button>
       </div>
     </div>
     <div class="check-item">
       <span class="check-label">ミキシング台に扇風機を向けていない</span>
       <div class="toggle-group">
-        <button class="toggle-btn circle active" title="○（1点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,4,6,true)">○</button>
-        <button class="toggle-btn cross " title="×（0点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,4,6,false)">×</button>
-      </div>
-    </div>
-    <div class="check-item">
-      <span class="check-label">ミキシング台の側に、捨てやすい位置に針入れBOXがある</span>
-      <div class="toggle-group">
-        <button class="toggle-btn circle active" title="○（1点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,4,7,true)">○</button>
-        <button class="toggle-btn cross " title="×（0点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,4,7,false)">×</button>
+        <button class="toggle-btn circle " title="○（1点）" onclick="setAnswer(&#39;外来/救急外来/検査室:2026-06&#39;,4,6,true)">○</button>
+        <button class="toggle-btn cross " title="×（0点）" onclick="setAnswer(&#39;外来/救急外来/検査室:2026-06&#39;,4,6,false)">×</button>
       </div>
     </div>
         </div>
@@ -1602,12 +1587,12 @@
         </div>
         <div style="display:flex;align-items:center;gap:12px">
           <div style="display:flex;gap:4px" onclick="event.stopPropagation()">
-            <button class="toggle-btn circle" title="全項目○に一括設定" onclick="setBulkAnswer(&#39;病棟:2026-06&#39;,5,true)" style="font-size:14px;width:auto;padding:0 8px;height:28px;border-radius:6px;font-weight:700">○</button>
-            <button class="toggle-btn cross" title="全項目×に一括設定" onclick="setBulkAnswer(&#39;病棟:2026-06&#39;,5,false)" style="font-size:14px;width:auto;padding:0 8px;height:28px;border-radius:6px;font-weight:700">×</button>
+            <button class="toggle-btn circle" title="全項目○に一括設定" onclick="setBulkAnswer(&#39;外来/救急外来/検査室:2026-06&#39;,5,true)" style="font-size:14px;width:auto;padding:0 8px;height:28px;border-radius:6px;font-weight:700">○</button>
+            <button class="toggle-btn cross" title="全項目×に一括設定" onclick="setBulkAnswer(&#39;外来/救急外来/検査室:2026-06&#39;,5,false)" style="font-size:14px;width:auto;padding:0 8px;height:28px;border-radius:6px;font-weight:700">×</button>
           </div>
           <div class="section-score">
             <span style="color:var(--text3);font-size:12px">点数</span>
-            <span class="score-display" id="sec-score-5">3 / 5 点 (満点 5)</span>
+            <span class="score-display" id="sec-score-5">0 / 0 点 (満点 5)</span>
           </div>
           <span class="chevron">▼</span>
         </div>
@@ -1619,36 +1604,36 @@
     <div class="check-item">
       <span class="check-label">針入れBOXを持参している</span>
       <div class="toggle-group">
-        <button class="toggle-btn circle active" title="○（1点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,5,0,true)">○</button>
-        <button class="toggle-btn cross " title="×（0点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,5,0,false)">×</button>
+        <button class="toggle-btn circle " title="○（1点）" onclick="setAnswer(&#39;外来/救急外来/検査室:2026-06&#39;,5,0,true)">○</button>
+        <button class="toggle-btn cross " title="×（0点）" onclick="setAnswer(&#39;外来/救急外来/検査室:2026-06&#39;,5,0,false)">×</button>
       </div>
     </div>
     <div class="check-item">
-      <span class="check-label">血液感染症を有する患者を把握している（新人採血時は特に注意するよう指導している）</span>
+      <span class="check-label">血液感染症を有する患者を把握している</span>
       <div class="toggle-group">
-        <button class="toggle-btn circle active" title="○（1点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,5,1,true)">○</button>
-        <button class="toggle-btn cross " title="×（0点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,5,1,false)">×</button>
+        <button class="toggle-btn circle " title="○（1点）" onclick="setAnswer(&#39;外来/救急外来/検査室:2026-06&#39;,5,1,true)">○</button>
+        <button class="toggle-btn cross " title="×（0点）" onclick="setAnswer(&#39;外来/救急外来/検査室:2026-06&#39;,5,1,false)">×</button>
       </div>
     </div>
     <div class="check-item">
-      <span class="check-label">採血・点滴留置の際は、手袋を装着している（針刺し時の感染リスク低減の意味合いもある）</span>
+      <span class="check-label">採血・点滴留置の際は、手袋を装着している</span>
       <div class="toggle-group">
-        <button class="toggle-btn circle active" title="○（1点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,5,2,true)">○</button>
-        <button class="toggle-btn cross " title="×（0点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,5,2,false)">×</button>
+        <button class="toggle-btn circle " title="○（1点）" onclick="setAnswer(&#39;外来/救急外来/検査室:2026-06&#39;,5,2,true)">○</button>
+        <button class="toggle-btn cross " title="×（0点）" onclick="setAnswer(&#39;外来/救急外来/検査室:2026-06&#39;,5,2,false)">×</button>
       </div>
     </div>
     <div class="check-item">
       <span class="check-label">リキャップを行っていない</span>
       <div class="toggle-group">
-        <button class="toggle-btn circle " title="○（1点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,5,3,true)">○</button>
-        <button class="toggle-btn cross active" title="×（0点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,5,3,false)">×</button>
+        <button class="toggle-btn circle " title="○（1点）" onclick="setAnswer(&#39;外来/救急外来/検査室:2026-06&#39;,5,3,true)">○</button>
+        <button class="toggle-btn cross " title="×（0点）" onclick="setAnswer(&#39;外来/救急外来/検査室:2026-06&#39;,5,3,false)">×</button>
       </div>
     </div>
     <div class="check-item">
-      <span class="check-label">リキャップの必要性がある場合、台の上に置き、まっすぐにすくいあげているか（すくいあげ法）</span>
+      <span class="check-label">リキャップの必要性がある場合、台の上に置き、まっすぐにかぶせているか</span>
       <div class="toggle-group">
-        <button class="toggle-btn circle " title="○（1点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,5,4,true)">○</button>
-        <button class="toggle-btn cross active" title="×（0点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,5,4,false)">×</button>
+        <button class="toggle-btn circle " title="○（1点）" onclick="setAnswer(&#39;外来/救急外来/検査室:2026-06&#39;,5,4,true)">○</button>
+        <button class="toggle-btn cross " title="×（0点）" onclick="setAnswer(&#39;外来/救急外来/検査室:2026-06&#39;,5,4,false)">×</button>
       </div>
     </div>
         </div>
@@ -1656,50 +1641,43 @@
       <div class="section-header" onclick="toggleSection(6)">
         <div class="section-title">
           <div class="section-num">6</div>
-          廃棄物
+          感染性廃棄物
         </div>
         <div style="display:flex;align-items:center;gap:12px">
           <div style="display:flex;gap:4px" onclick="event.stopPropagation()">
-            <button class="toggle-btn circle" title="全項目○に一括設定" onclick="setBulkAnswer(&#39;病棟:2026-06&#39;,6,true)" style="font-size:14px;width:auto;padding:0 8px;height:28px;border-radius:6px;font-weight:700">○</button>
-            <button class="toggle-btn cross" title="全項目×に一括設定" onclick="setBulkAnswer(&#39;病棟:2026-06&#39;,6,false)" style="font-size:14px;width:auto;padding:0 8px;height:28px;border-radius:6px;font-weight:700">×</button>
+            <button class="toggle-btn circle" title="全項目○に一括設定" onclick="setBulkAnswer(&#39;外来/救急外来/検査室:2026-06&#39;,6,true)" style="font-size:14px;width:auto;padding:0 8px;height:28px;border-radius:6px;font-weight:700">○</button>
+            <button class="toggle-btn cross" title="全項目×に一括設定" onclick="setBulkAnswer(&#39;外来/救急外来/検査室:2026-06&#39;,6,false)" style="font-size:14px;width:auto;padding:0 8px;height:28px;border-radius:6px;font-weight:700">×</button>
           </div>
           <div class="section-score">
             <span style="color:var(--text3);font-size:12px">点数</span>
-            <span class="score-display" id="sec-score-6">2 / 4 点 (満点 4)</span>
+            <span class="score-display" id="sec-score-6">0 / 0 点 (満点 3)</span>
           </div>
           <span class="chevron">▼</span>
         </div>
       </div>
       <div class="section-body">
         <div class="section-body-inner">
-          <div class="section-point">💡 感染性廃棄物BOXに入れるべきものは入れ、入れるべきでないものはいれない。感染性の有無に関わらず、適切に廃棄されているか、確認する。</div>
+          <div class="section-point">💡 感染性廃棄物BOXに入れるべきものは入れ、入れるべきでないものはいれない。適切に廃棄されているか、確認する。</div>
           
     <div class="check-item">
       <span class="check-label">感染性廃棄物BOXに廃棄するもの一覧表をBOX付近に掲示してある</span>
       <div class="toggle-group">
-        <button class="toggle-btn circle active" title="○（1点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,6,0,true)">○</button>
-        <button class="toggle-btn cross " title="×（0点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,6,0,false)">×</button>
+        <button class="toggle-btn circle " title="○（1点）" onclick="setAnswer(&#39;外来/救急外来/検査室:2026-06&#39;,6,0,true)">○</button>
+        <button class="toggle-btn cross " title="×（0点）" onclick="setAnswer(&#39;外来/救急外来/検査室:2026-06&#39;,6,0,false)">×</button>
       </div>
     </div>
     <div class="check-item">
-      <span class="check-label">感染性廃棄物BOXに不適切なものが廃棄されていない</span>
+      <span class="check-label">BOXに不適切なものが廃棄されていない</span>
       <div class="toggle-group">
-        <button class="toggle-btn circle " title="○（1点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,6,1,true)">○</button>
-        <button class="toggle-btn cross active" title="×（0点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,6,1,false)">×</button>
+        <button class="toggle-btn circle " title="○（1点）" onclick="setAnswer(&#39;外来/救急外来/検査室:2026-06&#39;,6,1,true)">○</button>
+        <button class="toggle-btn cross " title="×（0点）" onclick="setAnswer(&#39;外来/救急外来/検査室:2026-06&#39;,6,1,false)">×</button>
       </div>
     </div>
     <div class="check-item">
       <span class="check-label">針入れBOX（白大・赤小）に不適切なものが廃棄されていない</span>
       <div class="toggle-group">
-        <button class="toggle-btn circle " title="○（1点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,6,2,true)">○</button>
-        <button class="toggle-btn cross active" title="×（0点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,6,2,false)">×</button>
-      </div>
-    </div>
-    <div class="check-item">
-      <span class="check-label">バイアル入れにアンプルを廃棄していないか（逆も。針・鋭利器材廃棄容器にバイアルを廃棄していないか）</span>
-      <div class="toggle-group">
-        <button class="toggle-btn circle active" title="○（1点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,6,3,true)">○</button>
-        <button class="toggle-btn cross " title="×（0点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,6,3,false)">×</button>
+        <button class="toggle-btn circle " title="○（1点）" onclick="setAnswer(&#39;外来/救急外来/検査室:2026-06&#39;,6,2,true)">○</button>
+        <button class="toggle-btn cross " title="×（0点）" onclick="setAnswer(&#39;外来/救急外来/検査室:2026-06&#39;,6,2,false)">×</button>
       </div>
     </div>
         </div>
@@ -1711,12 +1689,12 @@
         </div>
         <div style="display:flex;align-items:center;gap:12px">
           <div style="display:flex;gap:4px" onclick="event.stopPropagation()">
-            <button class="toggle-btn circle" title="全項目○に一括設定" onclick="setBulkAnswer(&#39;病棟:2026-06&#39;,7,true)" style="font-size:14px;width:auto;padding:0 8px;height:28px;border-radius:6px;font-weight:700">○</button>
-            <button class="toggle-btn cross" title="全項目×に一括設定" onclick="setBulkAnswer(&#39;病棟:2026-06&#39;,7,false)" style="font-size:14px;width:auto;padding:0 8px;height:28px;border-radius:6px;font-weight:700">×</button>
+            <button class="toggle-btn circle" title="全項目○に一括設定" onclick="setBulkAnswer(&#39;外来/救急外来/検査室:2026-06&#39;,7,true)" style="font-size:14px;width:auto;padding:0 8px;height:28px;border-radius:6px;font-weight:700">○</button>
+            <button class="toggle-btn cross" title="全項目×に一括設定" onclick="setBulkAnswer(&#39;外来/救急外来/検査室:2026-06&#39;,7,false)" style="font-size:14px;width:auto;padding:0 8px;height:28px;border-radius:6px;font-weight:700">×</button>
           </div>
           <div class="section-score">
             <span style="color:var(--text3);font-size:12px">点数</span>
-            <span class="score-display" id="sec-score-7">3 / 5 点 (満点 5)</span>
+            <span class="score-display" id="sec-score-7">0 / 0 点 (満点 5)</span>
           </div>
           <span class="chevron">▼</span>
         </div>
@@ -1728,36 +1706,36 @@
     <div class="check-item">
       <span class="check-label">汚物室に清潔な物品が置かれていない</span>
       <div class="toggle-group">
-        <button class="toggle-btn circle active" title="○（1点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,7,0,true)">○</button>
-        <button class="toggle-btn cross " title="×（0点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,7,0,false)">×</button>
+        <button class="toggle-btn circle " title="○（1点）" onclick="setAnswer(&#39;外来/救急外来/検査室:2026-06&#39;,7,0,true)">○</button>
+        <button class="toggle-btn cross " title="×（0点）" onclick="setAnswer(&#39;外来/救急外来/検査室:2026-06&#39;,7,0,false)">×</button>
       </div>
     </div>
     <div class="check-item">
       <span class="check-label">汚物室が整理整頓されている</span>
       <div class="toggle-group">
-        <button class="toggle-btn circle active" title="○（1点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,7,1,true)">○</button>
-        <button class="toggle-btn cross " title="×（0点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,7,1,false)">×</button>
+        <button class="toggle-btn circle " title="○（1点）" onclick="setAnswer(&#39;外来/救急外来/検査室:2026-06&#39;,7,1,true)">○</button>
+        <button class="toggle-btn cross " title="×（0点）" onclick="setAnswer(&#39;外来/救急外来/検査室:2026-06&#39;,7,1,false)">×</button>
       </div>
     </div>
     <div class="check-item">
-      <span class="check-label">吐物処理グッズが所定の位置に配置されている</span>
+      <span class="check-label">吐物処理グッズが適切に配置されている</span>
       <div class="toggle-group">
-        <button class="toggle-btn circle " title="○（1点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,7,2,true)">○</button>
-        <button class="toggle-btn cross active" title="×（0点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,7,2,false)">×</button>
+        <button class="toggle-btn circle " title="○（1点）" onclick="setAnswer(&#39;外来/救急外来/検査室:2026-06&#39;,7,2,true)">○</button>
+        <button class="toggle-btn cross " title="×（0点）" onclick="setAnswer(&#39;外来/救急外来/検査室:2026-06&#39;,7,2,false)">×</button>
       </div>
     </div>
     <div class="check-item">
       <span class="check-label">吐物処理グッズに過不足がない</span>
       <div class="toggle-group">
-        <button class="toggle-btn circle " title="○（1点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,7,3,true)">○</button>
-        <button class="toggle-btn cross active" title="×（0点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,7,3,false)">×</button>
+        <button class="toggle-btn circle " title="○（1点）" onclick="setAnswer(&#39;外来/救急外来/検査室:2026-06&#39;,7,3,true)">○</button>
+        <button class="toggle-btn cross " title="×（0点）" onclick="setAnswer(&#39;外来/救急外来/検査室:2026-06&#39;,7,3,false)">×</button>
       </div>
     </div>
     <div class="check-item">
       <span class="check-label">汚物廃棄時はPPEを着用し、周囲に飛散しないよう静かに行っている</span>
       <div class="toggle-group">
-        <button class="toggle-btn circle active" title="○（1点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,7,4,true)">○</button>
-        <button class="toggle-btn cross " title="×（0点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,7,4,false)">×</button>
+        <button class="toggle-btn circle " title="○（1点）" onclick="setAnswer(&#39;外来/救急外来/検査室:2026-06&#39;,7,4,true)">○</button>
+        <button class="toggle-btn cross " title="×（0点）" onclick="setAnswer(&#39;外来/救急外来/検査室:2026-06&#39;,7,4,false)">×</button>
       </div>
     </div>
         </div>
@@ -1769,12 +1747,12 @@
         </div>
         <div style="display:flex;align-items:center;gap:12px">
           <div style="display:flex;gap:4px" onclick="event.stopPropagation()">
-            <button class="toggle-btn circle" title="全項目○に一括設定" onclick="setBulkAnswer(&#39;病棟:2026-06&#39;,8,true)" style="font-size:14px;width:auto;padding:0 8px;height:28px;border-radius:6px;font-weight:700">○</button>
-            <button class="toggle-btn cross" title="全項目×に一括設定" onclick="setBulkAnswer(&#39;病棟:2026-06&#39;,8,false)" style="font-size:14px;width:auto;padding:0 8px;height:28px;border-radius:6px;font-weight:700">×</button>
+            <button class="toggle-btn circle" title="全項目○に一括設定" onclick="setBulkAnswer(&#39;外来/救急外来/検査室:2026-06&#39;,8,true)" style="font-size:14px;width:auto;padding:0 8px;height:28px;border-radius:6px;font-weight:700">○</button>
+            <button class="toggle-btn cross" title="全項目×に一括設定" onclick="setBulkAnswer(&#39;外来/救急外来/検査室:2026-06&#39;,8,false)" style="font-size:14px;width:auto;padding:0 8px;height:28px;border-radius:6px;font-weight:700">×</button>
           </div>
           <div class="section-score">
             <span style="color:var(--text3);font-size:12px">点数</span>
-            <span class="score-display" id="sec-score-8">2 / 4 点 (満点 4)</span>
+            <span class="score-display" id="sec-score-8">0 / 0 点 (満点 4)</span>
           </div>
           <span class="chevron">▼</span>
         </div>
@@ -1786,29 +1764,29 @@
     <div class="check-item">
       <span class="check-label">清潔リネン庫に不潔リネンやその他のものがない</span>
       <div class="toggle-group">
-        <button class="toggle-btn circle " title="○（1点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,8,0,true)">○</button>
-        <button class="toggle-btn cross active" title="×（0点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,8,0,false)">×</button>
+        <button class="toggle-btn circle " title="○（1点）" onclick="setAnswer(&#39;外来/救急外来/検査室:2026-06&#39;,8,0,true)">○</button>
+        <button class="toggle-btn cross " title="×（0点）" onclick="setAnswer(&#39;外来/救急外来/検査室:2026-06&#39;,8,0,false)">×</button>
       </div>
     </div>
     <div class="check-item">
       <span class="check-label">不潔リネン庫は整理整頓され、リネン袋の口はしっかりと結ばれている</span>
       <div class="toggle-group">
-        <button class="toggle-btn circle active" title="○（1点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,8,1,true)">○</button>
-        <button class="toggle-btn cross " title="×（0点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,8,1,false)">×</button>
+        <button class="toggle-btn circle " title="○（1点）" onclick="setAnswer(&#39;外来/救急外来/検査室:2026-06&#39;,8,1,true)">○</button>
+        <button class="toggle-btn cross " title="×（0点）" onclick="setAnswer(&#39;外来/救急外来/検査室:2026-06&#39;,8,1,false)">×</button>
       </div>
     </div>
     <div class="check-item">
       <span class="check-label">感染性リネンは、赤いランドリーバッグに入れている</span>
       <div class="toggle-group">
-        <button class="toggle-btn circle active" title="○（1点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,8,2,true)">○</button>
-        <button class="toggle-btn cross " title="×（0点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,8,2,false)">×</button>
+        <button class="toggle-btn circle " title="○（1点）" onclick="setAnswer(&#39;外来/救急外来/検査室:2026-06&#39;,8,2,true)">○</button>
+        <button class="toggle-btn cross " title="×（0点）" onclick="setAnswer(&#39;外来/救急外来/検査室:2026-06&#39;,8,2,false)">×</button>
       </div>
     </div>
     <div class="check-item">
       <span class="check-label">清潔リネン庫に段ボール類などが置かれていない</span>
       <div class="toggle-group">
-        <button class="toggle-btn circle " title="○（1点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,8,3,true)">○</button>
-        <button class="toggle-btn cross active" title="×（0点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,8,3,false)">×</button>
+        <button class="toggle-btn circle " title="○（1点）" onclick="setAnswer(&#39;外来/救急外来/検査室:2026-06&#39;,8,3,true)">○</button>
+        <button class="toggle-btn cross " title="×（0点）" onclick="setAnswer(&#39;外来/救急外来/検査室:2026-06&#39;,8,3,false)">×</button>
       </div>
     </div>
         </div>
@@ -1816,16 +1794,16 @@
       <div class="section-header" onclick="toggleSection(9)">
         <div class="section-title">
           <div class="section-num">9</div>
-          ナーシングカート・処置ケア物品
+          ナーシングカート
         </div>
         <div style="display:flex;align-items:center;gap:12px">
           <div style="display:flex;gap:4px" onclick="event.stopPropagation()">
-            <button class="toggle-btn circle" title="全項目○に一括設定" onclick="setBulkAnswer(&#39;病棟:2026-06&#39;,9,true)" style="font-size:14px;width:auto;padding:0 8px;height:28px;border-radius:6px;font-weight:700">○</button>
-            <button class="toggle-btn cross" title="全項目×に一括設定" onclick="setBulkAnswer(&#39;病棟:2026-06&#39;,9,false)" style="font-size:14px;width:auto;padding:0 8px;height:28px;border-radius:6px;font-weight:700">×</button>
+            <button class="toggle-btn circle" title="全項目○に一括設定" onclick="setBulkAnswer(&#39;外来/救急外来/検査室:2026-06&#39;,9,true)" style="font-size:14px;width:auto;padding:0 8px;height:28px;border-radius:6px;font-weight:700">○</button>
+            <button class="toggle-btn cross" title="全項目×に一括設定" onclick="setBulkAnswer(&#39;外来/救急外来/検査室:2026-06&#39;,9,false)" style="font-size:14px;width:auto;padding:0 8px;height:28px;border-radius:6px;font-weight:700">×</button>
           </div>
           <div class="section-score">
             <span style="color:var(--text3);font-size:12px">点数</span>
-            <span class="score-display" id="sec-score-9">2 / 5 点 (満点 5)</span>
+            <span class="score-display" id="sec-score-9">0 / 0 点 (満点 2)</span>
           </div>
           <span class="chevron">▼</span>
         </div>
@@ -1837,36 +1815,15 @@
     <div class="check-item">
       <span class="check-label">（ナーシングカートの写真を見ながら）清潔不潔の区別ができている</span>
       <div class="toggle-group">
-        <button class="toggle-btn circle active" title="○（1点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,9,0,true)">○</button>
-        <button class="toggle-btn cross " title="×（0点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,9,0,false)">×</button>
+        <button class="toggle-btn circle " title="○（1点）" onclick="setAnswer(&#39;外来/救急外来/検査室:2026-06&#39;,9,0,true)">○</button>
+        <button class="toggle-btn cross " title="×（0点）" onclick="setAnswer(&#39;外来/救急外来/検査室:2026-06&#39;,9,0,false)">×</button>
       </div>
     </div>
     <div class="check-item">
-      <span class="check-label">ナーシングカートの整理整頓ができている</span>
+      <span class="check-label">整理整頓ができている</span>
       <div class="toggle-group">
-        <button class="toggle-btn circle " title="○（1点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,9,1,true)">○</button>
-        <button class="toggle-btn cross active" title="×（0点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,9,1,false)">×</button>
-      </div>
-    </div>
-    <div class="check-item">
-      <span class="check-label">ナーシングカートの天板に不潔なものを置いていない</span>
-      <div class="toggle-group">
-        <button class="toggle-btn circle " title="○（1点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,9,2,true)">○</button>
-        <button class="toggle-btn cross active" title="×（0点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,9,2,false)">×</button>
-      </div>
-    </div>
-    <div class="check-item">
-      <span class="check-label">ナーシングカートから必要な物品のみバットに入れて入室できている</span>
-      <div class="toggle-group">
-        <button class="toggle-btn circle active" title="○（1点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,9,3,true)">○</button>
-        <button class="toggle-btn cross " title="×（0点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,9,3,false)">×</button>
-      </div>
-    </div>
-    <div class="check-item">
-      <span class="check-label">軟膏類の開封日が記入されている</span>
-      <div class="toggle-group">
-        <button class="toggle-btn circle " title="○（1点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,9,4,true)">○</button>
-        <button class="toggle-btn cross active" title="×（0点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,9,4,false)">×</button>
+        <button class="toggle-btn circle " title="○（1点）" onclick="setAnswer(&#39;外来/救急外来/検査室:2026-06&#39;,9,1,true)">○</button>
+        <button class="toggle-btn cross " title="×（0点）" onclick="setAnswer(&#39;外来/救急外来/検査室:2026-06&#39;,9,1,false)">×</button>
       </div>
     </div>
         </div>
@@ -1874,16 +1831,16 @@
       <div class="section-header" onclick="toggleSection(10)">
         <div class="section-title">
           <div class="section-num">10</div>
-          注入関連
+          注入カート
         </div>
         <div style="display:flex;align-items:center;gap:12px">
           <div style="display:flex;gap:4px" onclick="event.stopPropagation()">
-            <button class="toggle-btn circle" title="全項目○に一括設定" onclick="setBulkAnswer(&#39;病棟:2026-06&#39;,10,true)" style="font-size:14px;width:auto;padding:0 8px;height:28px;border-radius:6px;font-weight:700">○</button>
-            <button class="toggle-btn cross" title="全項目×に一括設定" onclick="setBulkAnswer(&#39;病棟:2026-06&#39;,10,false)" style="font-size:14px;width:auto;padding:0 8px;height:28px;border-radius:6px;font-weight:700">×</button>
+            <button class="toggle-btn circle" title="全項目○に一括設定" onclick="setBulkAnswer(&#39;外来/救急外来/検査室:2026-06&#39;,10,true)" style="font-size:14px;width:auto;padding:0 8px;height:28px;border-radius:6px;font-weight:700">○</button>
+            <button class="toggle-btn cross" title="全項目×に一括設定" onclick="setBulkAnswer(&#39;外来/救急外来/検査室:2026-06&#39;,10,false)" style="font-size:14px;width:auto;padding:0 8px;height:28px;border-radius:6px;font-weight:700">×</button>
           </div>
           <div class="section-score">
             <span style="color:var(--text3);font-size:12px">点数</span>
-            <span class="score-display" id="sec-score-10">4 / 4 点 (満点 4)</span>
+            <span class="score-display" id="sec-score-10">0 / 0 点 (満点 2)</span>
           </div>
           <span class="chevron">▼</span>
         </div>
@@ -1895,29 +1852,15 @@
     <div class="check-item">
       <span class="check-label">注入カートに不潔なものをのせていない</span>
       <div class="toggle-group">
-        <button class="toggle-btn circle active" title="○（1点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,10,0,true)">○</button>
-        <button class="toggle-btn cross " title="×（0点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,10,0,false)">×</button>
+        <button class="toggle-btn circle " title="○（1点）" onclick="setAnswer(&#39;外来/救急外来/検査室:2026-06&#39;,10,0,true)">○</button>
+        <button class="toggle-btn cross " title="×（0点）" onclick="setAnswer(&#39;外来/救急外来/検査室:2026-06&#39;,10,0,false)">×</button>
       </div>
     </div>
     <div class="check-item">
       <span class="check-label">注入カートは整理整頓され、使用前後の物品が混在していない</span>
       <div class="toggle-group">
-        <button class="toggle-btn circle active" title="○（1点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,10,1,true)">○</button>
-        <button class="toggle-btn cross " title="×（0点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,10,1,false)">×</button>
-      </div>
-    </div>
-    <div class="check-item">
-      <span class="check-label">注入ボトル・チューブは全て浸かるように浸漬できている</span>
-      <div class="toggle-group">
-        <button class="toggle-btn circle active" title="○（1点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,10,2,true)">○</button>
-        <button class="toggle-btn cross " title="×（0点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,10,2,false)">×</button>
-      </div>
-    </div>
-    <div class="check-item">
-      <span class="check-label">注入ボトル・チューブは水滴なく乾燥できている（できていない場合は、次回使用まで浸漬を続け、使用前に洗浄する）</span>
-      <div class="toggle-group">
-        <button class="toggle-btn circle active" title="○（1点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,10,3,true)">○</button>
-        <button class="toggle-btn cross " title="×（0点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,10,3,false)">×</button>
+        <button class="toggle-btn circle " title="○（1点）" onclick="setAnswer(&#39;外来/救急外来/検査室:2026-06&#39;,10,1,true)">○</button>
+        <button class="toggle-btn cross " title="×（0点）" onclick="setAnswer(&#39;外来/救急外来/検査室:2026-06&#39;,10,1,false)">×</button>
       </div>
     </div>
         </div>
@@ -1925,16 +1868,74 @@
       <div class="section-header" onclick="toggleSection(11)">
         <div class="section-title">
           <div class="section-num">11</div>
+          包交車
+        </div>
+        <div style="display:flex;align-items:center;gap:12px">
+          <div style="display:flex;gap:4px" onclick="event.stopPropagation()">
+            <button class="toggle-btn circle" title="全項目○に一括設定" onclick="setBulkAnswer(&#39;外来/救急外来/検査室:2026-06&#39;,11,true)" style="font-size:14px;width:auto;padding:0 8px;height:28px;border-radius:6px;font-weight:700">○</button>
+            <button class="toggle-btn cross" title="全項目×に一括設定" onclick="setBulkAnswer(&#39;外来/救急外来/検査室:2026-06&#39;,11,false)" style="font-size:14px;width:auto;padding:0 8px;height:28px;border-radius:6px;font-weight:700">×</button>
+          </div>
+          <div class="section-score">
+            <span style="color:var(--text3);font-size:12px">点数</span>
+            <span class="score-display" id="sec-score-11">0 / 0 点 (満点 5)</span>
+          </div>
+          <span class="chevron">▼</span>
+        </div>
+      </div>
+      <div class="section-body">
+        <div class="section-body-inner">
+          <div class="section-point">💡 包交車はケアの拠点となる場所。拠点の清潔不潔が区別できていなかったり、整理整頓がなされていないと、そこを中心に感染が拡大することになる。</div>
+          
+    <div class="check-item">
+      <span class="check-label">包交車を部屋に入れていない</span>
+      <div class="toggle-group">
+        <button class="toggle-btn circle " title="○（1点）" onclick="setAnswer(&#39;外来/救急外来/検査室:2026-06&#39;,11,0,true)">○</button>
+        <button class="toggle-btn cross " title="×（0点）" onclick="setAnswer(&#39;外来/救急外来/検査室:2026-06&#39;,11,0,false)">×</button>
+      </div>
+    </div>
+    <div class="check-item">
+      <span class="check-label">包交車の台上に不潔なものを置いていない</span>
+      <div class="toggle-group">
+        <button class="toggle-btn circle " title="○（1点）" onclick="setAnswer(&#39;外来/救急外来/検査室:2026-06&#39;,11,1,true)">○</button>
+        <button class="toggle-btn cross " title="×（0点）" onclick="setAnswer(&#39;外来/救急外来/検査室:2026-06&#39;,11,1,false)">×</button>
+      </div>
+    </div>
+    <div class="check-item">
+      <span class="check-label">必要な物品のみバットに入れている</span>
+      <div class="toggle-group">
+        <button class="toggle-btn circle " title="○（1点）" onclick="setAnswer(&#39;外来/救急外来/検査室:2026-06&#39;,11,2,true)">○</button>
+        <button class="toggle-btn cross " title="×（0点）" onclick="setAnswer(&#39;外来/救急外来/検査室:2026-06&#39;,11,2,false)">×</button>
+      </div>
+    </div>
+    <div class="check-item">
+      <span class="check-label">包交車の上や引き出しの中がきれいに整理整頓されている</span>
+      <div class="toggle-group">
+        <button class="toggle-btn circle " title="○（1点）" onclick="setAnswer(&#39;外来/救急外来/検査室:2026-06&#39;,11,3,true)">○</button>
+        <button class="toggle-btn cross " title="×（0点）" onclick="setAnswer(&#39;外来/救急外来/検査室:2026-06&#39;,11,3,false)">×</button>
+      </div>
+    </div>
+    <div class="check-item">
+      <span class="check-label">軟膏類の開封日が記入されている</span>
+      <div class="toggle-group">
+        <button class="toggle-btn circle " title="○（1点）" onclick="setAnswer(&#39;外来/救急外来/検査室:2026-06&#39;,11,4,true)">○</button>
+        <button class="toggle-btn cross " title="×（0点）" onclick="setAnswer(&#39;外来/救急外来/検査室:2026-06&#39;,11,4,false)">×</button>
+      </div>
+    </div>
+        </div>
+      </div></div><div class="section-card" id="sec-card-12">
+      <div class="section-header" onclick="toggleSection(12)">
+        <div class="section-title">
+          <div class="section-num">12</div>
           膀胱留置カテーテル
         </div>
         <div style="display:flex;align-items:center;gap:12px">
           <div style="display:flex;gap:4px" onclick="event.stopPropagation()">
-            <button class="toggle-btn circle" title="全項目○に一括設定" onclick="setBulkAnswer(&#39;病棟:2026-06&#39;,11,true)" style="font-size:14px;width:auto;padding:0 8px;height:28px;border-radius:6px;font-weight:700">○</button>
-            <button class="toggle-btn cross" title="全項目×に一括設定" onclick="setBulkAnswer(&#39;病棟:2026-06&#39;,11,false)" style="font-size:14px;width:auto;padding:0 8px;height:28px;border-radius:6px;font-weight:700">×</button>
+            <button class="toggle-btn circle" title="全項目○に一括設定" onclick="setBulkAnswer(&#39;外来/救急外来/検査室:2026-06&#39;,12,true)" style="font-size:14px;width:auto;padding:0 8px;height:28px;border-radius:6px;font-weight:700">○</button>
+            <button class="toggle-btn cross" title="全項目×に一括設定" onclick="setBulkAnswer(&#39;外来/救急外来/検査室:2026-06&#39;,12,false)" style="font-size:14px;width:auto;padding:0 8px;height:28px;border-radius:6px;font-weight:700">×</button>
           </div>
           <div class="section-score">
             <span style="color:var(--text3);font-size:12px">点数</span>
-            <span class="score-display" id="sec-score-11">4 / 9 点 (満点 10)</span>
+            <span class="score-display" id="sec-score-12">0 / 0 点 (満点 7)</span>
           </div>
           <span class="chevron">▼</span>
         </div>
@@ -1944,90 +1945,69 @@
           <div class="section-point">💡 抜去が最善の感染対策。抜去できない場合は出来る限り感染リスクを下げる。</div>
           
     <div class="check-item">
-      <span class="check-label">採尿バッグとカテーテルを膀胱より高くしていない</span>
+      <span class="check-label">採尿バッグとカテーテルを膀胱より高くしない</span>
       <div class="toggle-group">
-        <button class="toggle-btn circle " title="○（1点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,11,0,true)">○</button>
-        <button class="toggle-btn cross active" title="×（0点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,11,0,false)">×</button>
+        <button class="toggle-btn circle " title="○（1点）" onclick="setAnswer(&#39;外来/救急外来/検査室:2026-06&#39;,12,0,true)">○</button>
+        <button class="toggle-btn cross " title="×（0点）" onclick="setAnswer(&#39;外来/救急外来/検査室:2026-06&#39;,12,0,false)">×</button>
       </div>
     </div>
     <div class="check-item">
-      <span class="check-label">バルンカテーテルの尿流出が良好である（ランニングチューブが患者の身体を乗り越えるような状態になっていない、下敷きになっていない、屈曲していない等）</span>
+      <span class="check-label">カテーテルの定期的な交換はしていない</span>
       <div class="toggle-group">
-        <button class="toggle-btn circle " title="○（1点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,11,1,true)">○</button>
-        <button class="toggle-btn cross active" title="×（0点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,11,1,false)">×</button>
-      </div>
-    </div>
-    <div class="check-item">
-      <span class="check-label">カテーテルの定期的な交換はしていない（交換時に抜去を検討しているか）</span>
-      <div class="toggle-group">
-        <button class="toggle-btn circle active" title="○（1点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,11,2,true)">○</button>
-        <button class="toggle-btn cross " title="×（0点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,11,2,false)">×</button>
+        <button class="toggle-btn circle " title="○（1点）" onclick="setAnswer(&#39;外来/救急外来/検査室:2026-06&#39;,12,1,true)">○</button>
+        <button class="toggle-btn cross " title="×（0点）" onclick="setAnswer(&#39;外来/救急外来/検査室:2026-06&#39;,12,1,false)">×</button>
       </div>
     </div>
     <div class="check-item">
       <span class="check-label">カテーテル交換時は無菌操作で実施している</span>
       <div class="toggle-group">
-        <button class="toggle-btn circle " title="○（1点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,11,3,true)">○</button>
-        <button class="toggle-btn cross active" title="×（0点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,11,3,false)">×</button>
-      </div>
-    </div>
-    <div class="check-item">
-      <span class="check-label">尿回収時・破棄時にはエプロン・フェイスシールド・手袋を着用している</span>
-      <div class="toggle-group">
-        <button class="toggle-btn circle active" title="○（1点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,11,4,true)">○</button>
-        <button class="toggle-btn cross " title="×（0点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,11,4,false)">×</button>
+        <button class="toggle-btn circle " title="○（1点）" onclick="setAnswer(&#39;外来/救急外来/検査室:2026-06&#39;,12,2,true)">○</button>
+        <button class="toggle-btn cross " title="×（0点）" onclick="setAnswer(&#39;外来/救急外来/検査室:2026-06&#39;,12,2,false)">×</button>
       </div>
     </div>
     <div class="check-item">
       <span class="check-label">尿の回収時は患者毎に手袋を交換している</span>
       <div class="toggle-group">
-        <button class="toggle-btn circle active" title="○（1点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,11,5,true)">○</button>
-        <button class="toggle-btn cross " title="×（0点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,11,5,false)">×</button>
+        <button class="toggle-btn circle " title="○（1点）" onclick="setAnswer(&#39;外来/救急外来/検査室:2026-06&#39;,12,3,true)">○</button>
+        <button class="toggle-btn cross " title="×（0点）" onclick="setAnswer(&#39;外来/救急外来/検査室:2026-06&#39;,12,3,false)">×</button>
       </div>
     </div>
     <div class="check-item">
       <span class="check-label">尿回収時に排液口と回収容器が接触していない</span>
       <div class="toggle-group">
-        <button class="toggle-btn circle active" title="○（1点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,11,6,true)">○</button>
-        <button class="toggle-btn cross " title="×（0点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,11,6,false)">×</button>
+        <button class="toggle-btn circle " title="○（1点）" onclick="setAnswer(&#39;外来/救急外来/検査室:2026-06&#39;,12,4,true)">○</button>
+        <button class="toggle-btn cross " title="×（0点）" onclick="setAnswer(&#39;外来/救急外来/検査室:2026-06&#39;,12,4,false)">×</button>
       </div>
     </div>
     <div class="check-item">
       <span class="check-label">採尿バッグが床についていない</span>
       <div class="toggle-group">
-        <button class="toggle-btn circle " title="○（1点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,11,7,true)">○</button>
-        <button class="toggle-btn cross active" title="×（0点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,11,7,false)">×</button>
+        <button class="toggle-btn circle " title="○（1点）" onclick="setAnswer(&#39;外来/救急外来/検査室:2026-06&#39;,12,5,true)">○</button>
+        <button class="toggle-btn cross " title="×（0点）" onclick="setAnswer(&#39;外来/救急外来/検査室:2026-06&#39;,12,5,false)">×</button>
       </div>
     </div>
     <div class="check-item">
-      <span class="check-label">膀胱留置カテーテルの留置理由をスタッフが把握している</span>
+      <span class="check-label">尿回収時・破棄時にはPPEを着用している</span>
       <div class="toggle-group">
-        <button class="toggle-btn circle " title="○（1点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,11,8,true)">○</button>
-        <button class="toggle-btn cross active" title="×（0点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,11,8,false)">×</button>
-      </div>
-    </div>
-    <div class="check-item">
-      <span class="check-label">尿回収業務終了後は、フェイスシールドをワイプで清拭し、適切に保管できている</span>
-      <div class="toggle-group">
-        <button class="toggle-btn circle " title="○（1点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,11,9,true)">○</button>
-        <button class="toggle-btn cross " title="×（0点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,11,9,false)">×</button>
+        <button class="toggle-btn circle " title="○（1点）" onclick="setAnswer(&#39;外来/救急外来/検査室:2026-06&#39;,12,6,true)">○</button>
+        <button class="toggle-btn cross " title="×（0点）" onclick="setAnswer(&#39;外来/救急外来/検査室:2026-06&#39;,12,6,false)">×</button>
       </div>
     </div>
         </div>
-      </div></div><div class="section-card" id="sec-card-12">
-      <div class="section-header" onclick="toggleSection(12)">
+      </div></div><div class="section-card" id="sec-card-13">
+      <div class="section-header" onclick="toggleSection(13)">
         <div class="section-title">
-          <div class="section-num">12</div>
+          <div class="section-num">13</div>
           末梢静脈カテーテル
         </div>
         <div style="display:flex;align-items:center;gap:12px">
           <div style="display:flex;gap:4px" onclick="event.stopPropagation()">
-            <button class="toggle-btn circle" title="全項目○に一括設定" onclick="setBulkAnswer(&#39;病棟:2026-06&#39;,12,true)" style="font-size:14px;width:auto;padding:0 8px;height:28px;border-radius:6px;font-weight:700">○</button>
-            <button class="toggle-btn cross" title="全項目×に一括設定" onclick="setBulkAnswer(&#39;病棟:2026-06&#39;,12,false)" style="font-size:14px;width:auto;padding:0 8px;height:28px;border-radius:6px;font-weight:700">×</button>
+            <button class="toggle-btn circle" title="全項目○に一括設定" onclick="setBulkAnswer(&#39;外来/救急外来/検査室:2026-06&#39;,13,true)" style="font-size:14px;width:auto;padding:0 8px;height:28px;border-radius:6px;font-weight:700">○</button>
+            <button class="toggle-btn cross" title="全項目×に一括設定" onclick="setBulkAnswer(&#39;外来/救急外来/検査室:2026-06&#39;,13,false)" style="font-size:14px;width:auto;padding:0 8px;height:28px;border-radius:6px;font-weight:700">×</button>
           </div>
           <div class="section-score">
             <span style="color:var(--text3);font-size:12px">点数</span>
-            <span class="score-display" id="sec-score-12">1 / 2 点 (満点 2)</span>
+            <span class="score-display" id="sec-score-13">0 / 0 点 (満点 2)</span>
           </div>
           <span class="chevron">▼</span>
         </div>
@@ -2039,32 +2019,32 @@
     <div class="check-item">
       <span class="check-label">点滴留置日が明記されている</span>
       <div class="toggle-group">
-        <button class="toggle-btn circle " title="○（1点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,12,0,true)">○</button>
-        <button class="toggle-btn cross active" title="×（0点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,12,0,false)">×</button>
+        <button class="toggle-btn circle " title="○（1点）" onclick="setAnswer(&#39;外来/救急外来/検査室:2026-06&#39;,13,0,true)">○</button>
+        <button class="toggle-btn cross " title="×（0点）" onclick="setAnswer(&#39;外来/救急外来/検査室:2026-06&#39;,13,0,false)">×</button>
       </div>
     </div>
     <div class="check-item">
       <span class="check-label">点滴刺入部の状態が確認できる</span>
       <div class="toggle-group">
-        <button class="toggle-btn circle active" title="○（1点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,12,1,true)">○</button>
-        <button class="toggle-btn cross " title="×（0点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,12,1,false)">×</button>
+        <button class="toggle-btn circle " title="○（1点）" onclick="setAnswer(&#39;外来/救急外来/検査室:2026-06&#39;,13,1,true)">○</button>
+        <button class="toggle-btn cross " title="×（0点）" onclick="setAnswer(&#39;外来/救急外来/検査室:2026-06&#39;,13,1,false)">×</button>
       </div>
     </div>
         </div>
-      </div></div><div class="section-card" id="sec-card-13">
-      <div class="section-header" onclick="toggleSection(13)">
+      </div></div><div class="section-card" id="sec-card-14">
+      <div class="section-header" onclick="toggleSection(14)">
         <div class="section-title">
-          <div class="section-num">13</div>
+          <div class="section-num">14</div>
           中心静脈カテーテル
         </div>
         <div style="display:flex;align-items:center;gap:12px">
           <div style="display:flex;gap:4px" onclick="event.stopPropagation()">
-            <button class="toggle-btn circle" title="全項目○に一括設定" onclick="setBulkAnswer(&#39;病棟:2026-06&#39;,13,true)" style="font-size:14px;width:auto;padding:0 8px;height:28px;border-radius:6px;font-weight:700">○</button>
-            <button class="toggle-btn cross" title="全項目×に一括設定" onclick="setBulkAnswer(&#39;病棟:2026-06&#39;,13,false)" style="font-size:14px;width:auto;padding:0 8px;height:28px;border-radius:6px;font-weight:700">×</button>
+            <button class="toggle-btn circle" title="全項目○に一括設定" onclick="setBulkAnswer(&#39;外来/救急外来/検査室:2026-06&#39;,14,true)" style="font-size:14px;width:auto;padding:0 8px;height:28px;border-radius:6px;font-weight:700">○</button>
+            <button class="toggle-btn cross" title="全項目×に一括設定" onclick="setBulkAnswer(&#39;外来/救急外来/検査室:2026-06&#39;,14,false)" style="font-size:14px;width:auto;padding:0 8px;height:28px;border-radius:6px;font-weight:700">×</button>
           </div>
           <div class="section-score">
             <span style="color:var(--text3);font-size:12px">点数</span>
-            <span class="score-display" id="sec-score-13">3 / 5 点 (満点 5)</span>
+            <span class="score-display" id="sec-score-14">0 / 0 点 (満点 5)</span>
           </div>
           <span class="chevron">▼</span>
         </div>
@@ -2076,73 +2056,36 @@
     <div class="check-item">
       <span class="check-label">スタッフが中心静脈ルートの刺入部位による感染リスクの違いを把握している</span>
       <div class="toggle-group">
-        <button class="toggle-btn circle " title="○（1点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,13,0,true)">○</button>
-        <button class="toggle-btn cross active" title="×（0点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,13,0,false)">×</button>
+        <button class="toggle-btn circle " title="○（1点）" onclick="setAnswer(&#39;外来/救急外来/検査室:2026-06&#39;,14,0,true)">○</button>
+        <button class="toggle-btn cross " title="×（0点）" onclick="setAnswer(&#39;外来/救急外来/検査室:2026-06&#39;,14,0,false)">×</button>
       </div>
     </div>
     <div class="check-item">
       <span class="check-label">中心静脈ルートの途中に三方活栓を使用していない</span>
       <div class="toggle-group">
-        <button class="toggle-btn circle " title="○（1点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,13,1,true)">○</button>
-        <button class="toggle-btn cross active" title="×（0点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,13,1,false)">×</button>
+        <button class="toggle-btn circle " title="○（1点）" onclick="setAnswer(&#39;外来/救急外来/検査室:2026-06&#39;,14,1,true)">○</button>
+        <button class="toggle-btn cross " title="×（0点）" onclick="setAnswer(&#39;外来/救急外来/検査室:2026-06&#39;,14,1,false)">×</button>
       </div>
     </div>
     <div class="check-item">
       <span class="check-label">中心静脈の刺入部位の観察を行っている</span>
       <div class="toggle-group">
-        <button class="toggle-btn circle active" title="○（1点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,13,2,true)">○</button>
-        <button class="toggle-btn cross " title="×（0点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,13,2,false)">×</button>
+        <button class="toggle-btn circle " title="○（1点）" onclick="setAnswer(&#39;外来/救急外来/検査室:2026-06&#39;,14,2,true)">○</button>
+        <button class="toggle-btn cross " title="×（0点）" onclick="setAnswer(&#39;外来/救急外来/検査室:2026-06&#39;,14,2,false)">×</button>
       </div>
     </div>
     <div class="check-item">
       <span class="check-label">イントラリポスなどの脂肪乳剤などは別ルートを確保している</span>
       <div class="toggle-group">
-        <button class="toggle-btn circle active" title="○（1点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,13,3,true)">○</button>
-        <button class="toggle-btn cross " title="×（0点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,13,3,false)">×</button>
+        <button class="toggle-btn circle " title="○（1点）" onclick="setAnswer(&#39;外来/救急外来/検査室:2026-06&#39;,14,3,true)">○</button>
+        <button class="toggle-btn cross " title="×（0点）" onclick="setAnswer(&#39;外来/救急外来/検査室:2026-06&#39;,14,3,false)">×</button>
       </div>
     </div>
     <div class="check-item">
       <span class="check-label">点滴ラインは１～２回/週に交換</span>
       <div class="toggle-group">
-        <button class="toggle-btn circle active" title="○（1点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,13,4,true)">○</button>
-        <button class="toggle-btn cross " title="×（0点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,13,4,false)">×</button>
-      </div>
-    </div>
-        </div>
-      </div></div><div class="section-card" id="sec-card-14">
-      <div class="section-header" onclick="toggleSection(14)">
-        <div class="section-title">
-          <div class="section-num">14</div>
-          物品管理
-        </div>
-        <div style="display:flex;align-items:center;gap:12px">
-          <div style="display:flex;gap:4px" onclick="event.stopPropagation()">
-            <button class="toggle-btn circle" title="全項目○に一括設定" onclick="setBulkAnswer(&#39;病棟:2026-06&#39;,14,true)" style="font-size:14px;width:auto;padding:0 8px;height:28px;border-radius:6px;font-weight:700">○</button>
-            <button class="toggle-btn cross" title="全項目×に一括設定" onclick="setBulkAnswer(&#39;病棟:2026-06&#39;,14,false)" style="font-size:14px;width:auto;padding:0 8px;height:28px;border-radius:6px;font-weight:700">×</button>
-          </div>
-          <div class="section-score">
-            <span style="color:var(--text3);font-size:12px">点数</span>
-            <span class="score-display" id="sec-score-14">2 / 2 点 (満点 2)</span>
-          </div>
-          <span class="chevron">▼</span>
-        </div>
-      </div>
-      <div class="section-body">
-        <div class="section-body-inner">
-          <div class="section-point">💡 PPEなどは適切に保管できていなければ、微生物繁殖など感染拡大リスクの一因となりうる</div>
-          
-    <div class="check-item">
-      <span class="check-label">フェイスシールド用フレームは、通気性の良い紙封筒などに保管できているか</span>
-      <div class="toggle-group">
-        <button class="toggle-btn circle active" title="○（1点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,14,0,true)">○</button>
-        <button class="toggle-btn cross " title="×（0点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,14,0,false)">×</button>
-      </div>
-    </div>
-    <div class="check-item">
-      <span class="check-label">保管用紙封筒は、汚染したり破れたりしていないか。適切に交換できているか。</span>
-      <div class="toggle-group">
-        <button class="toggle-btn circle active" title="○（1点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,14,1,true)">○</button>
-        <button class="toggle-btn cross " title="×（0点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,14,1,false)">×</button>
+        <button class="toggle-btn circle " title="○（1点）" onclick="setAnswer(&#39;外来/救急外来/検査室:2026-06&#39;,14,4,true)">○</button>
+        <button class="toggle-btn cross " title="×（0点）" onclick="setAnswer(&#39;外来/救急外来/検査室:2026-06&#39;,14,4,false)">×</button>
       </div>
     </div>
         </div>
@@ -2160,7 +2103,7 @@
       </div>
       <div style="display:flex;gap:8px;align-items:center" id="dashWardSelectWrap">
         <span style="font-size:12px;color:var(--text3)">病棟：</span>
-        <select class="meta-input" id="dashWardSelect" onchange="renderDashboard()"><option value="サンプル病棟">サンプル病棟</option><option value="病棟">病棟</option><option value="療法部">療法部</option><option value="外来">外来</option></select>
+        <select class="meta-input" id="dashWardSelect" onchange="renderDashboard()"><option value="サンプル病棟">サンプル病棟</option><option value="病棟">病棟</option><option value="療法部">療法部</option><option value="外来/救急外来/検査室">外来/救急外来/検査室</option></select>
       </div>
     </div>
 
@@ -2233,7 +2176,7 @@
     <div style="margin-bottom:20px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px">
       <h2 style="font-size:18px;font-weight:700">月次履歴</h2>
       <div style="display:flex;gap:8px">
-        <select class="meta-input" id="histWardSelect" onchange="renderHistory()"><option value="サンプル病棟">サンプル病棟</option><option value="病棟">病棟</option><option value="療法部">療法部</option><option value="外来">外来</option></select>
+        <select class="meta-input" id="histWardSelect" onchange="renderHistory()"><option value="サンプル病棟">サンプル病棟</option><option value="病棟">病棟</option><option value="療法部">療法部</option><option value="外来/救急外来/検査室">外来/救急外来/検査室</option></select>
         <button class="btn btn-red" onclick="deleteSelectedHistory()">🗑 選択削除</button>
       </div>
     </div>
@@ -2332,18 +2275,18 @@
     <div class="ward-item" id="ward-item-3">
       <div style="flex:1;min-width:0">
         <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
-          <span class="ward-name" id="ward-name-3">外来</span>
-          <input class="ward-rename-input meta-input" id="ward-input-3" value="外来" style="display:none;max-width:180px;padding:4px 8px;font-size:13px" onkeydown="if(event.key===&#39;Enter&#39;)confirmRename(3);if(event.key===&#39;Escape&#39;)cancelRename(3)">
+          <span class="ward-name" id="ward-name-3">外来/救急外来/検査室</span>
+          <input class="ward-rename-input meta-input" id="ward-input-3" value="外来/救急外来/検査室" style="display:none;max-width:180px;padding:4px 8px;font-size:13px" onkeydown="if(event.key===&#39;Enter&#39;)confirmRename(3);if(event.key===&#39;Escape&#39;)cancelRename(3)">
           <button class="btn" id="ward-rename-btn-3" style="padding:3px 10px;font-size:11px" onclick="startRename(3)">✏️ 名前変更</button>
           <button class="btn btn-green" id="ward-ok-btn-3" style="padding:3px 10px;font-size:11px;display:none" onclick="confirmRename(3)">✅ 確定</button>
           <button class="btn" id="ward-cancel-btn-3" style="padding:3px 10px;font-size:11px;display:none;color:var(--text3)" onclick="cancelRename(3)">✕</button>
         </div>
         <div class="ward-type" style="margin-top:3px">
-          ○ デフォルト（共通） 
+          ✅ 専用チェックリスト設定済み 
           <span style="margin-left:8px">📋 確定保存 0件</span>
         </div>
       </div>
-      <button class="btn btn-red" style="padding:4px 10px;font-size:11px;flex-shrink:0" onclick="removeWard(&#39;外来&#39;)">🗑 削除</button>
+      <button class="btn btn-red" style="padding:4px 10px;font-size:11px;flex-shrink:0" onclick="removeWard(&#39;外来/救急外来/検査室&#39;)">🗑 削除</button>
     </div></div>
       <div style="margin-top:12px;display:flex;gap:8px">
         <input class="meta-input" type="text" id="newWardName" placeholder="病棟名">
@@ -2396,7 +2339,7 @@
       <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center">
         <div class="meta-field">
           <span class="meta-label">編集対象の病棟 / 部署</span>
-          <select class="meta-input" id="adminWardSelect" onchange="onAdminWardChange()"><option value="サンプル病棟">サンプル病棟</option><option value="病棟">病棟</option><option value="療法部">療法部</option><option value="外来">外来</option></select>
+          <select class="meta-input" id="adminWardSelect" onchange="onAdminWardChange()"><option value="サンプル病棟">サンプル病棟</option><option value="病棟">病棟</option><option value="療法部">療法部</option><option value="外来/救急外来/検査室">外来/救急外来/検査室</option></select>
         </div>
         <button class="btn btn-primary" onclick="saveAdminChanges()">✅ 変更を保存</button>
         <button class="btn btn-green" onclick="addNewSection()">＋ セクション追加</button>
@@ -2854,7 +2797,7 @@
         </div>
         <div class="meta-field">
           <span class="meta-label">病棟</span>
-          <select class="meta-input" id="photoWardSelect" onchange="renderPhotoTab()"><option value="サンプル病棟">サンプル病棟</option><option value="病棟">病棟</option><option value="療法部">療法部</option><option value="外来">外来</option></select>
+          <select class="meta-input" id="photoWardSelect" onchange="renderPhotoTab()"><option value="サンプル病棟">サンプル病棟</option><option value="病棟">病棟</option><option value="療法部">療法部</option><option value="外来/救急外来/検査室">外来/救急外来/検査室</option></select>
         </div>
       </div>
     </div>
@@ -2879,7 +2822,7 @@
         </div>
         <div class="meta-field">
           <span class="meta-label">病棟</span>
-          <select class="meta-input" id="themeWardSelect" onchange="renderThemeTab()"><option value="サンプル病棟">サンプル病棟</option><option value="病棟">病棟</option><option value="療法部">療法部</option><option value="外来">外来</option></select>
+          <select class="meta-input" id="themeWardSelect" onchange="renderThemeTab()"><option value="サンプル病棟">サンプル病棟</option><option value="病棟">病棟</option><option value="療法部">療法部</option><option value="外来/救急外来/検査室">外来/救急外来/検査室</option></select>
         </div>
       </div>
     </div>
@@ -2956,7 +2899,7 @@
 </div>
 
 <!-- Chart.js CDN -->
-<script src="./ICTラウンドチェックリスト20260612_files/chart.umd.min.js"></script>
+<script src="./index_files/chart.umd.min.js"></script>
 
 <script>
 // ==================== DATA ====================
