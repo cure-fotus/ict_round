@@ -1127,12 +1127,12 @@
     </div>
   </div>
   <div class="header-actions">
-    <span class="admin-badge" id="adminBadge">🛡 管理者モード</span>
+    <span class="admin-badge visible" id="adminBadge">🛡 管理者モード</span>
     <button class="btn btn-green" onclick="saveData()">💾 保存</button>
     <button class="btn btn-purple" onclick="loadFromFile()">📂 読込</button>
     <button class="btn" onclick="openPrintReport()">🖨 ラウンドレポート印刷</button>
-    <button class="btn" id="adminLoginBtn" onclick="openAdminModal()" title="管理者ログイン" style="">🔐</button>
-    <button class="btn btn-red" id="adminLogoutBtn" onclick="adminLogout()" style="display: none;" title="ログアウト">🔓 ログアウト</button>
+    <button class="btn" id="adminLoginBtn" onclick="openAdminModal()" title="管理者ログイン" style="display: none;">🔐</button>
+    <button class="btn btn-red" id="adminLogoutBtn" onclick="adminLogout()" style="" title="ログアウト">🔓 ログアウト</button>
     <input type="file" id="fileInput" accept=".json" style="display:none" onchange="importJSON(event)">
   </div>
 </div>
@@ -1157,7 +1157,7 @@
   <button class="tab-btn" onclick="switchTab(&#39;theme&#39;, this)">
     📝 テーマ別ラウンド
   </button>
-  <button class="tab-btn" id="adminTab" onclick="switchTab(&#39;admin&#39;, this)" style="display: none;">
+  <button class="tab-btn" id="adminTab" onclick="switchTab(&#39;admin&#39;, this)" style="">
     🛡 管理者
   </button>
 </div>
@@ -1175,8 +1175,8 @@
         <div style="font-size:12px;color:#4a6380;margin-top:2px">Infection Control Team Round Checklist</div>
       </div>
       <div id="printTitleMeta" style="text-align:right;font-size:12px;color:#4a6380">
-        <div style="font-weight:700;font-size:14px;color:#1a2a3a" id="printTitleWardYm">病棟　2026年6月</div>
-        <div id="printTitleDate">印刷日：2026/6/11</div>
+        <div style="font-weight:700;font-size:14px;color:#1a2a3a" id="printTitleWardYm"></div>
+        <div id="printTitleDate"></div>
       </div>
     </div>
 
@@ -1200,17 +1200,17 @@
         </div>
       </div>
       <div style="display:flex;gap:8px;flex-wrap:wrap">
-        <button class="btn btn-primary admin-only-btn" style="display: none;" onclick="saveMonthSnapshot()">📌 今月を確定保存</button>
-        <button class="btn btn-red admin-only-btn" style="display: none;" onclick="resetCurrentMonth()">🗑 リセット</button>
+        <button class="btn btn-primary admin-only-btn" style="" onclick="saveMonthSnapshot()">📌 今月を確定保存</button>
+        <button class="btn btn-red admin-only-btn" style="" onclick="resetCurrentMonth()">🗑 リセット</button>
         <button class="btn" onclick="printChecklist()" style="font-size:13px">🖨 チェックリスト印刷</button>
-        <span id="nonAdminNote" style="font-size: 12px; color: var(--text3); align-self: center;">※ 確定保存・リセットは管理者のみ操作できます（🔐 よりログイン）</span>
+        <span id="nonAdminNote" style="font-size: 12px; color: var(--text3); align-self: center; display: none;">※ 確定保存・リセットは管理者のみ操作できます（🔐 よりログイン）</span>
       </div>
     </div>
 
     <!-- SUMMARY BAR -->
     <div class="summary-bar">
       <div class="summary-stat">
-        <span class="summary-val" id="totalScore">46</span>
+        <span class="summary-val" id="totalScore">51</span>
         <span class="summary-lbl">合計点</span>
       </div>
       <div class="summary-divider"></div>
@@ -1220,20 +1220,20 @@
       </div>
       <div class="summary-divider"></div>
       <div class="summary-stat">
-        <span class="summary-val" id="pctScore">55%</span>
+        <span class="summary-val" id="pctScore">61%</span>
         <span class="summary-lbl">達成率</span>
       </div>
       <div class="summary-divider"></div>
       <div class="summary-stat">
-        <span class="summary-val" id="checkedCount">81</span>
+        <span class="summary-val" id="checkedCount">82</span>
         <span class="summary-lbl">回答済</span>
       </div>
       <div class="summary-divider"></div>
       <div class="progress-wrap">
         <div style="display:flex;justify-content:space-between;font-size:11px;color:var(--text3)">
-          <span>進捗</span><span id="progressText">81 / 83</span>
+          <span>進捗</span><span id="progressText">82 / 83</span>
         </div>
-        <div class="progress-bar"><div class="progress-fill" id="progressFill" style="width: 98%;"></div></div>
+        <div class="progress-bar"><div class="progress-fill" id="progressFill" style="width: 99%;"></div></div>
       </div>
       <div id="stampArea" style="display:none;align-items:center;justify-content:center;padding:10px 16px;border-radius:12px;background-image:radial-gradient(circle,#f48fb1 1.2px,transparent 1.2px);background-size:8px 8px;background-color:#fff0f6;border:1px solid #f8bbd0;min-width:110px;flex-direction:column;gap:4px;">
         <div style="font-size:52px;line-height:1;filter:drop-shadow(0 2px 4px rgba(233,30,99,0.25))">🌸</div>
@@ -1255,7 +1255,7 @@
           </div>
           <div class="section-score">
             <span style="color:var(--text3);font-size:12px">点数</span>
-            <span class="score-display" id="sec-score-1">9 / 14 点 (満点 15)</span>
+            <span class="score-display" id="sec-score-1">13 / 15 点 (満点 15)</span>
           </div>
           <span class="chevron">▼</span>
         </div>
@@ -1302,15 +1302,15 @@
     <div class="check-item">
       <span class="check-label">冷蔵庫の取っ手やドアノブなど、高頻度接触面の清拭ができている（環境整備時ドアノブや取手が整備対象になっているか。ベッド柵など、高頻度接触面をスタッフが把握しているか）</span>
       <div class="toggle-group">
-        <button class="toggle-btn circle " title="○（1点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,1,5,true)">○</button>
-        <button class="toggle-btn cross active" title="×（0点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,1,5,false)">×</button>
+        <button class="toggle-btn circle active" title="○（1点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,1,5,true)">○</button>
+        <button class="toggle-btn cross " title="×（0点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,1,5,false)">×</button>
       </div>
     </div>
     <div class="check-item">
       <span class="check-label">マニュアルが所定の位置にある（紙マニュアル・PC内マニュアルの位置。災害時・停電時には紙マニュアルも参照できるように。疾患別マニュアルはスマホからも参照できるようになっているか）</span>
       <div class="toggle-group">
-        <button class="toggle-btn circle " title="○（1点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,1,6,true)">○</button>
-        <button class="toggle-btn cross active" title="×（0点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,1,6,false)">×</button>
+        <button class="toggle-btn circle active" title="○（1点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,1,6,true)">○</button>
+        <button class="toggle-btn cross " title="×（0点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,1,6,false)">×</button>
       </div>
     </div>
     <div class="check-item">
@@ -1323,8 +1323,8 @@
     <div class="check-item">
       <span class="check-label">各スタッフが患者の感染症を把握している（カルテのどこを見れば感染症発生状況・保菌状況を把握できるか知っている）</span>
       <div class="toggle-group">
-        <button class="toggle-btn circle " title="○（1点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,1,8,true)">○</button>
-        <button class="toggle-btn cross active" title="×（0点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,1,8,false)">×</button>
+        <button class="toggle-btn circle active" title="○（1点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,1,8,true)">○</button>
+        <button class="toggle-btn cross " title="×（0点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,1,8,false)">×</button>
       </div>
     </div>
     <div class="check-item">
@@ -1351,7 +1351,7 @@
     <div class="check-item">
       <span class="check-label">各職員がアウトブレイク時や感染症発生時に誰に報告相談するか把握している</span>
       <div class="toggle-group">
-        <button class="toggle-btn circle " title="○（1点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,1,12,true)">○</button>
+        <button class="toggle-btn circle active" title="○（1点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,1,12,true)">○</button>
         <button class="toggle-btn cross " title="×（0点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,1,12,false)">×</button>
       </div>
     </div>
@@ -1463,7 +1463,7 @@
           </div>
           <div class="section-score">
             <span style="color:var(--text3);font-size:12px">点数</span>
-            <span class="score-display" id="sec-score-3">5 / 6 点 (満点 6)</span>
+            <span class="score-display" id="sec-score-3">4 / 6 点 (満点 6)</span>
           </div>
           <span class="chevron">▼</span>
         </div>
@@ -1473,7 +1473,7 @@
           <div class="section-point">💡 水回り環境には、アシネトバクターや緑膿菌などが、バイオフィルムを作って定着しやすい。定着リスクをできるだけ減らせているか、また拡散させない対策ができているか確認する。</div>
           
     <div class="check-item">
-      <span class="check-label">定期的に（2回/月）スポンジが交換できているか</span>
+      <span class="check-label">定期的に（目安；2回/月）スポンジが交換できているか</span>
       <div class="toggle-group">
         <button class="toggle-btn circle active" title="○（1点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,3,0,true)">○</button>
         <button class="toggle-btn cross " title="×（0点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,3,0,false)">×</button>
@@ -1482,8 +1482,8 @@
     <div class="check-item">
       <span class="check-label">スポンジはシンク周りに直置きされていないか（水切り用の容器の上に置かれているか）</span>
       <div class="toggle-group">
-        <button class="toggle-btn circle active" title="○（1点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,3,1,true)">○</button>
-        <button class="toggle-btn cross " title="×（0点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,3,1,false)">×</button>
+        <button class="toggle-btn circle " title="○（1点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,3,1,true)">○</button>
+        <button class="toggle-btn cross active" title="×（0点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,3,1,false)">×</button>
       </div>
     </div>
     <div class="check-item">
@@ -1607,7 +1607,7 @@
           </div>
           <div class="section-score">
             <span style="color:var(--text3);font-size:12px">点数</span>
-            <span class="score-display" id="sec-score-5">1 / 5 点 (満点 5)</span>
+            <span class="score-display" id="sec-score-5">3 / 5 点 (満点 5)</span>
           </div>
           <span class="chevron">▼</span>
         </div>
@@ -1626,15 +1626,15 @@
     <div class="check-item">
       <span class="check-label">血液感染症を有する患者を把握している（新人採血時は特に注意するよう指導している）</span>
       <div class="toggle-group">
-        <button class="toggle-btn circle " title="○（1点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,5,1,true)">○</button>
-        <button class="toggle-btn cross active" title="×（0点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,5,1,false)">×</button>
+        <button class="toggle-btn circle active" title="○（1点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,5,1,true)">○</button>
+        <button class="toggle-btn cross " title="×（0点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,5,1,false)">×</button>
       </div>
     </div>
     <div class="check-item">
       <span class="check-label">採血・点滴留置の際は、手袋を装着している（針刺し時の感染リスク低減の意味合いもある）</span>
       <div class="toggle-group">
-        <button class="toggle-btn circle " title="○（1点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,5,2,true)">○</button>
-        <button class="toggle-btn cross active" title="×（0点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,5,2,false)">×</button>
+        <button class="toggle-btn circle active" title="○（1点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,5,2,true)">○</button>
+        <button class="toggle-btn cross " title="×（0点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,5,2,false)">×</button>
       </div>
     </div>
     <div class="check-item">
@@ -1665,7 +1665,7 @@
           </div>
           <div class="section-score">
             <span style="color:var(--text3);font-size:12px">点数</span>
-            <span class="score-display" id="sec-score-6">1 / 4 点 (満点 4)</span>
+            <span class="score-display" id="sec-score-6">2 / 4 点 (満点 4)</span>
           </div>
           <span class="chevron">▼</span>
         </div>
@@ -1677,12 +1677,12 @@
     <div class="check-item">
       <span class="check-label">感染性廃棄物BOXに廃棄するもの一覧表をBOX付近に掲示してある</span>
       <div class="toggle-group">
-        <button class="toggle-btn circle " title="○（1点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,6,0,true)">○</button>
-        <button class="toggle-btn cross active" title="×（0点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,6,0,false)">×</button>
+        <button class="toggle-btn circle active" title="○（1点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,6,0,true)">○</button>
+        <button class="toggle-btn cross " title="×（0点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,6,0,false)">×</button>
       </div>
     </div>
     <div class="check-item">
-      <span class="check-label">BOXに不適切なものが廃棄されていない</span>
+      <span class="check-label">感染性廃棄物BOXに不適切なものが廃棄されていない</span>
       <div class="toggle-group">
         <button class="toggle-btn circle " title="○（1点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,6,1,true)">○</button>
         <button class="toggle-btn cross active" title="×（0点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,6,1,false)">×</button>
@@ -1716,7 +1716,7 @@
           </div>
           <div class="section-score">
             <span style="color:var(--text3);font-size:12px">点数</span>
-            <span class="score-display" id="sec-score-7">5 / 5 点 (満点 5)</span>
+            <span class="score-display" id="sec-score-7">3 / 5 点 (満点 5)</span>
           </div>
           <span class="chevron">▼</span>
         </div>
@@ -1742,15 +1742,15 @@
     <div class="check-item">
       <span class="check-label">吐物処理グッズが所定の位置に配置されている</span>
       <div class="toggle-group">
-        <button class="toggle-btn circle active" title="○（1点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,7,2,true)">○</button>
-        <button class="toggle-btn cross " title="×（0点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,7,2,false)">×</button>
+        <button class="toggle-btn circle " title="○（1点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,7,2,true)">○</button>
+        <button class="toggle-btn cross active" title="×（0点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,7,2,false)">×</button>
       </div>
     </div>
     <div class="check-item">
       <span class="check-label">吐物処理グッズに過不足がない</span>
       <div class="toggle-group">
-        <button class="toggle-btn circle active" title="○（1点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,7,3,true)">○</button>
-        <button class="toggle-btn cross " title="×（0点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,7,3,false)">×</button>
+        <button class="toggle-btn circle " title="○（1点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,7,3,true)">○</button>
+        <button class="toggle-btn cross active" title="×（0点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,7,3,false)">×</button>
       </div>
     </div>
     <div class="check-item">
@@ -1825,7 +1825,7 @@
           </div>
           <div class="section-score">
             <span style="color:var(--text3);font-size:12px">点数</span>
-            <span class="score-display" id="sec-score-9">1 / 5 点 (満点 6)</span>
+            <span class="score-display" id="sec-score-9">2 / 5 点 (満点 5)</span>
           </div>
           <span class="chevron">▼</span>
         </div>
@@ -1837,8 +1837,8 @@
     <div class="check-item">
       <span class="check-label">（ナーシングカートの写真を見ながら）清潔不潔の区別ができている</span>
       <div class="toggle-group">
-        <button class="toggle-btn circle " title="○（1点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,9,0,true)">○</button>
-        <button class="toggle-btn cross active" title="×（0点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,9,0,false)">×</button>
+        <button class="toggle-btn circle active" title="○（1点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,9,0,true)">○</button>
+        <button class="toggle-btn cross " title="×（0点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,9,0,false)">×</button>
       </div>
     </div>
     <div class="check-item">
@@ -1849,31 +1849,24 @@
       </div>
     </div>
     <div class="check-item">
-      <span class="check-label">ナーシングカートを部屋に入れていない</span>
+      <span class="check-label">ナーシングカートの天板に不潔なものを置いていない</span>
       <div class="toggle-group">
         <button class="toggle-btn circle " title="○（1点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,9,2,true)">○</button>
         <button class="toggle-btn cross active" title="×（0点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,9,2,false)">×</button>
       </div>
     </div>
     <div class="check-item">
-      <span class="check-label">ナーシングカートの天板に不潔なものを置いていない</span>
+      <span class="check-label">ナーシングカートから必要な物品のみバットに入れて入室できている</span>
       <div class="toggle-group">
         <button class="toggle-btn circle active" title="○（1点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,9,3,true)">○</button>
         <button class="toggle-btn cross " title="×（0点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,9,3,false)">×</button>
       </div>
     </div>
     <div class="check-item">
-      <span class="check-label">ナーシングカートから必要な物品のみバットに入れて入室できている</span>
+      <span class="check-label">軟膏類の開封日が記入されている</span>
       <div class="toggle-group">
         <button class="toggle-btn circle " title="○（1点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,9,4,true)">○</button>
         <button class="toggle-btn cross active" title="×（0点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,9,4,false)">×</button>
-      </div>
-    </div>
-    <div class="check-item">
-      <span class="check-label">軟膏類の開封日が記入されている</span>
-      <div class="toggle-group">
-        <button class="toggle-btn circle " title="○（1点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,9,5,true)">○</button>
-        <button class="toggle-btn cross " title="×（0点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,9,5,false)">×</button>
       </div>
     </div>
         </div>
@@ -1941,7 +1934,7 @@
           </div>
           <div class="section-score">
             <span style="color:var(--text3);font-size:12px">点数</span>
-            <span class="score-display" id="sec-score-11">4 / 9 点 (満点 9)</span>
+            <span class="score-display" id="sec-score-11">4 / 9 点 (満点 10)</span>
           </div>
           <span class="chevron">▼</span>
         </div>
@@ -1951,66 +1944,73 @@
           <div class="section-point">💡 抜去が最善の感染対策。抜去できない場合は出来る限り感染リスクを下げる。</div>
           
     <div class="check-item">
-      <span class="check-label">採尿バッグとカテーテルを膀胱より高くしない</span>
+      <span class="check-label">採尿バッグとカテーテルを膀胱より高くしていない</span>
       <div class="toggle-group">
         <button class="toggle-btn circle " title="○（1点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,11,0,true)">○</button>
         <button class="toggle-btn cross active" title="×（0点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,11,0,false)">×</button>
       </div>
     </div>
     <div class="check-item">
-      <span class="check-label">カテーテルの定期的な交換はしていない（交換時に抜去を検討しているか）</span>
+      <span class="check-label">バルンカテーテルの尿流出が良好である（ランニングチューブが患者の身体を乗り越えるような状態になっていない、下敷きになっていない、屈曲していない等）</span>
       <div class="toggle-group">
         <button class="toggle-btn circle " title="○（1点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,11,1,true)">○</button>
         <button class="toggle-btn cross active" title="×（0点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,11,1,false)">×</button>
       </div>
     </div>
     <div class="check-item">
-      <span class="check-label">カテーテル交換時は無菌操作で実施している</span>
+      <span class="check-label">カテーテルの定期的な交換はしていない（交換時に抜去を検討しているか）</span>
       <div class="toggle-group">
         <button class="toggle-btn circle active" title="○（1点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,11,2,true)">○</button>
         <button class="toggle-btn cross " title="×（0点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,11,2,false)">×</button>
       </div>
     </div>
     <div class="check-item">
-      <span class="check-label">尿回収時・破棄時にはエプロン・フェイスシールド・手袋を着用している</span>
+      <span class="check-label">カテーテル交換時は無菌操作で実施している</span>
       <div class="toggle-group">
         <button class="toggle-btn circle " title="○（1点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,11,3,true)">○</button>
         <button class="toggle-btn cross active" title="×（0点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,11,3,false)">×</button>
       </div>
     </div>
     <div class="check-item">
-      <span class="check-label">尿の回収時は患者毎に手袋を交換している</span>
+      <span class="check-label">尿回収時・破棄時にはエプロン・フェイスシールド・手袋を着用している</span>
       <div class="toggle-group">
         <button class="toggle-btn circle active" title="○（1点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,11,4,true)">○</button>
         <button class="toggle-btn cross " title="×（0点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,11,4,false)">×</button>
       </div>
     </div>
     <div class="check-item">
-      <span class="check-label">尿回収時に排液口と回収容器が接触していない</span>
+      <span class="check-label">尿の回収時は患者毎に手袋を交換している</span>
       <div class="toggle-group">
         <button class="toggle-btn circle active" title="○（1点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,11,5,true)">○</button>
         <button class="toggle-btn cross " title="×（0点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,11,5,false)">×</button>
       </div>
     </div>
     <div class="check-item">
-      <span class="check-label">採尿バッグが床についていない</span>
+      <span class="check-label">尿回収時に排液口と回収容器が接触していない</span>
       <div class="toggle-group">
         <button class="toggle-btn circle active" title="○（1点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,11,6,true)">○</button>
         <button class="toggle-btn cross " title="×（0点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,11,6,false)">×</button>
       </div>
     </div>
     <div class="check-item">
-      <span class="check-label">膀胱留置カテーテルの留置理由をスタッフが把握している</span>
+      <span class="check-label">採尿バッグが床についていない</span>
       <div class="toggle-group">
         <button class="toggle-btn circle " title="○（1点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,11,7,true)">○</button>
         <button class="toggle-btn cross active" title="×（0点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,11,7,false)">×</button>
       </div>
     </div>
     <div class="check-item">
-      <span class="check-label">尿回収業務終了後は、フェイスシールドをワイプで清拭し、適切に保管できている</span>
+      <span class="check-label">膀胱留置カテーテルの留置理由をスタッフが把握している</span>
       <div class="toggle-group">
         <button class="toggle-btn circle " title="○（1点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,11,8,true)">○</button>
         <button class="toggle-btn cross active" title="×（0点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,11,8,false)">×</button>
+      </div>
+    </div>
+    <div class="check-item">
+      <span class="check-label">尿回収業務終了後は、フェイスシールドをワイプで清拭し、適切に保管できている</span>
+      <div class="toggle-group">
+        <button class="toggle-btn circle " title="○（1点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,11,9,true)">○</button>
+        <button class="toggle-btn cross " title="×（0点）" onclick="setAnswer(&#39;病棟:2026-06&#39;,11,9,false)">×</button>
       </div>
     </div>
         </div>
@@ -2166,20 +2166,41 @@
 
     <!-- 病棟別ビュー -->
     <div id="dash-single">
-      <div class="dashboard-grid" id="kpiGrid"></div>
+      <div class="dashboard-grid" id="kpiGrid">
+    <div class="dash-card">
+      <div class="dash-card-title">最新月 達成率</div>
+      <div class="kpi-value">55%</div>
+      <div class="kpi-sub">2026年6月（46／83点）</div>
+      
+    </div>
+    <div class="dash-card">
+      <div class="dash-card-title">最高スコア カテゴリ</div>
+      <div class="kpi-value" style="font-size:18px;color:var(--green)">汚物室</div>
+      <div class="kpi-sub">5/5点 (100%)</div>
+    </div>
+    <div class="dash-card">
+      <div class="dash-card-title">要改善 カテゴリ（11件）</div>
+      <div class="kpi-value" style="font-size:18px;color:var(--red)">ナーシングカート・処置ケア物品</div>
+       <div class="kpi-sub">1/6点 (17%)</div>
+    </div>
+    <div class="dash-card">
+      <div class="dash-card-title">記録月数</div>
+      <div class="kpi-value">1</div>
+      <div class="kpi-sub">最大12ヶ月表示</div>
+    </div></div>
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px">
         <div class="chart-container" style="margin-bottom:0">
           <div class="chart-title">月次達成率推移</div>
-          <canvas id="trendChart" height="220"></canvas>
+          <canvas id="trendChart" height="778" style="box-sizing: border-box; display: block; height: 389px; width: 531px;" width="1062"></canvas>
         </div>
         <div class="chart-container" style="margin-bottom:0">
           <div class="chart-title">カテゴリ別スコア（最新月）</div>
-          <canvas id="radarChart" height="220"></canvas>
+          <canvas id="radarChart" height="1062" style="box-sizing: border-box; display: block; height: 531px; width: 531px;" width="1062"></canvas>
         </div>
       </div>
       <div class="chart-container">
         <div class="chart-title">カテゴリ別 月次推移</div>
-        <canvas id="categoryChart" height="200"></canvas>
+        <canvas id="categoryChart" height="400" width="2228" style="display: block; box-sizing: border-box; height: 200px; width: 1114px;"></canvas>
       </div>
     </div>
 
@@ -2232,9 +2253,21 @@
             <th>操作</th>
           </tr>
         </thead>
-        <tbody id="historyBody"></tbody>
+        <tbody id="historyBody"><tr>
+      <td><input type="checkbox" class="hist-check" data-ts="1781130909495"></td>
+      <td><strong>2026年6月</strong></td>
+      <td>病棟</td>
+      <td><span class="score-pill" style="background:rgba(25,118,210,0.1);color:var(--accent)">46/83点</span></td>
+      <td><span class="score-pill" style="background:rgba(198,40,40,0.1);color:var(--red)">55%</span></td>
+      <td>9/15</td>
+      <td>5/8</td>
+      <td>5/6</td>
+      <td>3/8</td>
+      <td>
+        <button class="btn" style="padding:4px 10px;font-size:11px" onclick="loadSnapshot(1781130909495)">📅 この月を表示</button>
+      </td></tr></tbody>
       </table>
-      <div class="empty-state" id="historyEmpty">
+      <div class="empty-state" id="historyEmpty" style="display: none;">
         <div class="empty-icon">📂</div>
         <div class="empty-text">履歴がありません。チェックリストを確定保存してください。</div>
       </div>
@@ -2380,24 +2413,8 @@
       border:2px solid #c8d9ef;
       background:#f8fafc;
       color:#7a96b0;
-    " onclick="document.getElementById(&#39;adminWardSelect&#39;).value=&#39;病棟A&#39;;onAdminWardChange()">
-      ○ 病棟A（デフォルト）
-    </div><div style="
-      display:inline-flex;align-items:center;gap:6px;
-      padding:5px 12px;border-radius:20px;font-size:12px;font-weight:600;cursor:pointer;
-      border:2px solid #c8d9ef;
-      background:#f8fafc;
-      color:#7a96b0;
-    " onclick="document.getElementById(&#39;adminWardSelect&#39;).value=&#39;病棟B&#39;;onAdminWardChange()">
-      ○ 病棟B（デフォルト）
-    </div><div style="
-      display:inline-flex;align-items:center;gap:6px;
-      padding:5px 12px;border-radius:20px;font-size:12px;font-weight:600;cursor:pointer;
-      border:2px solid #c8d9ef;
-      background:#f8fafc;
-      color:#7a96b0;
-    " onclick="document.getElementById(&#39;adminWardSelect&#39;).value=&#39;ICU&#39;;onAdminWardChange()">
-      ○ ICU（デフォルト）
+    " onclick="document.getElementById(&#39;adminWardSelect&#39;).value=&#39;サンプル病棟&#39;;onAdminWardChange()">
+      ○ サンプル病棟（デフォルト）
     </div><div style="
       display:inline-flex;align-items:center;gap:6px;
       padding:5px 12px;border-radius:20px;font-size:12px;font-weight:600;cursor:pointer;
@@ -2406,355 +2423,414 @@
       color:#1565c0;
     " onclick="document.getElementById(&#39;adminWardSelect&#39;).value=&#39;病棟&#39;;onAdminWardChange()">
       ✏️ 病棟（専用）
+    </div><div style="
+      display:inline-flex;align-items:center;gap:6px;
+      padding:5px 12px;border-radius:20px;font-size:12px;font-weight:600;cursor:pointer;
+      border:2px solid #c8d9ef;
+      background:#f8fafc;
+      color:#7a96b0;
+    " onclick="document.getElementById(&#39;adminWardSelect&#39;).value=&#39;療法部&#39;;onAdminWardChange()">
+      ○ 療法部（デフォルト）
+    </div><div style="
+      display:inline-flex;align-items:center;gap:6px;
+      padding:5px 12px;border-radius:20px;font-size:12px;font-weight:600;cursor:pointer;
+      border:2px solid #c8d9ef;
+      background:#f8fafc;
+      color:#7a96b0;
+    " onclick="document.getElementById(&#39;adminWardSelect&#39;).value=&#39;外来&#39;;onAdminWardChange()">
+      ○ 外来（デフォルト）
     </div></div>
     </div>
 
     <div id="adminSectionList"><div class="admin-section-card" data-si="0"><div class="admin-section-hdr">
       <span style="font-family:&#39;IBM Plex Mono&#39;,monospace;font-size:12px;color:#7a96b0;min-width:24px">1.</span>
-      <input class="admin-sec-title-input" value="廃棄物" placeholder="セクション名" onchange="adminDraft[0].title=this.value">
+      <input class="admin-sec-title-input" value="基本ラウンド" placeholder="セクション名" oninput="adminDraft[0].title=this.value;adminDraftDirty=true">
       <div style="display:flex;gap:6px;flex-shrink:0">
         <button class="btn" style="padding:4px 10px;font-size:11px" onclick="moveSectionUp(0)" disabled="">↑</button>
         <button class="btn" style="padding:4px 10px;font-size:11px" onclick="moveSectionDown(0)">↓</button>
         <button class="btn btn-red" style="padding:4px 10px;font-size:11px" onclick="deleteSection(0)">🗑 削除</button>
       </div></div><div style="padding: 0px 18px;">
-      <textarea class="admin-point-input" placeholder="ラウンドのポイント（任意）" onchange="adminDraft[0].point=this.value">廃棄物の適切な廃棄は感染拡大防止・スタッフの安全・コスト削減の面から重要である。</textarea></div><div id="admin-items-0"><div class="admin-item-row" data-ii="0" draggable="true">
+      <textarea class="admin-point-input" placeholder="ラウンドのポイント（任意）" oninput="adminDraft[0].point=this.value;adminDraftDirty=true">感染拡大防止のルール遵守を確認するとともに、エアロゾル・接触感染リスク（3密）の観点から、飛沫・エアロゾルの飛散や接触機会の増加がないか確認する。</textarea></div><div id="admin-items-0"><div class="admin-item-row" data-ii="0" draggable="true">
     <span class="drag-handle" title="ドラッグで並び替え">⠿</span>
-    <input class="admin-item-input" type="text" value="マニュアル通りに表示・分別できているか" onchange="adminDraft[0].items[0]=this.value">
-    <button class="admin-item-del" title="削除" onclick="deleteItem(0,0)">✕</button></div><div class="admin-item-row" data-ii="1" draggable="true">
+    <input class="admin-item-input" type="text" value="私語をしていない（業務上の会話はOK）" oninput="adminDraft[0].items[0]=this.value;adminDraftDirty=true">
+    <button class="admin-item-del" title="削除" id="del-0-0" onclick="confirmDeleteItem(this,0,0)">✕</button></div><div class="admin-item-row" data-ii="1" draggable="true">
     <span class="drag-handle" title="ドラッグで並び替え">⠿</span>
-    <input class="admin-item-input" type="text" value="廃棄容器の設置場所は適切か" onchange="adminDraft[0].items[1]=this.value">
-    <button class="admin-item-del" title="削除" onclick="deleteItem(0,1)">✕</button></div><div class="admin-item-row" data-ii="2" draggable="true">
+    <input class="admin-item-input" type="text" value="1～2ｍ程度の距離をとっている（密着して会話をしていない）" oninput="adminDraft[0].items[1]=this.value;adminDraftDirty=true">
+    <button class="admin-item-del" title="削除" id="del-0-1" onclick="confirmDeleteItem(this,0,1)">✕</button></div><div class="admin-item-row" data-ii="2" draggable="true">
     <span class="drag-handle" title="ドラッグで並び替え">⠿</span>
-    <input class="admin-item-input" type="text" value="鋭利器材廃棄容器にリキャップした針が入ってないか" onchange="adminDraft[0].items[2]=this.value">
-    <button class="admin-item-del" title="削除" onclick="deleteItem(0,2)">✕</button></div><div class="admin-item-row" data-ii="3" draggable="true">
+    <input class="admin-item-input" type="text" value="適切に換気をしている（空調管理中に不用意に窓を開けたりしていないか。サーキュレータや扇風機使用中の場合、設置場所や方向などは適切か）" oninput="adminDraft[0].items[2]=this.value;adminDraftDirty=true">
+    <button class="admin-item-del" title="削除" id="del-0-2" onclick="confirmDeleteItem(this,0,2)">✕</button></div><div class="admin-item-row" data-ii="3" draggable="true">
     <span class="drag-handle" title="ドラッグで並び替え">⠿</span>
-    <input class="admin-item-input" type="text" value="廃棄容器の周囲が散らかっていたり、廃棄物が容器から飛び出していないか" onchange="adminDraft[0].items[3]=this.value">
-    <button class="admin-item-del" title="削除" onclick="deleteItem(0,3)">✕</button></div><div class="admin-item-row" data-ii="4" draggable="true">
+    <input class="admin-item-input" type="text" value="不織布マスクを適切に着用できている（顎マスクや鼻マスクになったり、肘マスクをしたりしていないか）" oninput="adminDraft[0].items[3]=this.value;adminDraftDirty=true">
+    <button class="admin-item-del" title="削除" id="del-0-3" onclick="confirmDeleteItem(this,0,3)">✕</button></div><div class="admin-item-row" data-ii="4" draggable="true">
     <span class="drag-handle" title="ドラッグで並び替え">⠿</span>
-    <input class="admin-item-input" type="text" value="廊下や患者エリアに廃棄物が放置されていないか" onchange="adminDraft[0].items[4]=this.value">
-    <button class="admin-item-del" title="削除" onclick="deleteItem(0,4)">✕</button></div><div class="admin-item-row" data-ii="5" draggable="true">
+    <input class="admin-item-input" type="text" value="冷蔵庫や休憩室に不要なものを置かない（不要なものを不特定多数が触るような状況になっていないか）" oninput="adminDraft[0].items[4]=this.value;adminDraftDirty=true">
+    <button class="admin-item-del" title="削除" id="del-0-4" onclick="confirmDeleteItem(this,0,4)">✕</button></div><div class="admin-item-row" data-ii="5" draggable="true">
     <span class="drag-handle" title="ドラッグで並び替え">⠿</span>
-    <input class="admin-item-input" type="text" value="鋭利器材廃棄容器や感染性廃棄容器の蓋は開いていないか" onchange="adminDraft[0].items[5]=this.value">
-    <button class="admin-item-del" title="削除" onclick="deleteItem(0,5)">✕</button></div><div class="admin-item-row" data-ii="6" draggable="true">
+    <input class="admin-item-input" type="text" value="冷蔵庫の取っ手やドアノブなど、高頻度接触面の清拭ができている（環境整備時ドアノブや取手が整備対象になっているか。ベッド柵など、高頻度接触面をスタッフが把握しているか）" oninput="adminDraft[0].items[5]=this.value;adminDraftDirty=true">
+    <button class="admin-item-del" title="削除" id="del-0-5" onclick="confirmDeleteItem(this,0,5)">✕</button></div><div class="admin-item-row" data-ii="6" draggable="true">
     <span class="drag-handle" title="ドラッグで並び替え">⠿</span>
-    <input class="admin-item-input" type="text" value="エコムシュウは整理整頓し使用できているか" onchange="adminDraft[0].items[6]=this.value">
-    <button class="admin-item-del" title="削除" onclick="deleteItem(0,6)">✕</button></div><div class="admin-item-row" data-ii="7" draggable="true">
+    <input class="admin-item-input" type="text" value="マニュアルが所定の位置にある（紙マニュアル・PC内マニュアルの位置。災害時・停電時には紙マニュアルも参照できるように。疾患別マニュアルはスマホからも参照できるようになっているか）" oninput="adminDraft[0].items[6]=this.value;adminDraftDirty=true">
+    <button class="admin-item-del" title="削除" id="del-0-6" onclick="confirmDeleteItem(this,0,6)">✕</button></div><div class="admin-item-row" data-ii="7" draggable="true">
     <span class="drag-handle" title="ドラッグで並び替え">⠿</span>
-    <input class="admin-item-input" type="text" value="エコムシュウ使用時清潔不潔が混在していないか" onchange="adminDraft[0].items[7]=this.value">
-    <button class="admin-item-del" title="削除" onclick="deleteItem(0,7)">✕</button></div><div class="admin-item-row" data-ii="8" draggable="true">
+    <input class="admin-item-input" type="text" value="スタッフがマニュアルの位置を把握している（紙マニュアル・PC内マニュアルの位置）" oninput="adminDraft[0].items[7]=this.value;adminDraftDirty=true">
+    <button class="admin-item-del" title="削除" id="del-0-7" onclick="confirmDeleteItem(this,0,7)">✕</button></div><div class="admin-item-row" data-ii="8" draggable="true">
     <span class="drag-handle" title="ドラッグで並び替え">⠿</span>
-    <input class="admin-item-input" type="text" value="その他" onchange="adminDraft[0].items[8]=this.value">
-    <button class="admin-item-del" title="削除" onclick="deleteItem(0,8)">✕</button></div></div><div class="admin-add-item-row">
+    <input class="admin-item-input" type="text" value="各スタッフが患者の感染症を把握している（カルテのどこを見れば感染症発生状況・保菌状況を把握できるか知っている）" oninput="adminDraft[0].items[8]=this.value;adminDraftDirty=true">
+    <button class="admin-item-del" title="削除" id="del-0-8" onclick="confirmDeleteItem(this,0,8)">✕</button></div><div class="admin-item-row" data-ii="9" draggable="true">
+    <span class="drag-handle" title="ドラッグで並び替え">⠿</span>
+    <input class="admin-item-input" type="text" value="各スタッフがその部署の耐性菌等の発生動向を把握している（経路別感染対策が必要な患者を把握している）" oninput="adminDraft[0].items[9]=this.value;adminDraftDirty=true">
+    <button class="admin-item-del" title="削除" id="del-0-9" onclick="confirmDeleteItem(this,0,9)">✕</button></div><div class="admin-item-row" data-ii="10" draggable="true">
+    <span class="drag-handle" title="ドラッグで並び替え">⠿</span>
+    <input class="admin-item-input" type="text" value="感染症情報レポート・感染症発生届がファイルされている（紙ファイルおよびPCデータ閲覧先・閲覧方法を知っている）" oninput="adminDraft[0].items[10]=this.value;adminDraftDirty=true">
+    <button class="admin-item-del" title="削除" id="del-0-10" onclick="confirmDeleteItem(this,0,10)">✕</button></div><div class="admin-item-row" data-ii="11" draggable="true">
+    <span class="drag-handle" title="ドラッグで並び替え">⠿</span>
+    <input class="admin-item-input" type="text" value="各スタッフがどの部署でアウトブレイクが発生しているかを把握している" oninput="adminDraft[0].items[11]=this.value;adminDraftDirty=true">
+    <button class="admin-item-del" title="削除" id="del-0-11" onclick="confirmDeleteItem(this,0,11)">✕</button></div><div class="admin-item-row" data-ii="12" draggable="true">
+    <span class="drag-handle" title="ドラッグで並び替え">⠿</span>
+    <input class="admin-item-input" type="text" value="各職員がアウトブレイク時や感染症発生時に誰に報告相談するか把握している" oninput="adminDraft[0].items[12]=this.value;adminDraftDirty=true">
+    <button class="admin-item-del" title="削除" id="del-0-12" onclick="confirmDeleteItem(this,0,12)">✕</button></div><div class="admin-item-row" data-ii="13" draggable="true">
+    <span class="drag-handle" title="ドラッグで並び替え">⠿</span>
+    <input class="admin-item-input" type="text" value="感染防止対策委員会の議事録をスタッフが閲覧している" oninput="adminDraft[0].items[13]=this.value;adminDraftDirty=true">
+    <button class="admin-item-del" title="削除" id="del-0-13" onclick="confirmDeleteItem(this,0,13)">✕</button></div><div class="admin-item-row" data-ii="14" draggable="true">
+    <span class="drag-handle" title="ドラッグで並び替え">⠿</span>
+    <input class="admin-item-input" type="text" value="頭髪はまとめ、爪を切って清潔である" oninput="adminDraft[0].items[14]=this.value;adminDraftDirty=true">
+    <button class="admin-item-del" title="削除" id="del-0-14" onclick="confirmDeleteItem(this,0,14)">✕</button></div></div><div class="admin-add-item-row">
       <input class="admin-new-item-input" type="text" id="newItem-0" placeholder="＋ 新しい項目を入力してEnter" onkeydown="if(event.key===&#39;Enter&#39;){addItemToSection(0);event.preventDefault()}">
       <button class="btn btn-green" style="padding:6px 12px;font-size:12px" onclick="addItemToSection(0)">追加</button></div></div><div class="admin-section-card" data-si="1"><div class="admin-section-hdr">
       <span style="font-family:&#39;IBM Plex Mono&#39;,monospace;font-size:12px;color:#7a96b0;min-width:24px">2.</span>
-      <input class="admin-sec-title-input" value="水回り" placeholder="セクション名" onchange="adminDraft[1].title=this.value">
+      <input class="admin-sec-title-input" value="手指衛生" placeholder="セクション名" oninput="adminDraft[1].title=this.value;adminDraftDirty=true">
       <div style="display:flex;gap:6px;flex-shrink:0">
         <button class="btn" style="padding:4px 10px;font-size:11px" onclick="moveSectionUp(1)">↑</button>
         <button class="btn" style="padding:4px 10px;font-size:11px" onclick="moveSectionDown(1)">↓</button>
         <button class="btn btn-red" style="padding:4px 10px;font-size:11px" onclick="deleteSection(1)">🗑 削除</button>
       </div></div><div style="padding: 0px 18px;">
-      <textarea class="admin-point-input" placeholder="ラウンドのポイント（任意）" onchange="adminDraft[1].point=this.value">水回りには緑膿菌などの微生物が繁殖しやすい。水回りで汚染を受けた患者使用器具などから感染が拡大する可能性がある。</textarea></div><div id="admin-items-1"><div class="admin-item-row" data-ii="0" draggable="true">
+      <textarea class="admin-point-input" placeholder="ラウンドのポイント（任意）" oninput="adminDraft[1].point=this.value;adminDraftDirty=true">５つのタイミングで手指衛生できているか。特にケア前に実施できているか。患者ゾーン・医療ゾーンを意識できているか。遵守されにくい場面を、言葉にして明確にする。
+</textarea></div><div id="admin-items-1"><div class="admin-item-row" data-ii="0" draggable="true">
     <span class="drag-handle" title="ドラッグで並び替え">⠿</span>
-    <input class="admin-item-input" type="text" value="【強化】ケア前に手指衛生できている" onchange="adminDraft[1].items[0]=this.value">
-    <button class="admin-item-del" title="削除" onclick="deleteItem(1,0)">✕</button></div><div class="admin-item-row" data-ii="1" draggable="true">
+    <input class="admin-item-input" type="text" value="【強化】ケア前に手指衛生できている" oninput="adminDraft[1].items[0]=this.value;adminDraftDirty=true">
+    <button class="admin-item-del" title="削除" id="del-1-0" onclick="confirmDeleteItem(this,1,0)">✕</button></div><div class="admin-item-row" data-ii="1" draggable="true">
     <span class="drag-handle" title="ドラッグで並び替え">⠿</span>
-    <input class="admin-item-input" type="text" value="【強化】PC使用前後に手指衛生できている" onchange="adminDraft[1].items[1]=this.value">
-    <button class="admin-item-del" title="削除" onclick="deleteItem(1,1)">✕</button></div><div class="admin-item-row" data-ii="2" draggable="true">
+    <input class="admin-item-input" type="text" value="【強化】PC使用前後に手指衛生できている" oninput="adminDraft[1].items[1]=this.value;adminDraftDirty=true">
+    <button class="admin-item-del" title="削除" id="del-1-1" onclick="confirmDeleteItem(this,1,1)">✕</button></div><div class="admin-item-row" data-ii="2" draggable="true">
     <span class="drag-handle" title="ドラッグで並び替え">⠿</span>
-    <input class="admin-item-input" type="text" value="【強化】冷蔵庫・ロッカーの開閉前後で手指衛生できている" onchange="adminDraft[1].items[2]=this.value">
-    <button class="admin-item-del" title="削除" onclick="deleteItem(1,2)">✕</button></div><div class="admin-item-row" data-ii="3" draggable="true">
+    <input class="admin-item-input" type="text" value="【強化】冷蔵庫・ロッカーの開閉前後で手指衛生できている" oninput="adminDraft[1].items[2]=this.value;adminDraftDirty=true">
+    <button class="admin-item-del" title="削除" id="del-1-2" onclick="confirmDeleteItem(this,1,2)">✕</button></div><div class="admin-item-row" data-ii="3" draggable="true">
     <span class="drag-handle" title="ドラッグで並び替え">⠿</span>
-    <input class="admin-item-input" type="text" value="【強化】PHSの使用後に手指衛生できている" onchange="adminDraft[1].items[3]=this.value">
-    <button class="admin-item-del" title="削除" onclick="deleteItem(1,3)">✕</button></div><div class="admin-item-row" data-ii="4" draggable="true">
+    <input class="admin-item-input" type="text" value="【強化】PHSの使用後に手指衛生できている" oninput="adminDraft[1].items[3]=this.value;adminDraftDirty=true">
+    <button class="admin-item-del" title="削除" id="del-1-3" onclick="confirmDeleteItem(this,1,3)">✕</button></div><div class="admin-item-row" data-ii="4" draggable="true">
     <span class="drag-handle" title="ドラッグで並び替え">⠿</span>
-    <input class="admin-item-input" type="text" value="手洗い場に液体石けん・ペーパータオルが置かれている" onchange="adminDraft[1].items[4]=this.value">
-    <button class="admin-item-del" title="削除" onclick="deleteItem(1,4)">✕</button></div><div class="admin-item-row" data-ii="5" draggable="true">
+    <input class="admin-item-input" type="text" value="手洗い場に液体石けん・ペーパータオルが置かれている" oninput="adminDraft[1].items[4]=this.value;adminDraftDirty=true">
+    <button class="admin-item-del" title="削除" id="del-1-4" onclick="confirmDeleteItem(this,1,4)">✕</button></div><div class="admin-item-row" data-ii="5" draggable="true">
     <span class="drag-handle" title="ドラッグで並び替え">⠿</span>
-    <input class="admin-item-input" type="text" value="速乾性手指消毒剤は適切に配置されている" onchange="adminDraft[1].items[5]=this.value">
-    <button class="admin-item-del" title="削除" onclick="deleteItem(1,5)">✕</button></div><div class="admin-item-row" data-ii="6" draggable="true">
+    <input class="admin-item-input" type="text" value="速乾性手指消毒剤は適切に配置されている" oninput="adminDraft[1].items[5]=this.value;adminDraftDirty=true">
+    <button class="admin-item-del" title="削除" id="del-1-5" onclick="confirmDeleteItem(this,1,5)">✕</button></div><div class="admin-item-row" data-ii="6" draggable="true">
     <span class="drag-handle" title="ドラッグで並び替え">⠿</span>
-    <input class="admin-item-input" type="text" value="速乾性手指消毒剤の使用期限が記入されている。期限切れのものはない" onchange="adminDraft[1].items[6]=this.value">
-    <button class="admin-item-del" title="削除" onclick="deleteItem(1,6)">✕</button></div></div><div class="admin-add-item-row">
+    <input class="admin-item-input" type="text" value="速乾性手指消毒剤の使用期限が記入されている。期限切れのものはない" oninput="adminDraft[1].items[6]=this.value;adminDraftDirty=true">
+    <button class="admin-item-del" title="削除" id="del-1-6" onclick="confirmDeleteItem(this,1,6)">✕</button></div><div class="admin-item-row" data-ii="7" draggable="true">
+    <span class="drag-handle" title="ドラッグで並び替え">⠿</span>
+    <input class="admin-item-input" type="text" value="手荒れのあるスタッフは、ノンアルコール製剤や保護ハンドクリームなどを適切に使用できている" oninput="adminDraft[1].items[7]=this.value;adminDraftDirty=true">
+    <button class="admin-item-del" title="削除" id="del-1-7" onclick="confirmDeleteItem(this,1,7)">✕</button></div></div><div class="admin-add-item-row">
       <input class="admin-new-item-input" type="text" id="newItem-1" placeholder="＋ 新しい項目を入力してEnter" onkeydown="if(event.key===&#39;Enter&#39;){addItemToSection(1);event.preventDefault()}">
       <button class="btn btn-green" style="padding:6px 12px;font-size:12px" onclick="addItemToSection(1)">追加</button></div></div><div class="admin-section-card" data-si="2"><div class="admin-section-hdr">
       <span style="font-family:&#39;IBM Plex Mono&#39;,monospace;font-size:12px;color:#7a96b0;min-width:24px">3.</span>
-      <input class="admin-sec-title-input" value="水回り" placeholder="セクション名" onchange="adminDraft[2].title=this.value">
+      <input class="admin-sec-title-input" value="水回り" placeholder="セクション名" oninput="adminDraft[2].title=this.value;adminDraftDirty=true">
       <div style="display:flex;gap:6px;flex-shrink:0">
         <button class="btn" style="padding:4px 10px;font-size:11px" onclick="moveSectionUp(2)">↑</button>
         <button class="btn" style="padding:4px 10px;font-size:11px" onclick="moveSectionDown(2)">↓</button>
         <button class="btn btn-red" style="padding:4px 10px;font-size:11px" onclick="deleteSection(2)">🗑 削除</button>
       </div></div><div style="padding: 0px 18px;">
-      <textarea class="admin-point-input" placeholder="ラウンドのポイント（任意）" onchange="adminDraft[2].point=this.value">水回り環境には、アシネトバクターや緑膿菌などが、バイオフィルムを作って定着しやすい。定着リスクをできるだけ減らせているか、また拡散させない対策ができているか確認する。</textarea></div><div id="admin-items-2"><div class="admin-item-row" data-ii="0" draggable="true">
+      <textarea class="admin-point-input" placeholder="ラウンドのポイント（任意）" oninput="adminDraft[2].point=this.value;adminDraftDirty=true">水回り環境には、アシネトバクターや緑膿菌などが、バイオフィルムを作って定着しやすい。定着リスクをできるだけ減らせているか、また拡散させない対策ができているか確認する。</textarea></div><div id="admin-items-2"><div class="admin-item-row" data-ii="0" draggable="true">
     <span class="drag-handle" title="ドラッグで並び替え">⠿</span>
-    <input class="admin-item-input" type="text" value="定期的に（2回/月）スポンジが交換できているか" onchange="adminDraft[2].items[0]=this.value">
-    <button class="admin-item-del" title="削除" onclick="deleteItem(2,0)">✕</button></div><div class="admin-item-row" data-ii="1" draggable="true">
+    <input class="admin-item-input" type="text" value="定期的に（目安；2回/月）スポンジが交換できているか" oninput="adminDraft[2].items[0]=this.value;adminDraftDirty=true">
+    <button class="admin-item-del" title="削除" id="del-2-0" onclick="confirmDeleteItem(this,2,0)">✕</button></div><div class="admin-item-row" data-ii="1" draggable="true">
     <span class="drag-handle" title="ドラッグで並び替え">⠿</span>
-    <input class="admin-item-input" type="text" value="ENキャップを適切に装着しているか" onchange="adminDraft[2].items[1]=this.value">
-    <button class="admin-item-del" title="削除" onclick="deleteItem(2,1)">✕</button></div><div class="admin-item-row" data-ii="2" draggable="true">
+    <input class="admin-item-input" type="text" value="スポンジはシンク周りに直置きされていないか（水切り用の容器の上に置かれているか）" oninput="adminDraft[2].items[1]=this.value;adminDraftDirty=true">
+    <button class="admin-item-del" title="削除" id="del-2-1" onclick="confirmDeleteItem(this,2,1)">✕</button></div><div class="admin-item-row" data-ii="2" draggable="true">
     <span class="drag-handle" title="ドラッグで並び替え">⠿</span>
-    <input class="admin-item-input" type="text" value="注入ボトルのチューブ先端が、排水口に入らないよう、バット等で受けているか" onchange="adminDraft[2].items[2]=this.value">
-    <button class="admin-item-del" title="削除" onclick="deleteItem(2,2)">✕</button></div><div class="admin-item-row" data-ii="3" draggable="true">
+    <input class="admin-item-input" type="text" value="シンクの水はねが注入ボトルやチューブなどにかかる状態にはなっていないか。" oninput="adminDraft[2].items[2]=this.value;adminDraftDirty=true">
+    <button class="admin-item-del" title="削除" id="del-2-2" onclick="confirmDeleteItem(this,2,2)">✕</button></div><div class="admin-item-row" data-ii="3" draggable="true">
     <span class="drag-handle" title="ドラッグで並び替え">⠿</span>
-    <input class="admin-item-input" type="text" value="ペーパータオルは適切に下向きに袋から出してセットされているか" onchange="adminDraft[2].items[3]=this.value">
-    <button class="admin-item-del" title="削除" onclick="deleteItem(2,3)">✕</button></div><div class="admin-item-row" data-ii="4" draggable="true">
+    <input class="admin-item-input" type="text" value="注入ボトルのチューブ先端が、排水口に入らないよう、バット等で受けているか" oninput="adminDraft[2].items[3]=this.value;adminDraftDirty=true">
+    <button class="admin-item-del" title="削除" id="del-2-3" onclick="confirmDeleteItem(this,2,3)">✕</button></div><div class="admin-item-row" data-ii="4" draggable="true">
     <span class="drag-handle" title="ドラッグで並び替え">⠿</span>
-    <input class="admin-item-input" type="text" value="流水時は、飛び散らないよう、静かに行えているか" onchange="adminDraft[2].items[4]=this.value">
-    <button class="admin-item-del" title="削除" onclick="deleteItem(2,4)">✕</button></div><div class="admin-item-row" data-ii="5" draggable="true">
+    <input class="admin-item-input" type="text" value="流水時手洗い時や物品洗浄時は、飛び散らないよう、静かに丁寧に行えているか" oninput="adminDraft[2].items[4]=this.value;adminDraftDirty=true">
+    <button class="admin-item-del" title="削除" id="del-2-4" onclick="confirmDeleteItem(this,2,4)">✕</button></div><div class="admin-item-row" data-ii="5" draggable="true">
     <span class="drag-handle" title="ドラッグで並び替え">⠿</span>
-    <input class="admin-item-input" type="text" value="飛び散った水滴などは、きれいにペーパーなどで清拭できているか" onchange="adminDraft[2].items[5]=this.value">
-    <button class="admin-item-del" title="削除" onclick="deleteItem(2,5)">✕</button></div></div><div class="admin-add-item-row">
+    <input class="admin-item-input" type="text" value="飛び散った水滴などは、きれいにペーパーなどで清拭できているか" oninput="adminDraft[2].items[5]=this.value;adminDraftDirty=true">
+    <button class="admin-item-del" title="削除" id="del-2-5" onclick="confirmDeleteItem(this,2,5)">✕</button></div></div><div class="admin-add-item-row">
       <input class="admin-new-item-input" type="text" id="newItem-2" placeholder="＋ 新しい項目を入力してEnter" onkeydown="if(event.key===&#39;Enter&#39;){addItemToSection(2);event.preventDefault()}">
       <button class="btn btn-green" style="padding:6px 12px;font-size:12px" onclick="addItemToSection(2)">追加</button></div></div><div class="admin-section-card" data-si="3"><div class="admin-section-hdr">
       <span style="font-family:&#39;IBM Plex Mono&#39;,monospace;font-size:12px;color:#7a96b0;min-width:24px">4.</span>
-      <input class="admin-sec-title-input" value="ミキシング台" placeholder="セクション名" onchange="adminDraft[3].title=this.value">
+      <input class="admin-sec-title-input" value="ミキシング台" placeholder="セクション名" oninput="adminDraft[3].title=this.value;adminDraftDirty=true">
       <div style="display:flex;gap:6px;flex-shrink:0">
         <button class="btn" style="padding:4px 10px;font-size:11px" onclick="moveSectionUp(3)">↑</button>
         <button class="btn" style="padding:4px 10px;font-size:11px" onclick="moveSectionDown(3)">↓</button>
         <button class="btn btn-red" style="padding:4px 10px;font-size:11px" onclick="deleteSection(3)">🗑 削除</button>
       </div></div><div style="padding: 0px 18px;">
-      <textarea class="admin-point-input" placeholder="ラウンドのポイント（任意）" onchange="adminDraft[3].point=this.value">血流感染は、生命の危機に直結する。血液感染時の微生物侵入経路は、①刺入部の汚染、②接続部の汚染、③ミキシング時の汚染である。清潔操作と整理整頓ができているか確認。</textarea></div><div id="admin-items-3"><div class="admin-item-row" data-ii="0" draggable="true">
+      <textarea class="admin-point-input" placeholder="ラウンドのポイント（任意）" oninput="adminDraft[3].point=this.value;adminDraftDirty=true">血流感染は、生命の危機に直結する。血液感染時の微生物侵入経路は、①刺入部の汚染、②接続部の汚染、③ミキシング時の汚染である。清潔操作と整理整頓ができているか確認。</textarea></div><div id="admin-items-3"><div class="admin-item-row" data-ii="0" draggable="true">
     <span class="drag-handle" title="ドラッグで並び替え">⠿</span>
-    <input class="admin-item-input" type="text" value="ミキシング台の上にアルコールジェル以外の物がない" onchange="adminDraft[3].items[0]=this.value">
-    <button class="admin-item-del" title="削除" onclick="deleteItem(3,0)">✕</button></div><div class="admin-item-row" data-ii="1" draggable="true">
+    <input class="admin-item-input" type="text" value="ミキシング台の上にアルコールジェル以外の物がない" oninput="adminDraft[3].items[0]=this.value;adminDraftDirty=true">
+    <button class="admin-item-del" title="削除" id="del-3-0" onclick="confirmDeleteItem(this,3,0)">✕</button></div><div class="admin-item-row" data-ii="1" draggable="true">
     <span class="drag-handle" title="ドラッグで並び替え">⠿</span>
-    <input class="admin-item-input" type="text" value="ミキシング台が清潔に清拭されている" onchange="adminDraft[3].items[1]=this.value">
-    <button class="admin-item-del" title="削除" onclick="deleteItem(3,1)">✕</button></div><div class="admin-item-row" data-ii="2" draggable="true">
+    <input class="admin-item-input" type="text" value="ミキシング台が清潔に清拭されている（眼に見える汚染がなく、環境ワイプで清拭もされている）" oninput="adminDraft[3].items[1]=this.value;adminDraftDirty=true">
+    <button class="admin-item-del" title="削除" id="del-3-1" onclick="confirmDeleteItem(this,3,1)">✕</button></div><div class="admin-item-row" data-ii="2" draggable="true">
     <span class="drag-handle" title="ドラッグで並び替え">⠿</span>
-    <input class="admin-item-input" type="text" value="フックに不要な物品がかかっていない" onchange="adminDraft[3].items[2]=this.value">
-    <button class="admin-item-del" title="削除" onclick="deleteItem(3,2)">✕</button></div><div class="admin-item-row" data-ii="3" draggable="true">
+    <input class="admin-item-input" type="text" value="フックに不要な物品がかかっていない" oninput="adminDraft[3].items[2]=this.value;adminDraftDirty=true">
+    <button class="admin-item-del" title="削除" id="del-3-2" onclick="confirmDeleteItem(this,3,2)">✕</button></div><div class="admin-item-row" data-ii="3" draggable="true">
     <span class="drag-handle" title="ドラッグで並び替え">⠿</span>
-    <input class="admin-item-input" type="text" value="ミキシング前後で手指衛生をしている" onchange="adminDraft[3].items[3]=this.value">
-    <button class="admin-item-del" title="削除" onclick="deleteItem(3,3)">✕</button></div><div class="admin-item-row" data-ii="4" draggable="true">
+    <input class="admin-item-input" type="text" value="ミキシング前後で手指衛生をしている" oninput="adminDraft[3].items[3]=this.value;adminDraftDirty=true">
+    <button class="admin-item-del" title="削除" id="del-3-3" onclick="confirmDeleteItem(this,3,3)">✕</button></div><div class="admin-item-row" data-ii="4" draggable="true">
     <span class="drag-handle" title="ドラッグで並び替え">⠿</span>
-    <input class="admin-item-input" type="text" value="バイアルのキャップを外し、アルコール消毒してから穿刺している" onchange="adminDraft[3].items[4]=this.value">
-    <button class="admin-item-del" title="削除" onclick="deleteItem(3,4)">✕</button></div><div class="admin-item-row" data-ii="5" draggable="true">
+    <input class="admin-item-input" type="text" value="バイアルのキャップを外し、ぎゅうぎゅうと強く押すようにアルコール消毒してから穿刺している" oninput="adminDraft[3].items[4]=this.value;adminDraftDirty=true">
+    <button class="admin-item-del" title="削除" id="del-3-4" onclick="confirmDeleteItem(this,3,4)">✕</button></div><div class="admin-item-row" data-ii="5" draggable="true">
     <span class="drag-handle" title="ドラッグで並び替え">⠿</span>
-    <input class="admin-item-input" type="text" value="点滴バッグの刺入部のテープをはがした後、アルコール綿花で消毒している" onchange="adminDraft[3].items[5]=this.value">
-    <button class="admin-item-del" title="削除" onclick="deleteItem(3,5)">✕</button></div><div class="admin-item-row" data-ii="6" draggable="true">
+    <input class="admin-item-input" type="text" value="点滴バッグの刺入部のテープをはがした後、アルコール綿花で消毒している" oninput="adminDraft[3].items[5]=this.value;adminDraftDirty=true">
+    <button class="admin-item-del" title="削除" id="del-3-5" onclick="confirmDeleteItem(this,3,5)">✕</button></div><div class="admin-item-row" data-ii="6" draggable="true">
     <span class="drag-handle" title="ドラッグで並び替え">⠿</span>
-    <input class="admin-item-input" type="text" value="ミキシング台に扇風機を向けていない" onchange="adminDraft[3].items[6]=this.value">
-    <button class="admin-item-del" title="削除" onclick="deleteItem(3,6)">✕</button></div></div><div class="admin-add-item-row">
+    <input class="admin-item-input" type="text" value="ミキシング台に扇風機を向けていない" oninput="adminDraft[3].items[6]=this.value;adminDraftDirty=true">
+    <button class="admin-item-del" title="削除" id="del-3-6" onclick="confirmDeleteItem(this,3,6)">✕</button></div><div class="admin-item-row" data-ii="7" draggable="true">
+    <span class="drag-handle" title="ドラッグで並び替え">⠿</span>
+    <input class="admin-item-input" type="text" value="ミキシング台の側に、捨てやすい位置に針入れBOXがある" oninput="adminDraft[3].items[7]=this.value;adminDraftDirty=true">
+    <button class="admin-item-del" title="削除" id="del-3-7" onclick="confirmDeleteItem(this,3,7)">✕</button></div></div><div class="admin-add-item-row">
       <input class="admin-new-item-input" type="text" id="newItem-3" placeholder="＋ 新しい項目を入力してEnter" onkeydown="if(event.key===&#39;Enter&#39;){addItemToSection(3);event.preventDefault()}">
       <button class="btn btn-green" style="padding:6px 12px;font-size:12px" onclick="addItemToSection(3)">追加</button></div></div><div class="admin-section-card" data-si="4"><div class="admin-section-hdr">
       <span style="font-family:&#39;IBM Plex Mono&#39;,monospace;font-size:12px;color:#7a96b0;min-width:24px">5.</span>
-      <input class="admin-sec-title-input" value="針刺し・体液曝露" placeholder="セクション名" onchange="adminDraft[4].title=this.value">
+      <input class="admin-sec-title-input" value="針刺し・体液曝露" placeholder="セクション名" oninput="adminDraft[4].title=this.value;adminDraftDirty=true">
       <div style="display:flex;gap:6px;flex-shrink:0">
         <button class="btn" style="padding:4px 10px;font-size:11px" onclick="moveSectionUp(4)">↑</button>
         <button class="btn" style="padding:4px 10px;font-size:11px" onclick="moveSectionDown(4)">↓</button>
         <button class="btn btn-red" style="padding:4px 10px;font-size:11px" onclick="deleteSection(4)">🗑 削除</button>
       </div></div><div style="padding: 0px 18px;">
-      <textarea class="admin-point-input" placeholder="ラウンドのポイント（任意）" onchange="adminDraft[4].point=this.value">針刺し、体液曝露は環境整備で防げる場合が多い。必要物品の用意や手順の遵守など、基本ができているか確認する。</textarea></div><div id="admin-items-4"><div class="admin-item-row" data-ii="0" draggable="true">
+      <textarea class="admin-point-input" placeholder="ラウンドのポイント（任意）" oninput="adminDraft[4].point=this.value;adminDraftDirty=true">針刺し、体液曝露は環境整備で防げる場合が多い。必要物品の用意や手順の遵守など、基本ができているか確認する。</textarea></div><div id="admin-items-4"><div class="admin-item-row" data-ii="0" draggable="true">
     <span class="drag-handle" title="ドラッグで並び替え">⠿</span>
-    <input class="admin-item-input" type="text" value="針入れBOXを持参している" onchange="adminDraft[4].items[0]=this.value">
-    <button class="admin-item-del" title="削除" onclick="deleteItem(4,0)">✕</button></div><div class="admin-item-row" data-ii="1" draggable="true">
+    <input class="admin-item-input" type="text" value="針入れBOXを持参している" oninput="adminDraft[4].items[0]=this.value;adminDraftDirty=true">
+    <button class="admin-item-del" title="削除" id="del-4-0" onclick="confirmDeleteItem(this,4,0)">✕</button></div><div class="admin-item-row" data-ii="1" draggable="true">
     <span class="drag-handle" title="ドラッグで並び替え">⠿</span>
-    <input class="admin-item-input" type="text" value="血液感染症を有する患者を把握している" onchange="adminDraft[4].items[1]=this.value">
-    <button class="admin-item-del" title="削除" onclick="deleteItem(4,1)">✕</button></div><div class="admin-item-row" data-ii="2" draggable="true">
+    <input class="admin-item-input" type="text" value="血液感染症を有する患者を把握している（新人採血時は特に注意するよう指導している）" oninput="adminDraft[4].items[1]=this.value;adminDraftDirty=true">
+    <button class="admin-item-del" title="削除" id="del-4-1" onclick="confirmDeleteItem(this,4,1)">✕</button></div><div class="admin-item-row" data-ii="2" draggable="true">
     <span class="drag-handle" title="ドラッグで並び替え">⠿</span>
-    <input class="admin-item-input" type="text" value="採血・点滴留置の際は、手袋を装着している" onchange="adminDraft[4].items[2]=this.value">
-    <button class="admin-item-del" title="削除" onclick="deleteItem(4,2)">✕</button></div><div class="admin-item-row" data-ii="3" draggable="true">
+    <input class="admin-item-input" type="text" value="採血・点滴留置の際は、手袋を装着している（針刺し時の感染リスク低減の意味合いもある）" oninput="adminDraft[4].items[2]=this.value;adminDraftDirty=true">
+    <button class="admin-item-del" title="削除" id="del-4-2" onclick="confirmDeleteItem(this,4,2)">✕</button></div><div class="admin-item-row" data-ii="3" draggable="true">
     <span class="drag-handle" title="ドラッグで並び替え">⠿</span>
-    <input class="admin-item-input" type="text" value="リキャップを行っていない" onchange="adminDraft[4].items[3]=this.value">
-    <button class="admin-item-del" title="削除" onclick="deleteItem(4,3)">✕</button></div><div class="admin-item-row" data-ii="4" draggable="true">
+    <input class="admin-item-input" type="text" value="リキャップを行っていない" oninput="adminDraft[4].items[3]=this.value;adminDraftDirty=true">
+    <button class="admin-item-del" title="削除" id="del-4-3" onclick="confirmDeleteItem(this,4,3)">✕</button></div><div class="admin-item-row" data-ii="4" draggable="true">
     <span class="drag-handle" title="ドラッグで並び替え">⠿</span>
-    <input class="admin-item-input" type="text" value="リキャップの必要性がある場合、台の上に置き、まっすぐにかぶせているか" onchange="adminDraft[4].items[4]=this.value">
-    <button class="admin-item-del" title="削除" onclick="deleteItem(4,4)">✕</button></div></div><div class="admin-add-item-row">
+    <input class="admin-item-input" type="text" value="リキャップの必要性がある場合、台の上に置き、まっすぐにすくいあげているか（すくいあげ法）" oninput="adminDraft[4].items[4]=this.value;adminDraftDirty=true">
+    <button class="admin-item-del" title="削除" id="del-4-4" onclick="confirmDeleteItem(this,4,4)">✕</button></div></div><div class="admin-add-item-row">
       <input class="admin-new-item-input" type="text" id="newItem-4" placeholder="＋ 新しい項目を入力してEnter" onkeydown="if(event.key===&#39;Enter&#39;){addItemToSection(4);event.preventDefault()}">
       <button class="btn btn-green" style="padding:6px 12px;font-size:12px" onclick="addItemToSection(4)">追加</button></div></div><div class="admin-section-card" data-si="5"><div class="admin-section-hdr">
       <span style="font-family:&#39;IBM Plex Mono&#39;,monospace;font-size:12px;color:#7a96b0;min-width:24px">6.</span>
-      <input class="admin-sec-title-input" value="感染性廃棄物" placeholder="セクション名" onchange="adminDraft[5].title=this.value">
+      <input class="admin-sec-title-input" value="廃棄物" placeholder="セクション名" oninput="adminDraft[5].title=this.value;adminDraftDirty=true">
       <div style="display:flex;gap:6px;flex-shrink:0">
         <button class="btn" style="padding:4px 10px;font-size:11px" onclick="moveSectionUp(5)">↑</button>
         <button class="btn" style="padding:4px 10px;font-size:11px" onclick="moveSectionDown(5)">↓</button>
         <button class="btn btn-red" style="padding:4px 10px;font-size:11px" onclick="deleteSection(5)">🗑 削除</button>
       </div></div><div style="padding: 0px 18px;">
-      <textarea class="admin-point-input" placeholder="ラウンドのポイント（任意）" onchange="adminDraft[5].point=this.value">感染性廃棄物BOXに入れるべきものは入れ、入れるべきでないものはいれない。適切に廃棄されているか、確認する。</textarea></div><div id="admin-items-5"><div class="admin-item-row" data-ii="0" draggable="true">
+      <textarea class="admin-point-input" placeholder="ラウンドのポイント（任意）" oninput="adminDraft[5].point=this.value;adminDraftDirty=true">感染性廃棄物BOXに入れるべきものは入れ、入れるべきでないものはいれない。感染性の有無に関わらず、適切に廃棄されているか、確認する。</textarea></div><div id="admin-items-5"><div class="admin-item-row" data-ii="0" draggable="true">
     <span class="drag-handle" title="ドラッグで並び替え">⠿</span>
-    <input class="admin-item-input" type="text" value="感染性廃棄物BOXに廃棄するもの一覧表をBOX付近に掲示してある" onchange="adminDraft[5].items[0]=this.value">
-    <button class="admin-item-del" title="削除" onclick="deleteItem(5,0)">✕</button></div><div class="admin-item-row" data-ii="1" draggable="true">
+    <input class="admin-item-input" type="text" value="感染性廃棄物BOXに廃棄するもの一覧表をBOX付近に掲示してある" oninput="adminDraft[5].items[0]=this.value;adminDraftDirty=true">
+    <button class="admin-item-del" title="削除" id="del-5-0" onclick="confirmDeleteItem(this,5,0)">✕</button></div><div class="admin-item-row" data-ii="1" draggable="true">
     <span class="drag-handle" title="ドラッグで並び替え">⠿</span>
-    <input class="admin-item-input" type="text" value="BOXに不適切なものが廃棄されていない" onchange="adminDraft[5].items[1]=this.value">
-    <button class="admin-item-del" title="削除" onclick="deleteItem(5,1)">✕</button></div><div class="admin-item-row" data-ii="2" draggable="true">
+    <input class="admin-item-input" type="text" value="感染性廃棄物BOXに不適切なものが廃棄されていない" oninput="adminDraft[5].items[1]=this.value;adminDraftDirty=true">
+    <button class="admin-item-del" title="削除" id="del-5-1" onclick="confirmDeleteItem(this,5,1)">✕</button></div><div class="admin-item-row" data-ii="2" draggable="true">
     <span class="drag-handle" title="ドラッグで並び替え">⠿</span>
-    <input class="admin-item-input" type="text" value="針入れBOX（白大・赤小）に不適切なものが廃棄されていない" onchange="adminDraft[5].items[2]=this.value">
-    <button class="admin-item-del" title="削除" onclick="deleteItem(5,2)">✕</button></div></div><div class="admin-add-item-row">
+    <input class="admin-item-input" type="text" value="針入れBOX（白大・赤小）に不適切なものが廃棄されていない" oninput="adminDraft[5].items[2]=this.value;adminDraftDirty=true">
+    <button class="admin-item-del" title="削除" id="del-5-2" onclick="confirmDeleteItem(this,5,2)">✕</button></div><div class="admin-item-row" data-ii="3" draggable="true">
+    <span class="drag-handle" title="ドラッグで並び替え">⠿</span>
+    <input class="admin-item-input" type="text" value="バイアル入れにアンプルを廃棄していないか（逆も。針・鋭利器材廃棄容器にバイアルを廃棄していないか）" oninput="adminDraft[5].items[3]=this.value;adminDraftDirty=true">
+    <button class="admin-item-del" title="削除" id="del-5-3" onclick="confirmDeleteItem(this,5,3)">✕</button></div></div><div class="admin-add-item-row">
       <input class="admin-new-item-input" type="text" id="newItem-5" placeholder="＋ 新しい項目を入力してEnter" onkeydown="if(event.key===&#39;Enter&#39;){addItemToSection(5);event.preventDefault()}">
       <button class="btn btn-green" style="padding:6px 12px;font-size:12px" onclick="addItemToSection(5)">追加</button></div></div><div class="admin-section-card" data-si="6"><div class="admin-section-hdr">
       <span style="font-family:&#39;IBM Plex Mono&#39;,monospace;font-size:12px;color:#7a96b0;min-width:24px">7.</span>
-      <input class="admin-sec-title-input" value="汚物室" placeholder="セクション名" onchange="adminDraft[6].title=this.value">
+      <input class="admin-sec-title-input" value="汚物室" placeholder="セクション名" oninput="adminDraft[6].title=this.value;adminDraftDirty=true">
       <div style="display:flex;gap:6px;flex-shrink:0">
         <button class="btn" style="padding:4px 10px;font-size:11px" onclick="moveSectionUp(6)">↑</button>
         <button class="btn" style="padding:4px 10px;font-size:11px" onclick="moveSectionDown(6)">↓</button>
         <button class="btn btn-red" style="padding:4px 10px;font-size:11px" onclick="deleteSection(6)">🗑 削除</button>
       </div></div><div style="padding: 0px 18px;">
-      <textarea class="admin-point-input" placeholder="ラウンドのポイント（任意）" onchange="adminDraft[6].point=this.value">汚物室に清潔なものが置かれていないか。整理整頓はできているか。</textarea></div><div id="admin-items-6"><div class="admin-item-row" data-ii="0" draggable="true">
+      <textarea class="admin-point-input" placeholder="ラウンドのポイント（任意）" oninput="adminDraft[6].point=this.value;adminDraftDirty=true">汚物室に清潔なものが置かれていないか。整理整頓はできているか。</textarea></div><div id="admin-items-6"><div class="admin-item-row" data-ii="0" draggable="true">
     <span class="drag-handle" title="ドラッグで並び替え">⠿</span>
-    <input class="admin-item-input" type="text" value="汚物室に清潔な物品が置かれていない" onchange="adminDraft[6].items[0]=this.value">
-    <button class="admin-item-del" title="削除" onclick="deleteItem(6,0)">✕</button></div><div class="admin-item-row" data-ii="1" draggable="true">
+    <input class="admin-item-input" type="text" value="汚物室に清潔な物品が置かれていない" oninput="adminDraft[6].items[0]=this.value;adminDraftDirty=true">
+    <button class="admin-item-del" title="削除" id="del-6-0" onclick="confirmDeleteItem(this,6,0)">✕</button></div><div class="admin-item-row" data-ii="1" draggable="true">
     <span class="drag-handle" title="ドラッグで並び替え">⠿</span>
-    <input class="admin-item-input" type="text" value="汚物室が整理整頓されている" onchange="adminDraft[6].items[1]=this.value">
-    <button class="admin-item-del" title="削除" onclick="deleteItem(6,1)">✕</button></div><div class="admin-item-row" data-ii="2" draggable="true">
+    <input class="admin-item-input" type="text" value="汚物室が整理整頓されている" oninput="adminDraft[6].items[1]=this.value;adminDraftDirty=true">
+    <button class="admin-item-del" title="削除" id="del-6-1" onclick="confirmDeleteItem(this,6,1)">✕</button></div><div class="admin-item-row" data-ii="2" draggable="true">
     <span class="drag-handle" title="ドラッグで並び替え">⠿</span>
-    <input class="admin-item-input" type="text" value="吐物処理グッズが適切に配置されている" onchange="adminDraft[6].items[2]=this.value">
-    <button class="admin-item-del" title="削除" onclick="deleteItem(6,2)">✕</button></div><div class="admin-item-row" data-ii="3" draggable="true">
+    <input class="admin-item-input" type="text" value="吐物処理グッズが所定の位置に配置されている" oninput="adminDraft[6].items[2]=this.value;adminDraftDirty=true">
+    <button class="admin-item-del" title="削除" id="del-6-2" onclick="confirmDeleteItem(this,6,2)">✕</button></div><div class="admin-item-row" data-ii="3" draggable="true">
     <span class="drag-handle" title="ドラッグで並び替え">⠿</span>
-    <input class="admin-item-input" type="text" value="吐物処理グッズに過不足がない" onchange="adminDraft[6].items[3]=this.value">
-    <button class="admin-item-del" title="削除" onclick="deleteItem(6,3)">✕</button></div><div class="admin-item-row" data-ii="4" draggable="true">
+    <input class="admin-item-input" type="text" value="吐物処理グッズに過不足がない" oninput="adminDraft[6].items[3]=this.value;adminDraftDirty=true">
+    <button class="admin-item-del" title="削除" id="del-6-3" onclick="confirmDeleteItem(this,6,3)">✕</button></div><div class="admin-item-row" data-ii="4" draggable="true">
     <span class="drag-handle" title="ドラッグで並び替え">⠿</span>
-    <input class="admin-item-input" type="text" value="汚物廃棄時はPPEを着用し、周囲に飛散しないよう静かに行っている" onchange="adminDraft[6].items[4]=this.value">
-    <button class="admin-item-del" title="削除" onclick="deleteItem(6,4)">✕</button></div></div><div class="admin-add-item-row">
+    <input class="admin-item-input" type="text" value="汚物廃棄時はPPEを着用し、周囲に飛散しないよう静かに行っている" oninput="adminDraft[6].items[4]=this.value;adminDraftDirty=true">
+    <button class="admin-item-del" title="削除" id="del-6-4" onclick="confirmDeleteItem(this,6,4)">✕</button></div></div><div class="admin-add-item-row">
       <input class="admin-new-item-input" type="text" id="newItem-6" placeholder="＋ 新しい項目を入力してEnter" onkeydown="if(event.key===&#39;Enter&#39;){addItemToSection(6);event.preventDefault()}">
       <button class="btn btn-green" style="padding:6px 12px;font-size:12px" onclick="addItemToSection(6)">追加</button></div></div><div class="admin-section-card" data-si="7"><div class="admin-section-hdr">
       <span style="font-family:&#39;IBM Plex Mono&#39;,monospace;font-size:12px;color:#7a96b0;min-width:24px">8.</span>
-      <input class="admin-sec-title-input" value="リネン庫" placeholder="セクション名" onchange="adminDraft[7].title=this.value">
+      <input class="admin-sec-title-input" value="リネン庫" placeholder="セクション名" oninput="adminDraft[7].title=this.value;adminDraftDirty=true">
       <div style="display:flex;gap:6px;flex-shrink:0">
         <button class="btn" style="padding:4px 10px;font-size:11px" onclick="moveSectionUp(7)">↑</button>
         <button class="btn" style="padding:4px 10px;font-size:11px" onclick="moveSectionDown(7)">↓</button>
         <button class="btn btn-red" style="padding:4px 10px;font-size:11px" onclick="deleteSection(7)">🗑 削除</button>
       </div></div><div style="padding: 0px 18px;">
-      <textarea class="admin-point-input" placeholder="ラウンドのポイント（任意）" onchange="adminDraft[7].point=this.value">リネンを介したアウトブレイク事例が多く報告されている。リネンから手指を介して血流感染に至った事例もある。清潔不潔の区別と、整理整頓ができているか。</textarea></div><div id="admin-items-7"><div class="admin-item-row" data-ii="0" draggable="true">
+      <textarea class="admin-point-input" placeholder="ラウンドのポイント（任意）" oninput="adminDraft[7].point=this.value;adminDraftDirty=true">リネンを介したアウトブレイク事例が多く報告されている。リネンから手指を介して血流感染に至った事例もある。清潔不潔の区別と、整理整頓ができているか。</textarea></div><div id="admin-items-7"><div class="admin-item-row" data-ii="0" draggable="true">
     <span class="drag-handle" title="ドラッグで並び替え">⠿</span>
-    <input class="admin-item-input" type="text" value="清潔リネン庫に不潔リネンやその他のものがない" onchange="adminDraft[7].items[0]=this.value">
-    <button class="admin-item-del" title="削除" onclick="deleteItem(7,0)">✕</button></div><div class="admin-item-row" data-ii="1" draggable="true">
+    <input class="admin-item-input" type="text" value="清潔リネン庫に不潔リネンやその他のものがない" oninput="adminDraft[7].items[0]=this.value;adminDraftDirty=true">
+    <button class="admin-item-del" title="削除" id="del-7-0" onclick="confirmDeleteItem(this,7,0)">✕</button></div><div class="admin-item-row" data-ii="1" draggable="true">
     <span class="drag-handle" title="ドラッグで並び替え">⠿</span>
-    <input class="admin-item-input" type="text" value="不潔リネン庫は整理整頓され、リネン袋の口はしっかりと結ばれている" onchange="adminDraft[7].items[1]=this.value">
-    <button class="admin-item-del" title="削除" onclick="deleteItem(7,1)">✕</button></div><div class="admin-item-row" data-ii="2" draggable="true">
+    <input class="admin-item-input" type="text" value="不潔リネン庫は整理整頓され、リネン袋の口はしっかりと結ばれている" oninput="adminDraft[7].items[1]=this.value;adminDraftDirty=true">
+    <button class="admin-item-del" title="削除" id="del-7-1" onclick="confirmDeleteItem(this,7,1)">✕</button></div><div class="admin-item-row" data-ii="2" draggable="true">
     <span class="drag-handle" title="ドラッグで並び替え">⠿</span>
-    <input class="admin-item-input" type="text" value="感染性リネンは、赤いランドリーバッグに入れている" onchange="adminDraft[7].items[2]=this.value">
-    <button class="admin-item-del" title="削除" onclick="deleteItem(7,2)">✕</button></div><div class="admin-item-row" data-ii="3" draggable="true">
+    <input class="admin-item-input" type="text" value="感染性リネンは、赤いランドリーバッグに入れている" oninput="adminDraft[7].items[2]=this.value;adminDraftDirty=true">
+    <button class="admin-item-del" title="削除" id="del-7-2" onclick="confirmDeleteItem(this,7,2)">✕</button></div><div class="admin-item-row" data-ii="3" draggable="true">
     <span class="drag-handle" title="ドラッグで並び替え">⠿</span>
-    <input class="admin-item-input" type="text" value="清潔リネン庫に段ボール類などが置かれていない" onchange="adminDraft[7].items[3]=this.value">
-    <button class="admin-item-del" title="削除" onclick="deleteItem(7,3)">✕</button></div></div><div class="admin-add-item-row">
+    <input class="admin-item-input" type="text" value="清潔リネン庫に段ボール類などが置かれていない" oninput="adminDraft[7].items[3]=this.value;adminDraftDirty=true">
+    <button class="admin-item-del" title="削除" id="del-7-3" onclick="confirmDeleteItem(this,7,3)">✕</button></div></div><div class="admin-add-item-row">
       <input class="admin-new-item-input" type="text" id="newItem-7" placeholder="＋ 新しい項目を入力してEnter" onkeydown="if(event.key===&#39;Enter&#39;){addItemToSection(7);event.preventDefault()}">
       <button class="btn btn-green" style="padding:6px 12px;font-size:12px" onclick="addItemToSection(7)">追加</button></div></div><div class="admin-section-card" data-si="8"><div class="admin-section-hdr">
       <span style="font-family:&#39;IBM Plex Mono&#39;,monospace;font-size:12px;color:#7a96b0;min-width:24px">9.</span>
-      <input class="admin-sec-title-input" value="ナーシングカート" placeholder="セクション名" onchange="adminDraft[8].title=this.value">
+      <input class="admin-sec-title-input" value="ナーシングカート・処置ケア物品" placeholder="セクション名" oninput="adminDraft[8].title=this.value;adminDraftDirty=true">
       <div style="display:flex;gap:6px;flex-shrink:0">
         <button class="btn" style="padding:4px 10px;font-size:11px" onclick="moveSectionUp(8)">↑</button>
         <button class="btn" style="padding:4px 10px;font-size:11px" onclick="moveSectionDown(8)">↓</button>
         <button class="btn btn-red" style="padding:4px 10px;font-size:11px" onclick="deleteSection(8)">🗑 削除</button>
       </div></div><div style="padding: 0px 18px;">
-      <textarea class="admin-point-input" placeholder="ラウンドのポイント（任意）" onchange="adminDraft[8].point=this.value">ナーシングカートの清潔・不潔が区別できているか。整理整頓はできているか。</textarea></div><div id="admin-items-8"><div class="admin-item-row" data-ii="0" draggable="true">
+      <textarea class="admin-point-input" placeholder="ラウンドのポイント（任意）" oninput="adminDraft[8].point=this.value;adminDraftDirty=true">ナーシングカートの清潔・不潔が区別できているか。整理整頓はできているか。</textarea></div><div id="admin-items-8"><div class="admin-item-row" data-ii="0" draggable="true">
     <span class="drag-handle" title="ドラッグで並び替え">⠿</span>
-    <input class="admin-item-input" type="text" value="（ナーシングカートの写真を見ながら）清潔不潔の区別ができている" onchange="adminDraft[8].items[0]=this.value">
-    <button class="admin-item-del" title="削除" onclick="deleteItem(8,0)">✕</button></div><div class="admin-item-row" data-ii="1" draggable="true">
+    <input class="admin-item-input" type="text" value="（ナーシングカートの写真を見ながら）清潔不潔の区別ができている" oninput="adminDraft[8].items[0]=this.value;adminDraftDirty=true">
+    <button class="admin-item-del" title="削除" id="del-8-0" onclick="confirmDeleteItem(this,8,0)">✕</button></div><div class="admin-item-row" data-ii="1" draggable="true">
     <span class="drag-handle" title="ドラッグで並び替え">⠿</span>
-    <input class="admin-item-input" type="text" value="整理整頓ができている" onchange="adminDraft[8].items[1]=this.value">
-    <button class="admin-item-del" title="削除" onclick="deleteItem(8,1)">✕</button></div></div><div class="admin-add-item-row">
+    <input class="admin-item-input" type="text" value="ナーシングカートの整理整頓ができている" oninput="adminDraft[8].items[1]=this.value;adminDraftDirty=true">
+    <button class="admin-item-del" title="削除" id="del-8-1" onclick="confirmDeleteItem(this,8,1)">✕</button></div><div class="admin-item-row" data-ii="2" draggable="true">
+    <span class="drag-handle" title="ドラッグで並び替え">⠿</span>
+    <input class="admin-item-input" type="text" value="ナーシングカートの天板に不潔なものを置いていない" oninput="adminDraft[8].items[2]=this.value;adminDraftDirty=true">
+    <button class="admin-item-del" title="削除" id="del-8-2" onclick="confirmDeleteItem(this,8,2)">✕</button></div><div class="admin-item-row" data-ii="3" draggable="true">
+    <span class="drag-handle" title="ドラッグで並び替え">⠿</span>
+    <input class="admin-item-input" type="text" value="ナーシングカートから必要な物品のみバットに入れて入室できている" oninput="adminDraft[8].items[3]=this.value;adminDraftDirty=true">
+    <button class="admin-item-del" title="削除" id="del-8-3" onclick="confirmDeleteItem(this,8,3)">✕</button></div><div class="admin-item-row" data-ii="4" draggable="true">
+    <span class="drag-handle" title="ドラッグで並び替え">⠿</span>
+    <input class="admin-item-input" type="text" value="軟膏類の開封日が記入されている" oninput="adminDraft[8].items[4]=this.value;adminDraftDirty=true">
+    <button class="admin-item-del" title="削除" id="del-8-4" onclick="confirmDeleteItem(this,8,4)">✕</button></div></div><div class="admin-add-item-row">
       <input class="admin-new-item-input" type="text" id="newItem-8" placeholder="＋ 新しい項目を入力してEnter" onkeydown="if(event.key===&#39;Enter&#39;){addItemToSection(8);event.preventDefault()}">
       <button class="btn btn-green" style="padding:6px 12px;font-size:12px" onclick="addItemToSection(8)">追加</button></div></div><div class="admin-section-card" data-si="9"><div class="admin-section-hdr">
       <span style="font-family:&#39;IBM Plex Mono&#39;,monospace;font-size:12px;color:#7a96b0;min-width:24px">10.</span>
-      <input class="admin-sec-title-input" value="注入カート" placeholder="セクション名" onchange="adminDraft[9].title=this.value">
+      <input class="admin-sec-title-input" value="注入関連" placeholder="セクション名" oninput="adminDraft[9].title=this.value;adminDraftDirty=true">
       <div style="display:flex;gap:6px;flex-shrink:0">
         <button class="btn" style="padding:4px 10px;font-size:11px" onclick="moveSectionUp(9)">↑</button>
         <button class="btn" style="padding:4px 10px;font-size:11px" onclick="moveSectionDown(9)">↓</button>
         <button class="btn btn-red" style="padding:4px 10px;font-size:11px" onclick="deleteSection(9)">🗑 削除</button>
       </div></div><div style="padding: 0px 18px;">
-      <textarea class="admin-point-input" placeholder="ラウンドのポイント（任意）" onchange="adminDraft[9].point=this.value">患者さんの口から入るものをのせているカート。清潔不潔の区別ができているか。整理整頓はできているか。</textarea></div><div id="admin-items-9"><div class="admin-item-row" data-ii="0" draggable="true">
+      <textarea class="admin-point-input" placeholder="ラウンドのポイント（任意）" oninput="adminDraft[9].point=this.value;adminDraftDirty=true">患者さんの口から入るものをのせているカート。清潔不潔の区別ができているか。整理整頓はできているか。</textarea></div><div id="admin-items-9"><div class="admin-item-row" data-ii="0" draggable="true">
     <span class="drag-handle" title="ドラッグで並び替え">⠿</span>
-    <input class="admin-item-input" type="text" value="注入カートに不潔なものをのせていない" onchange="adminDraft[9].items[0]=this.value">
-    <button class="admin-item-del" title="削除" onclick="deleteItem(9,0)">✕</button></div><div class="admin-item-row" data-ii="1" draggable="true">
+    <input class="admin-item-input" type="text" value="注入カートに不潔なものをのせていない" oninput="adminDraft[9].items[0]=this.value;adminDraftDirty=true">
+    <button class="admin-item-del" title="削除" id="del-9-0" onclick="confirmDeleteItem(this,9,0)">✕</button></div><div class="admin-item-row" data-ii="1" draggable="true">
     <span class="drag-handle" title="ドラッグで並び替え">⠿</span>
-    <input class="admin-item-input" type="text" value="注入カートは整理整頓され、使用前後の物品が混在していない" onchange="adminDraft[9].items[1]=this.value">
-    <button class="admin-item-del" title="削除" onclick="deleteItem(9,1)">✕</button></div></div><div class="admin-add-item-row">
+    <input class="admin-item-input" type="text" value="注入カートは整理整頓され、使用前後の物品が混在していない" oninput="adminDraft[9].items[1]=this.value;adminDraftDirty=true">
+    <button class="admin-item-del" title="削除" id="del-9-1" onclick="confirmDeleteItem(this,9,1)">✕</button></div><div class="admin-item-row" data-ii="2" draggable="true">
+    <span class="drag-handle" title="ドラッグで並び替え">⠿</span>
+    <input class="admin-item-input" type="text" value="注入ボトル・チューブは全て浸かるように浸漬できている" oninput="adminDraft[9].items[2]=this.value;adminDraftDirty=true">
+    <button class="admin-item-del" title="削除" id="del-9-2" onclick="confirmDeleteItem(this,9,2)">✕</button></div><div class="admin-item-row" data-ii="3" draggable="true">
+    <span class="drag-handle" title="ドラッグで並び替え">⠿</span>
+    <input class="admin-item-input" type="text" value="注入ボトル・チューブは水滴なく乾燥できている（できていない場合は、次回使用まで浸漬を続け、使用前に洗浄する）" oninput="adminDraft[9].items[3]=this.value;adminDraftDirty=true">
+    <button class="admin-item-del" title="削除" id="del-9-3" onclick="confirmDeleteItem(this,9,3)">✕</button></div></div><div class="admin-add-item-row">
       <input class="admin-new-item-input" type="text" id="newItem-9" placeholder="＋ 新しい項目を入力してEnter" onkeydown="if(event.key===&#39;Enter&#39;){addItemToSection(9);event.preventDefault()}">
       <button class="btn btn-green" style="padding:6px 12px;font-size:12px" onclick="addItemToSection(9)">追加</button></div></div><div class="admin-section-card" data-si="10"><div class="admin-section-hdr">
       <span style="font-family:&#39;IBM Plex Mono&#39;,monospace;font-size:12px;color:#7a96b0;min-width:24px">11.</span>
-      <input class="admin-sec-title-input" value="包交車" placeholder="セクション名" onchange="adminDraft[10].title=this.value">
+      <input class="admin-sec-title-input" value="膀胱留置カテーテル" placeholder="セクション名" oninput="adminDraft[10].title=this.value;adminDraftDirty=true">
       <div style="display:flex;gap:6px;flex-shrink:0">
         <button class="btn" style="padding:4px 10px;font-size:11px" onclick="moveSectionUp(10)">↑</button>
         <button class="btn" style="padding:4px 10px;font-size:11px" onclick="moveSectionDown(10)">↓</button>
         <button class="btn btn-red" style="padding:4px 10px;font-size:11px" onclick="deleteSection(10)">🗑 削除</button>
       </div></div><div style="padding: 0px 18px;">
-      <textarea class="admin-point-input" placeholder="ラウンドのポイント（任意）" onchange="adminDraft[10].point=this.value">包交車はケアの拠点となる場所。拠点の清潔不潔が区別できていなかったり、整理整頓がなされていないと、そこを中心に感染が拡大することになる。</textarea></div><div id="admin-items-10"><div class="admin-item-row" data-ii="0" draggable="true">
+      <textarea class="admin-point-input" placeholder="ラウンドのポイント（任意）" oninput="adminDraft[10].point=this.value;adminDraftDirty=true">抜去が最善の感染対策。抜去できない場合は出来る限り感染リスクを下げる。</textarea></div><div id="admin-items-10"><div class="admin-item-row" data-ii="0" draggable="true">
     <span class="drag-handle" title="ドラッグで並び替え">⠿</span>
-    <input class="admin-item-input" type="text" value="包交車を部屋に入れていない" onchange="adminDraft[10].items[0]=this.value">
-    <button class="admin-item-del" title="削除" onclick="deleteItem(10,0)">✕</button></div><div class="admin-item-row" data-ii="1" draggable="true">
+    <input class="admin-item-input" type="text" value="採尿バッグとカテーテルを膀胱より高くしない" oninput="adminDraft[10].items[0]=this.value;adminDraftDirty=true">
+    <button class="admin-item-del" title="削除" id="del-10-0" onclick="confirmDeleteItem(this,10,0)">✕</button></div><div class="admin-item-row" data-ii="1" draggable="true">
     <span class="drag-handle" title="ドラッグで並び替え">⠿</span>
-    <input class="admin-item-input" type="text" value="包交車の台上に不潔なものを置いていない" onchange="adminDraft[10].items[1]=this.value">
-    <button class="admin-item-del" title="削除" onclick="deleteItem(10,1)">✕</button></div><div class="admin-item-row" data-ii="2" draggable="true">
+    <input class="admin-item-input" type="text" value="バルンカテーテルの尿流出が良好である（ランニングチューブが患者の身体を乗り越えるような状態になっていない、下敷きになっていない、屈曲していない等）" oninput="adminDraft[10].items[1]=this.value;adminDraftDirty=true">
+    <button class="admin-item-del" title="削除" id="del-10-1" onclick="confirmDeleteItem(this,10,1)">✕</button></div><div class="admin-item-row" data-ii="2" draggable="true">
     <span class="drag-handle" title="ドラッグで並び替え">⠿</span>
-    <input class="admin-item-input" type="text" value="必要な物品のみバットに入れている" onchange="adminDraft[10].items[2]=this.value">
-    <button class="admin-item-del" title="削除" onclick="deleteItem(10,2)">✕</button></div><div class="admin-item-row" data-ii="3" draggable="true">
+    <input class="admin-item-input" type="text" value="カテーテルの定期的な交換はしていない（交換時に抜去を検討しているか）" oninput="adminDraft[10].items[2]=this.value;adminDraftDirty=true">
+    <button class="admin-item-del" title="削除" id="del-10-2" onclick="confirmDeleteItem(this,10,2)">✕</button></div><div class="admin-item-row" data-ii="3" draggable="true">
     <span class="drag-handle" title="ドラッグで並び替え">⠿</span>
-    <input class="admin-item-input" type="text" value="包交車の上や引き出しの中がきれいに整理整頓されている" onchange="adminDraft[10].items[3]=this.value">
-    <button class="admin-item-del" title="削除" onclick="deleteItem(10,3)">✕</button></div><div class="admin-item-row" data-ii="4" draggable="true">
+    <input class="admin-item-input" type="text" value="カテーテル交換時は無菌操作で実施している" oninput="adminDraft[10].items[3]=this.value;adminDraftDirty=true">
+    <button class="admin-item-del" title="削除" id="del-10-3" onclick="confirmDeleteItem(this,10,3)">✕</button></div><div class="admin-item-row" data-ii="4" draggable="true">
     <span class="drag-handle" title="ドラッグで並び替え">⠿</span>
-    <input class="admin-item-input" type="text" value="軟膏類の開封日が記入されている" onchange="adminDraft[10].items[4]=this.value">
-    <button class="admin-item-del" title="削除" onclick="deleteItem(10,4)">✕</button></div></div><div class="admin-add-item-row">
+    <input class="admin-item-input" type="text" value="尿回収時・破棄時にはエプロン・フェイスシールド・手袋を着用している" oninput="adminDraft[10].items[4]=this.value;adminDraftDirty=true">
+    <button class="admin-item-del" title="削除" id="del-10-4" onclick="confirmDeleteItem(this,10,4)">✕</button></div><div class="admin-item-row" data-ii="5" draggable="true">
+    <span class="drag-handle" title="ドラッグで並び替え">⠿</span>
+    <input class="admin-item-input" type="text" value="尿の回収時は患者毎に手袋を交換している" oninput="adminDraft[10].items[5]=this.value;adminDraftDirty=true">
+    <button class="admin-item-del" title="削除" id="del-10-5" onclick="confirmDeleteItem(this,10,5)">✕</button></div><div class="admin-item-row" data-ii="6" draggable="true">
+    <span class="drag-handle" title="ドラッグで並び替え">⠿</span>
+    <input class="admin-item-input" type="text" value="尿回収時に排液口と回収容器が接触していない" oninput="adminDraft[10].items[6]=this.value;adminDraftDirty=true">
+    <button class="admin-item-del" title="削除" id="del-10-6" onclick="confirmDeleteItem(this,10,6)">✕</button></div><div class="admin-item-row" data-ii="7" draggable="true">
+    <span class="drag-handle" title="ドラッグで並び替え">⠿</span>
+    <input class="admin-item-input" type="text" value="採尿バッグが床についていない" oninput="adminDraft[10].items[7]=this.value;adminDraftDirty=true">
+    <button class="admin-item-del" title="削除" id="del-10-7" onclick="confirmDeleteItem(this,10,7)">✕</button></div><div class="admin-item-row" data-ii="8" draggable="true">
+    <span class="drag-handle" title="ドラッグで並び替え">⠿</span>
+    <input class="admin-item-input" type="text" value="膀胱留置カテーテルの留置理由をスタッフが把握している" oninput="adminDraft[10].items[8]=this.value;adminDraftDirty=true">
+    <button class="admin-item-del" title="削除" id="del-10-8" onclick="confirmDeleteItem(this,10,8)">✕</button></div><div class="admin-item-row" data-ii="9" draggable="true">
+    <span class="drag-handle" title="ドラッグで並び替え">⠿</span>
+    <input class="admin-item-input" type="text" value="尿回収業務終了後は、フェイスシールドをワイプで清拭し、適切に保管できている" oninput="adminDraft[10].items[9]=this.value;adminDraftDirty=true">
+    <button class="admin-item-del" title="削除" id="del-10-9" onclick="confirmDeleteItem(this,10,9)">✕</button></div></div><div class="admin-add-item-row">
       <input class="admin-new-item-input" type="text" id="newItem-10" placeholder="＋ 新しい項目を入力してEnter" onkeydown="if(event.key===&#39;Enter&#39;){addItemToSection(10);event.preventDefault()}">
       <button class="btn btn-green" style="padding:6px 12px;font-size:12px" onclick="addItemToSection(10)">追加</button></div></div><div class="admin-section-card" data-si="11"><div class="admin-section-hdr">
       <span style="font-family:&#39;IBM Plex Mono&#39;,monospace;font-size:12px;color:#7a96b0;min-width:24px">12.</span>
-      <input class="admin-sec-title-input" value="膀胱留置カテーテル" placeholder="セクション名" onchange="adminDraft[11].title=this.value">
+      <input class="admin-sec-title-input" value="末梢静脈カテーテル" placeholder="セクション名" oninput="adminDraft[11].title=this.value;adminDraftDirty=true">
       <div style="display:flex;gap:6px;flex-shrink:0">
         <button class="btn" style="padding:4px 10px;font-size:11px" onclick="moveSectionUp(11)">↑</button>
         <button class="btn" style="padding:4px 10px;font-size:11px" onclick="moveSectionDown(11)">↓</button>
         <button class="btn btn-red" style="padding:4px 10px;font-size:11px" onclick="deleteSection(11)">🗑 削除</button>
       </div></div><div style="padding: 0px 18px;">
-      <textarea class="admin-point-input" placeholder="ラウンドのポイント（任意）" onchange="adminDraft[11].point=this.value">抜去が最善の感染対策。抜去できない場合は出来る限り感染リスクを下げる。</textarea></div><div id="admin-items-11"><div class="admin-item-row" data-ii="0" draggable="true">
+      <textarea class="admin-point-input" placeholder="ラウンドのポイント（任意）" oninput="adminDraft[11].point=this.value;adminDraftDirty=true">中心静脈カテーテルだけでなく、末梢静脈カテーテルも、血流感染や静脈炎などの原因となる。観察をこまめに行い、感染リスクの評価と予測が大切。</textarea></div><div id="admin-items-11"><div class="admin-item-row" data-ii="0" draggable="true">
     <span class="drag-handle" title="ドラッグで並び替え">⠿</span>
-    <input class="admin-item-input" type="text" value="採尿バッグとカテーテルを膀胱より高くしない" onchange="adminDraft[11].items[0]=this.value">
-    <button class="admin-item-del" title="削除" onclick="deleteItem(11,0)">✕</button></div><div class="admin-item-row" data-ii="1" draggable="true">
+    <input class="admin-item-input" type="text" value="点滴留置日が明記されている" oninput="adminDraft[11].items[0]=this.value;adminDraftDirty=true">
+    <button class="admin-item-del" title="削除" id="del-11-0" onclick="confirmDeleteItem(this,11,0)">✕</button></div><div class="admin-item-row" data-ii="1" draggable="true">
     <span class="drag-handle" title="ドラッグで並び替え">⠿</span>
-    <input class="admin-item-input" type="text" value="カテーテルの定期的な交換はしていない" onchange="adminDraft[11].items[1]=this.value">
-    <button class="admin-item-del" title="削除" onclick="deleteItem(11,1)">✕</button></div><div class="admin-item-row" data-ii="2" draggable="true">
-    <span class="drag-handle" title="ドラッグで並び替え">⠿</span>
-    <input class="admin-item-input" type="text" value="カテーテル交換時は無菌操作で実施している" onchange="adminDraft[11].items[2]=this.value">
-    <button class="admin-item-del" title="削除" onclick="deleteItem(11,2)">✕</button></div><div class="admin-item-row" data-ii="3" draggable="true">
-    <span class="drag-handle" title="ドラッグで並び替え">⠿</span>
-    <input class="admin-item-input" type="text" value="尿の回収時は患者毎に手袋を交換している" onchange="adminDraft[11].items[3]=this.value">
-    <button class="admin-item-del" title="削除" onclick="deleteItem(11,3)">✕</button></div><div class="admin-item-row" data-ii="4" draggable="true">
-    <span class="drag-handle" title="ドラッグで並び替え">⠿</span>
-    <input class="admin-item-input" type="text" value="尿回収時に排液口と回収容器が接触していない" onchange="adminDraft[11].items[4]=this.value">
-    <button class="admin-item-del" title="削除" onclick="deleteItem(11,4)">✕</button></div><div class="admin-item-row" data-ii="5" draggable="true">
-    <span class="drag-handle" title="ドラッグで並び替え">⠿</span>
-    <input class="admin-item-input" type="text" value="採尿バッグが床についていない" onchange="adminDraft[11].items[5]=this.value">
-    <button class="admin-item-del" title="削除" onclick="deleteItem(11,5)">✕</button></div><div class="admin-item-row" data-ii="6" draggable="true">
-    <span class="drag-handle" title="ドラッグで並び替え">⠿</span>
-    <input class="admin-item-input" type="text" value="尿回収時・破棄時にはPPEを着用している" onchange="adminDraft[11].items[6]=this.value">
-    <button class="admin-item-del" title="削除" onclick="deleteItem(11,6)">✕</button></div></div><div class="admin-add-item-row">
+    <input class="admin-item-input" type="text" value="点滴刺入部の状態が確認できる" oninput="adminDraft[11].items[1]=this.value;adminDraftDirty=true">
+    <button class="admin-item-del" title="削除" id="del-11-1" onclick="confirmDeleteItem(this,11,1)">✕</button></div></div><div class="admin-add-item-row">
       <input class="admin-new-item-input" type="text" id="newItem-11" placeholder="＋ 新しい項目を入力してEnter" onkeydown="if(event.key===&#39;Enter&#39;){addItemToSection(11);event.preventDefault()}">
       <button class="btn btn-green" style="padding:6px 12px;font-size:12px" onclick="addItemToSection(11)">追加</button></div></div><div class="admin-section-card" data-si="12"><div class="admin-section-hdr">
       <span style="font-family:&#39;IBM Plex Mono&#39;,monospace;font-size:12px;color:#7a96b0;min-width:24px">13.</span>
-      <input class="admin-sec-title-input" value="末梢静脈カテーテル" placeholder="セクション名" onchange="adminDraft[12].title=this.value">
+      <input class="admin-sec-title-input" value="中心静脈カテーテル" placeholder="セクション名" oninput="adminDraft[12].title=this.value;adminDraftDirty=true">
       <div style="display:flex;gap:6px;flex-shrink:0">
         <button class="btn" style="padding:4px 10px;font-size:11px" onclick="moveSectionUp(12)">↑</button>
         <button class="btn" style="padding:4px 10px;font-size:11px" onclick="moveSectionDown(12)">↓</button>
         <button class="btn btn-red" style="padding:4px 10px;font-size:11px" onclick="deleteSection(12)">🗑 削除</button>
       </div></div><div style="padding: 0px 18px;">
-      <textarea class="admin-point-input" placeholder="ラウンドのポイント（任意）" onchange="adminDraft[12].point=this.value">中心静脈カテーテルだけでなく、末梢静脈カテーテルも、血流感染や静脈炎などの原因となる。観察をこまめに行い、感染リスクの評価と予測が大切。</textarea></div><div id="admin-items-12"><div class="admin-item-row" data-ii="0" draggable="true">
+      <textarea class="admin-point-input" placeholder="ラウンドのポイント（任意）" oninput="adminDraft[12].point=this.value;adminDraftDirty=true">血流感染は、生命の危機に直結するため、感染のリスクを出来る限り低くすること。</textarea></div><div id="admin-items-12"><div class="admin-item-row" data-ii="0" draggable="true">
     <span class="drag-handle" title="ドラッグで並び替え">⠿</span>
-    <input class="admin-item-input" type="text" value="点滴留置日が明記されている" onchange="adminDraft[12].items[0]=this.value">
-    <button class="admin-item-del" title="削除" onclick="deleteItem(12,0)">✕</button></div><div class="admin-item-row" data-ii="1" draggable="true">
+    <input class="admin-item-input" type="text" value="スタッフが中心静脈ルートの刺入部位による感染リスクの違いを把握している" oninput="adminDraft[12].items[0]=this.value;adminDraftDirty=true">
+    <button class="admin-item-del" title="削除" id="del-12-0" onclick="confirmDeleteItem(this,12,0)">✕</button></div><div class="admin-item-row" data-ii="1" draggable="true">
     <span class="drag-handle" title="ドラッグで並び替え">⠿</span>
-    <input class="admin-item-input" type="text" value="点滴刺入部の状態が確認できる" onchange="adminDraft[12].items[1]=this.value">
-    <button class="admin-item-del" title="削除" onclick="deleteItem(12,1)">✕</button></div></div><div class="admin-add-item-row">
+    <input class="admin-item-input" type="text" value="中心静脈ルートの途中に三方活栓を使用していない" oninput="adminDraft[12].items[1]=this.value;adminDraftDirty=true">
+    <button class="admin-item-del" title="削除" id="del-12-1" onclick="confirmDeleteItem(this,12,1)">✕</button></div><div class="admin-item-row" data-ii="2" draggable="true">
+    <span class="drag-handle" title="ドラッグで並び替え">⠿</span>
+    <input class="admin-item-input" type="text" value="中心静脈の刺入部位の観察を行っている" oninput="adminDraft[12].items[2]=this.value;adminDraftDirty=true">
+    <button class="admin-item-del" title="削除" id="del-12-2" onclick="confirmDeleteItem(this,12,2)">✕</button></div><div class="admin-item-row" data-ii="3" draggable="true">
+    <span class="drag-handle" title="ドラッグで並び替え">⠿</span>
+    <input class="admin-item-input" type="text" value="イントラリポスなどの脂肪乳剤などは別ルートを確保している" oninput="adminDraft[12].items[3]=this.value;adminDraftDirty=true">
+    <button class="admin-item-del" title="削除" id="del-12-3" onclick="confirmDeleteItem(this,12,3)">✕</button></div><div class="admin-item-row" data-ii="4" draggable="true">
+    <span class="drag-handle" title="ドラッグで並び替え">⠿</span>
+    <input class="admin-item-input" type="text" value="点滴ラインは１～２回/週に交換" oninput="adminDraft[12].items[4]=this.value;adminDraftDirty=true">
+    <button class="admin-item-del" title="削除" id="del-12-4" onclick="confirmDeleteItem(this,12,4)">✕</button></div></div><div class="admin-add-item-row">
       <input class="admin-new-item-input" type="text" id="newItem-12" placeholder="＋ 新しい項目を入力してEnter" onkeydown="if(event.key===&#39;Enter&#39;){addItemToSection(12);event.preventDefault()}">
       <button class="btn btn-green" style="padding:6px 12px;font-size:12px" onclick="addItemToSection(12)">追加</button></div></div><div class="admin-section-card" data-si="13"><div class="admin-section-hdr">
       <span style="font-family:&#39;IBM Plex Mono&#39;,monospace;font-size:12px;color:#7a96b0;min-width:24px">14.</span>
-      <input class="admin-sec-title-input" value="中心静脈カテーテル" placeholder="セクション名" onchange="adminDraft[13].title=this.value">
+      <input class="admin-sec-title-input" value="物品管理" placeholder="セクション名" oninput="adminDraft[13].title=this.value;adminDraftDirty=true">
       <div style="display:flex;gap:6px;flex-shrink:0">
         <button class="btn" style="padding:4px 10px;font-size:11px" onclick="moveSectionUp(13)">↑</button>
         <button class="btn" style="padding:4px 10px;font-size:11px" onclick="moveSectionDown(13)" disabled="">↓</button>
         <button class="btn btn-red" style="padding:4px 10px;font-size:11px" onclick="deleteSection(13)">🗑 削除</button>
       </div></div><div style="padding: 0px 18px;">
-      <textarea class="admin-point-input" placeholder="ラウンドのポイント（任意）" onchange="adminDraft[13].point=this.value">血流感染は、生命の危機に直結するため、感染のリスクを出来る限り低くすること。</textarea></div><div id="admin-items-13"><div class="admin-item-row" data-ii="0" draggable="true">
+      <textarea class="admin-point-input" placeholder="ラウンドのポイント（任意）" oninput="adminDraft[13].point=this.value;adminDraftDirty=true">PPEなどは適切に保管できていなければ、微生物繁殖など感染拡大リスクの一因となりうる</textarea></div><div id="admin-items-13"><div class="admin-item-row" data-ii="0" draggable="true">
     <span class="drag-handle" title="ドラッグで並び替え">⠿</span>
-    <input class="admin-item-input" type="text" value="スタッフが中心静脈ルートの刺入部位による感染リスクの違いを把握している" onchange="adminDraft[13].items[0]=this.value">
-    <button class="admin-item-del" title="削除" onclick="deleteItem(13,0)">✕</button></div><div class="admin-item-row" data-ii="1" draggable="true">
+    <input class="admin-item-input" type="text" value="フェイスシールド用フレームは、通気性の良い紙封筒などに保管できているか" oninput="adminDraft[13].items[0]=this.value;adminDraftDirty=true">
+    <button class="admin-item-del" title="削除" id="del-13-0" onclick="confirmDeleteItem(this,13,0)">✕</button></div><div class="admin-item-row" data-ii="1" draggable="true">
     <span class="drag-handle" title="ドラッグで並び替え">⠿</span>
-    <input class="admin-item-input" type="text" value="中心静脈ルートの途中に三方活栓を使用していない" onchange="adminDraft[13].items[1]=this.value">
-    <button class="admin-item-del" title="削除" onclick="deleteItem(13,1)">✕</button></div><div class="admin-item-row" data-ii="2" draggable="true">
-    <span class="drag-handle" title="ドラッグで並び替え">⠿</span>
-    <input class="admin-item-input" type="text" value="中心静脈の刺入部位の観察を行っている" onchange="adminDraft[13].items[2]=this.value">
-    <button class="admin-item-del" title="削除" onclick="deleteItem(13,2)">✕</button></div><div class="admin-item-row" data-ii="3" draggable="true">
-    <span class="drag-handle" title="ドラッグで並び替え">⠿</span>
-    <input class="admin-item-input" type="text" value="イントラリポスなどの脂肪乳剤などは別ルートを確保している" onchange="adminDraft[13].items[3]=this.value">
-    <button class="admin-item-del" title="削除" onclick="deleteItem(13,3)">✕</button></div><div class="admin-item-row" data-ii="4" draggable="true">
-    <span class="drag-handle" title="ドラッグで並び替え">⠿</span>
-    <input class="admin-item-input" type="text" value="点滴ラインは１～２回/週に交換" onchange="adminDraft[13].items[4]=this.value">
-    <button class="admin-item-del" title="削除" onclick="deleteItem(13,4)">✕</button></div></div><div class="admin-add-item-row">
+    <input class="admin-item-input" type="text" value="保管用紙封筒は、汚染したり破れたりしていないか。適切に交換できているか。" oninput="adminDraft[13].items[1]=this.value;adminDraftDirty=true">
+    <button class="admin-item-del" title="削除" id="del-13-1" onclick="confirmDeleteItem(this,13,1)">✕</button></div></div><div class="admin-add-item-row">
       <input class="admin-new-item-input" type="text" id="newItem-13" placeholder="＋ 新しい項目を入力してEnter" onkeydown="if(event.key===&#39;Enter&#39;){addItemToSection(13);event.preventDefault()}">
       <button class="btn btn-green" style="padding:6px 12px;font-size:12px" onclick="addItemToSection(13)">追加</button></div></div><div style="text-align: center; margin-top: 8px;"><button class="btn btn-green" onclick="addNewSection()" style="width:100%;padding:12px">＋ 新しいセクションを追加</button></div></div>
   </div>
@@ -2782,7 +2858,7 @@
         </div>
       </div>
     </div>
-    <div class="photo-grid" id="photoGrid"></div>
+    <div class="photo-grid" id="photoGrid"><div class="photo-add-card" style="position: relative;"><span class="add-icon">＋</span><span>写真を追加</span><input type="file" accept="image/*" style="position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%" onchange="addNewPhoto(event,&#39;病棟:2026-06&#39;)"></div></div>
   </div>
 
   <!-- ======= THEME TAB ======= -->
@@ -2816,14 +2892,14 @@
       <div class="theme-card-title" style="margin-top:16px">💬 ICTからのコメント</div>
       <textarea class="theme-comment-area" id="themeIctComment" rows="4" placeholder="ICTからの指導内容、フィードバック、推奨事項などを記入してください..." oninput="saveThemeData()"></textarea>
       <div style="display:flex;justify-content:flex-end;margin-top:8px">
-        <span id="themeLastSaved" style="font-size:11px;color:var(--text3)"></span>
+        <span id="themeLastSaved" style="font-size:11px;color:var(--text3)">最終保存: 2026/6/12 18:35</span>
       </div>
     </div>
 
     <!-- 過去テーマ一覧 -->
     <div class="theme-card">
       <div class="theme-card-title">📂 過去のテーマ別ラウンド記録</div>
-      <div id="themeHistoryList"></div>
+      <div id="themeHistoryList"><div style="border:1px solid #e8f0fa;border-radius:8px;padding:12px 14px;margin-bottom:8px;background:#fafcff"><div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px"><span style="font-size:13px;font-weight:700;color:#1a2a3a">2026年5月<span style="margin-left:8px;font-size:13px;color:#1976d2">「つけない習慣をつけよう！〜その手袋が、感染を広げるんやで！〜」</span></span><span style="font-size:11px;color:var(--text3)">2026/5/26 19:53</span></div><div style="font-size:12px;color:#4a6380;white-space:pre-wrap;line-height:1.7">もちろん必要な手袋は絶対してください！</div></div></div>
     </div>
   </div>
 
@@ -2876,11 +2952,11 @@
 </div>
 
 <div id="toast" style="position: fixed; bottom: 24px; right: 24px; background: rgb(255, 255, 255); border: 1px solid rgb(200, 217, 239); border-radius: 10px; padding: 12px 18px; font-size: 13px; color: rgb(26, 42, 58); z-index: 9999; display: none; align-items: center; gap: 8px; box-shadow: rgba(21, 101, 192, 0.18) 0px 4px 20px;">
-  <span class="toast-icon" id="toastIcon">🔒</span><span id="toastMsg">ログアウトしました</span>
+  <span class="toast-icon" id="toastIcon">✅</span><span id="toastMsg">2026年6月を確定保存しました</span>
 </div>
 
 <!-- Chart.js CDN -->
-<script src="./ICTラウンドチェックリスト_files/chart.umd.min.js"></script>
+<script src="./ICTラウンドチェックリスト20260612_files/chart.umd.min.js"></script>
 
 <script>
 // ==================== DATA ====================
@@ -4742,38 +4818,26 @@ function executePrintReport() {
 
     var secRows = '';
     checklist.forEach(function(sec) {
-      // ×の項目だけ抽出
-      var ngItems = [];
+      var ngCount = 0;
       var secScore = 0;
-      sec.items.forEach(function(item, i) {
+      var itemRows = sec.items.map(function(item, i) {
         var val = answers['s'+sec.id+'i'+i];
-        if (val === true) secScore++;
-        if (val === false) ngItems.push(item);
-      });
-
-      var tableContent;
-      if (ngItems.length === 0) {
-        tableContent =
-          '<table style="width:100%;border-collapse:collapse;border:1px solid #c8d9ef;border-top:none;background:#f0f5fb">' +
-            '<tr><td style="padding:5px 10px;font-size:11px;color:#1565c0;font-style:italic">' +
-              '◎ 不適切な場面はありませんでした' +
-            '</td></tr>' +
-          '</table>';
-      } else {
-        var itemRows = ngItems.map(function(item) {
-          return '<tr>' +
-            '<td style="padding:4px 8px;border-bottom:1px solid #dce8f5;font-size:11px;color:#1a2a3a">' + item + '</td>' +
-            '<td style="padding:4px 8px;border-bottom:1px solid #dce8f5;text-align:center;font-size:13px;width:32px;color:#c62828;font-weight:700">×</td>' +
-          '</tr>';
-        }).join('');
-        tableContent =
-          '<table style="width:100%;border-collapse:collapse;border:1px solid #c8d9ef;border-top:none;background:#f8fbff">' +
-            itemRows +
-          '</table>';
-      }
+        var mark, color;
+        if (val === true) { secScore++; mark = '○'; color = '#2e7d32'; }
+        else if (val === false) { ngCount++; mark = '×'; color = '#c62828'; }
+        else { mark = '-'; color = '#aaa'; }
+        return '<tr>' +
+          '<td style="padding:4px 8px;border-bottom:1px solid #dce8f5;font-size:11px;color:#1a2a3a">' + item + '</td>' +
+          '<td style="padding:4px 8px;border-bottom:1px solid #dce8f5;text-align:center;font-size:13px;width:32px;color:' + color + ';font-weight:700">' + mark + '</td>' +
+        '</tr>';
+      }).join('');
+      var tableContent =
+        '<table style="width:100%;border-collapse:collapse;border:1px solid #c8d9ef;border-top:none;background:#f8fbff">' +
+          itemRows +
+        '</table>';
 
       // セクションヘッダー: 全○なら濃い青、×ありなら中間の青（青系統一・緑なし）
-      var hdrBg = ngItems.length === 0
+      var hdrBg = ngCount === 0
         ? 'background:linear-gradient(90deg,#1565c0,#1976d2)'
         : 'background:linear-gradient(90deg,#4a6380,#607d8b)';
 
@@ -4781,9 +4845,9 @@ function executePrintReport() {
         '<div style="' + hdrBg + ';color:#fff;padding:5px 10px;border-radius:6px 6px 0 0;font-size:12px;font-weight:700;display:flex;justify-content:space-between;align-items:center">' +
           '<span>' + sec.id + '. ' + sec.title + '</span>' +
           '<span style="font-size:11px">' +
-            (ngItems.length === 0
+            (ngCount === 0
               ? '◎ 全項目クリア'
-              : '△ 要改善 ' + ngItems.length + '件') +
+              : '△ 要改善 ' + ngCount + '件') +
             '　' + secScore + '/' + sec.items.length + '点' +
           '</span>' +
         '</div>' +
@@ -4927,24 +4991,19 @@ function executeDownloadReport() {
     var secRows = '';
     checklist.forEach(function(sec) {
       let secScore = 0;
-      var ngItems = [];
-      sec.items.forEach(function(item, i) {
+      let ngCount = 0;
+      var itemRows = sec.items.map(function(item, i) {
         const v = answers['s' + sec.id + 'i' + i];
-        if (v === true)  { secScore++; totalScore++; }
-        else if (v === false) { ngItems.push(item); totalNG++; }
+        var mark, color;
+        if (v === true)  { secScore++; totalScore++; mark = '○'; color = '#2e7d32'; }
+        else if (v === false) { ngCount++; totalNG++; mark = '×'; color = '#c62828'; }
+        else { mark = '-'; color = '#aaa'; }
         totalMax++;
-      });
-      var tableContent;
-      if (ngItems.length === 0) {
-        tableContent = '<table style="width:100%;border-collapse:collapse;border:1px solid #c8d9ef;border-top:none;background:#f0f5fb"><tr><td style="padding:5px 10px;font-size:11px;color:#1565c0;font-style:italic">◎ 不適切な場面はありませんでした</td></tr></table>';
-      } else {
-        var itemRows = ngItems.map(function(item) {
-          return '<tr><td style="padding:4px 8px;border-bottom:1px solid #dce8f5;font-size:11px;color:#1a2a3a">' + item + '</td><td style="padding:4px 8px;border-bottom:1px solid #dce8f5;text-align:center;font-size:13px;width:32px;color:#c62828;font-weight:700">×</td></tr>';
-        }).join('');
-        tableContent = '<table style="width:100%;border-collapse:collapse;border:1px solid #c8d9ef;border-top:none;background:#f8fbff">' + itemRows + '</table>';
-      }
-      var hdrBg = ngItems.length === 0 ? 'background:linear-gradient(90deg,#1565c0,#1976d2)' : 'background:linear-gradient(90deg,#4a6380,#607d8b)';
-      secRows += '<div style="margin-bottom:8px;break-inside:avoid"><div style="' + hdrBg + ';color:#fff;padding:5px 10px;border-radius:6px 6px 0 0;font-size:12px;font-weight:700;display:flex;justify-content:space-between;align-items:center"><span>' + sec.id + '. ' + sec.title + '</span><span style="font-size:11px">' + (ngItems.length === 0 ? '◎ 全項目クリア' : '△ 要改善 ' + ngItems.length + '件') + '　' + secScore + '/' + sec.items.length + '点</span></div>' + tableContent + '</div>';
+        return '<tr><td style="padding:4px 8px;border-bottom:1px solid #dce8f5;font-size:11px;color:#1a2a3a">' + item + '</td><td style="padding:4px 8px;border-bottom:1px solid #dce8f5;text-align:center;font-size:13px;width:32px;color:' + color + ';font-weight:700">' + mark + '</td></tr>';
+      }).join('');
+      var tableContent = '<table style="width:100%;border-collapse:collapse;border:1px solid #c8d9ef;border-top:none;background:#f8fbff">' + itemRows + '</table>';
+      var hdrBg = ngCount === 0 ? 'background:linear-gradient(90deg,#1565c0,#1976d2)' : 'background:linear-gradient(90deg,#4a6380,#607d8b)';
+      secRows += '<div style="margin-bottom:8px;break-inside:avoid"><div style="' + hdrBg + ';color:#fff;padding:5px 10px;border-radius:6px 6px 0 0;font-size:12px;font-weight:700;display:flex;justify-content:space-between;align-items:center"><span>' + sec.id + '. ' + sec.title + '</span><span style="font-size:11px">' + (ngCount === 0 ? '◎ 全項目クリア' : '△ 要改善 ' + ngCount + '件') + '　' + secScore + '/' + sec.items.length + '点</span></div>' + tableContent + '</div>';
     });
     const pct = totalMax > 0 ? Math.round(totalScore / totalMax * 100) : 0;
     const stampHtml = pct >= 100 ? '<div style="display:flex;align-items:center;gap:8px;background-image:radial-gradient(circle,#f48fb1 1.2px,transparent 1.2px);background-size:8px 8px;background-color:#fff0f6;border:1px solid #f8bbd0;border-radius:8px;padding:8px 14px;flex-direction:column;align-items:center"><span style="font-size:36px;line-height:1">🌸</span><span style="font-size:11px;font-weight:700;color:#c2185b;text-align:center;line-height:1.4">たいへん<br>よくできました！</span></div>' : '';
