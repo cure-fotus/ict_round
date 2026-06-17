@@ -1065,7 +1065,7 @@
 </style>
 <script>
 (function(){
-  var PASSWORD = 'ict2026';
+  var PASSWORD = '0000';
   var KEY = 'ict_auth_ok';
   if (sessionStorage.getItem(KEY) === '1') return;
   document.addEventListener('DOMContentLoaded', function() {
@@ -2785,6 +2785,16 @@
           </div>
         </div>
         <div class="meta-field">
+          <span class="meta-label">週</span>
+          <select class="meta-input" id="photoWeekSelect" onchange="onPhotoWeekChange()">
+            <option value="0">指定なし（月単位）</option>
+            <option value="1">第1週</option>
+            <option value="2">第2週</option>
+            <option value="3">第3週</option>
+            <option value="4">第4週</option>
+          </select>
+        </div>
+        <div class="meta-field">
           <span class="meta-label">病棟</span>
           <select class="meta-input" id="photoWardSelect" onchange="renderPhotoTab()"><option value="サンプル病棟">サンプル病棟</option><option value="病棟">病棟</option><option value="療法部">療法部</option><option value="外来/救急外来/検査室">外来/救急外来/検査室</option></select>
         </div>
@@ -2808,6 +2818,16 @@
             <span class="month-display" id="themeMonthDisplay">2026年6月</span>
             <button class="btn" style="padding:6px 10px" onclick="changeThemeMonth(1)">▶</button>
           </div>
+        </div>
+        <div class="meta-field">
+          <span class="meta-label">週</span>
+          <select class="meta-input" id="themeWeekSelect" onchange="onThemeWeekChange()">
+            <option value="0">指定なし（月単位）</option>
+            <option value="1">第1週</option>
+            <option value="2">第2週</option>
+            <option value="3">第3週</option>
+            <option value="4">第4週</option>
+          </select>
         </div>
         <div class="meta-field">
           <span class="meta-label">病棟</span>
@@ -3150,6 +3170,7 @@ function onWeekChange() {
   state.currentWeek = parseInt(document.getElementById('weekSelect').value, 10) || 0;
   updateMonthDisplay();
   renderChecklistContainer();
+  syncAllTabsToChecklist();
 }
 function changeMonth(delta) {
   state.currentMonth += delta;
@@ -3157,18 +3178,36 @@ function changeMonth(delta) {
   if (state.currentMonth < 1) { state.currentMonth = 12; state.currentYear--; }
   updateMonthDisplay();
   renderChecklistContainer();
+  syncAllTabsToChecklist();
 }
 function onWardChange() {
   state.currentWard = document.getElementById('wardSelect').value;
   updateMonthDisplay();
   renderChecklistContainer();
+  syncAllTabsToChecklist();
+}
 
-  // 全タブの病棟セレクトを同期
+// チェックリストタブの病棟・年月・週を他の全タブ（ダッシュボード・月次履歴・写真記録・テーマ別ラウンド）に同期する
+function syncAllTabsToChecklist() {
   const w = state.currentWard;
+
+  // 病棟セレクトを同期
   ['dashWardSelect', 'histWardSelect', 'photoWardSelect', 'themeWardSelect'].forEach(function(id) {
     const sel = document.getElementById(id);
     if (sel) sel.value = w;
   });
+
+  // 写真記録の年月・週を同期
+  photoYear  = state.currentYear;
+  photoMonth = state.currentMonth;
+  photoWeek  = state.currentWeek;
+  updatePhotoMonthDisplay();
+
+  // テーマ別ラウンドの年月・週を同期
+  themeYear  = state.currentYear;
+  themeMonth = state.currentMonth;
+  themeWeek  = state.currentWeek;
+  updateThemeMonthDisplay();
 
   // 現在開いているタブがあれば再描画
   if (document.getElementById('tab-dashboard')?.classList.contains('active')) {
@@ -4417,19 +4456,29 @@ function updateChecklistLabel() {
 // ==================== PHOTO RECORDS ====================
 let photoYear  = new Date().getFullYear();
 let photoMonth = new Date().getMonth() + 1;
+let photoWeek  = 0; // 0=指定なし、1〜4=第1〜4週
 
 function getPhotoKey() {
   const ward = document.getElementById('photoWardSelect')?.value || state.currentWard;
-  return ward + ':' + photoYear + '-' + String(photoMonth).padStart(2,'0');
+  const base = ward + ':' + photoYear + '-' + String(photoMonth).padStart(2,'0');
+  return photoWeek > 0 ? base + '-W' + photoWeek : base;
 }
 function updatePhotoMonthDisplay() {
   const el = document.getElementById('photoMonthDisplay');
-  if (el) el.textContent = photoYear + '年' + photoMonth + '月';
+  const weekLabel = photoWeek > 0 ? '　第' + photoWeek + '週' : '';
+  if (el) el.textContent = photoYear + '年' + photoMonth + '月' + weekLabel;
+  const weekSel = document.getElementById('photoWeekSelect');
+  if (weekSel) weekSel.value = String(photoWeek);
 }
 function changePhotoMonth(d) {
   photoMonth += d;
   if (photoMonth > 12) { photoMonth = 1; photoYear++; }
   if (photoMonth < 1)  { photoMonth = 12; photoYear--; }
+  updatePhotoMonthDisplay();
+  renderPhotoTab();
+}
+function onPhotoWeekChange() {
+  photoWeek = parseInt(document.getElementById('photoWeekSelect').value, 10) || 0;
   updatePhotoMonthDisplay();
   renderPhotoTab();
 }
@@ -4512,19 +4561,29 @@ function deletePhoto(key, idx) {
 // ==================== THEME RECORDS ====================
 let themeYear  = new Date().getFullYear();
 let themeMonth = new Date().getMonth() + 1;
+let themeWeek  = 0; // 0=指定なし、1〜4=第1〜4週
 
 function getThemeKey() {
   const ward = document.getElementById('themeWardSelect')?.value || state.currentWard;
-  return ward + ':' + themeYear + '-' + String(themeMonth).padStart(2,'0');
+  const base = ward + ':' + themeYear + '-' + String(themeMonth).padStart(2,'0');
+  return themeWeek > 0 ? base + '-W' + themeWeek : base;
 }
 function updateThemeMonthDisplay() {
   const el = document.getElementById('themeMonthDisplay');
-  if (el) el.textContent = themeYear + '年' + themeMonth + '月';
+  const weekLabel = themeWeek > 0 ? '　第' + themeWeek + '週' : '';
+  if (el) el.textContent = themeYear + '年' + themeMonth + '月' + weekLabel;
+  const weekSel = document.getElementById('themeWeekSelect');
+  if (weekSel) weekSel.value = String(themeWeek);
 }
 function changeThemeMonth(d) {
   themeMonth += d;
   if (themeMonth > 12) { themeMonth = 1; themeYear++; }
   if (themeMonth < 1)  { themeMonth = 12; themeYear--; }
+  updateThemeMonthDisplay();
+  renderThemeTab();
+}
+function onThemeWeekChange() {
+  themeWeek = parseInt(document.getElementById('themeWeekSelect').value, 10) || 0;
   updateThemeMonthDisplay();
   renderThemeTab();
 }
@@ -4730,15 +4789,15 @@ function executePrintReport() {
 
   // テーマキーは themeWardSelect / themeYear / themeMonth を参照
   const themeWard  = (document.getElementById('themeWardSelect')?.value)  || ward;
-  const themeKey   = themeWard + ':' + themeYear + '-' + String(themeMonth).padStart(2,'0');
+  const themeKey   = getThemeKey();
   const themeRec   = (state.themeRecords && state.themeRecords[themeKey]) || null;
-  const themeYmStr = themeYear + '年' + themeMonth + '月';
+  const themeYmStr = themeYear + '年' + themeMonth + '月' + (themeWeek > 0 ? '　第' + themeWeek + '週' : '');
 
   // 写真キーは photoWardSelect / photoYear / photoMonth を参照
   const photoWard  = (document.getElementById('photoWardSelect')?.value) || ward;
-  const photoKey   = photoWard + ':' + photoYear + '-' + String(photoMonth).padStart(2,'0');
+  const photoKey   = getPhotoKey();
   const photos     = (state.photoRecords && state.photoRecords[photoKey]) || [];
-  const photoYmStr = photoYear + '年' + photoMonth + '月';
+  const photoYmStr = photoYear + '年' + photoMonth + '月' + (photoWeek > 0 ? '　第' + photoWeek + '週' : '');
 
   // ========== HTML生成 ==========
   var sections = '';
@@ -4924,13 +4983,13 @@ function executeDownloadReport() {
   const ymStr = year + '年' + month + '月' + (week > 0 ? '　第' + week + '週' : '');
   const checkKey = getMonthKey();
   const themeWard  = (document.getElementById('themeWardSelect')?.value)  || ward;
-  const themeKey   = themeWard + ':' + themeYear + '-' + String(themeMonth).padStart(2,'0');
+  const themeKey   = getThemeKey();
   const themeRec   = (state.themeRecords && state.themeRecords[themeKey]) || null;
-  const themeYmStr = themeYear + '年' + themeMonth + '月';
+  const themeYmStr = themeYear + '年' + themeMonth + '月' + (themeWeek > 0 ? '　第' + themeWeek + '週' : '');
   const photoWard  = (document.getElementById('photoWardSelect')?.value) || ward;
-  const photoKey   = photoWard + ':' + photoYear + '-' + String(photoMonth).padStart(2,'0');
+  const photoKey   = getPhotoKey();
   const photos     = (state.photoRecords && state.photoRecords[photoKey]) || [];
-  const photoYmStr = photoYear + '年' + photoMonth + '月';
+  const photoYmStr = photoYear + '年' + photoMonth + '月' + (photoWeek > 0 ? '　第' + photoWeek + '週' : '');
 
   // HTML生成（executePrintReportと同じロジック、window.print()なし）
   var sections = '';
